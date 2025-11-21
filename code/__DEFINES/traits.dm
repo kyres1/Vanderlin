@@ -484,20 +484,21 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ROYALSERVANT "Household Insight" // Let's you see the royals liked/hated food/drink
 
 // PATRON CURSE TRAITS
+//Encore patron rename edit. Paths will be renamed when more time is available
 #define TRAIT_CURSE "Curse" //source
 #define TRAIT_ATHEISM_CURSE "Curse of Atheism"
-#define TRAIT_PSYDON_CURSE "Psydon's Curse"
-#define TRAIT_ASTRATA_CURSE "Astrata's Curse"
-#define TRAIT_NOC_CURSE "Noc's Curse"
-#define TRAIT_RAVOX_CURSE "Ravox's Curse"
-#define TRAIT_NECRA_CURSE "Necra's Curse"
-#define TRAIT_XYLIX_CURSE "Xylix's Curse"
-#define TRAIT_PESTRA_CURSE "Pestra's Curse"
-#define TRAIT_EORA_CURSE "Eora's Curse"
-#define TRAIT_ZIZO_CURSE "Zizo's Curse"
-#define TRAIT_GRAGGAR_CURSE "Graggar's Curse"
-#define TRAIT_MATTHIOS_CURSE "Matthios' Curse"
-#define TRAIT_BAOTHA_CURSE "Baotha's Curse"
+#define TRAIT_PSYDON_CURSE "Angros' Curse"
+#define TRAIT_ASTRATA_CURSE "Visires' Curse"
+#define TRAIT_NOC_CURSE "Akan's Curse"
+#define TRAIT_RAVOX_CURSE "Al'Aqshir's Curse"
+#define TRAIT_NECRA_CURSE "Valdala's Curse"
+#define TRAIT_XYLIX_CURSE "Iliope's Curse"
+#define TRAIT_PESTRA_CURSE "Ird's Curse"
+#define TRAIT_EORA_CURSE "Pomette's Curse"
+#define TRAIT_ZIZO_CURSE "One Envy's Curse"
+#define TRAIT_GRAGGAR_CURSE "Archdevil's Curse"
+#define TRAIT_MATTHIOS_CURSE "Deceiver's Curse"
+#define TRAIT_BAOTHA_CURSE "Hertannea's Curse"
 
 #define TRAIT_I_AM_INVISIBLE_ON_A_BOAT "invisible_on_tram"
 ///Trait given by /datum/element/relay_attacker

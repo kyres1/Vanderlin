@@ -1,10 +1,10 @@
 /// Could be bitflags, but that would require a good amount of translations, which eh, either way works for me
 /// When the event is combat oriented (spawning monsters, inherently hostile antags)
 
-//Encore patron rename edit. Paths will be renamed when more time is available
+//Encore patron rename edited these. Paths will be renamed when more time is available
 #define TAG_ASTRATA "Visires"
 #define TAG_NOC "Akan"
-#define TAG_RAVOX "Alaqkh'shir"
+#define TAG_RAVOX "Al'Aqshir"
 #define TAG_ABYSSOR "Mjallidhorn"
 #define TAG_XYLIX "Iliope"
 #define TAG_NECRA "Valdala"
@@ -202,17 +202,17 @@
 // Divine pantheon
 #define ASTRATA "Visires"
 #define NOC "Akan"
-#define RAVOX "Ravox"
+#define RAVOX "Al'Aqshir"
 #define ABYSSOR "Mjallidhorn"
 #define XYLIX "Iliope"
 #define NECRA "Valdala"
-#define PESTRA "Pestra"
+#define PESTRA "Ird"
 #define MALUM "Goler Kanh"
-#define EORA "Eora"
+#define EORA "Pomette"
 #define DENDOR "Gani"
 
 // Inhumen pantheon
 #define ZIZO "One Envy"
-#define BAOTHA "Baotha"
+#define BAOTHA "Hertannea"
 #define GRAGGAR "Archdevils"
 #define MATTHIOS "Deceiver Gods"
