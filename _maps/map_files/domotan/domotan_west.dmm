@@ -61,7 +61,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/lord,
+/turf/open/floor/carpet/lord/center,
 /area/under/cave/oldfort)
 "aO" = (
 /obj/item/natural/stone,
@@ -346,9 +346,7 @@
 /area/under/cave/oldfort)
 "dO" = (
 /obj/item/bin/water/gross,
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "dQ" = (
 /turf/open/floor/cobble/mossy,
@@ -448,9 +446,7 @@
 /turf/open/floor/dirt/road,
 /area/indoors/shelter/woods)
 "eR" = (
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "eS" = (
 /obj/structure/flora/grass/water,
@@ -1091,9 +1087,7 @@
 /obj/structure/bars{
 	alpha = 190
 	},
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "kI" = (
 /obj/structure/stairs/stone{
@@ -1302,9 +1296,7 @@
 /turf/open/floor/wood/nosmooth,
 /area/outdoors/woods/west/crags)
 "nc" = (
-/turf/open/floor/rooftop{
-	icon_state = "roofg"
-	},
+/turf/open/floor/rooftop,
 /area/outdoors/woods/berkleigh)
 "ng" = (
 /obj/structure/fluff/traveltile{
@@ -1419,9 +1411,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/lord{
-	icon_state = "carpet_r"
-	},
+/turf/open/floor/carpet/lord/center,
 /area/under/cave/oldfort)
 "ou" = (
 /obj/structure/flora/grass/water/reeds,
@@ -1896,7 +1886,7 @@
 /obj/structure/stairs/stone{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/churchbrick,
 /area/indoors/lostkeep)
 "sQ" = (
 /turf/open/water/ocean/deep,
@@ -1922,7 +1912,6 @@
 /turf/open/floor/carpet/royalblack,
 /area/under/cave/oldfort)
 "tb" = (
-/obj/effect/decal/cleanable/dirt/dust,
 /mob/living/simple_animal/hostile/retaliate/minotaur/axe,
 /turf/open/floor/carpet/lord/left,
 /area/under/cave/oldfort)
@@ -2319,12 +2308,6 @@
 "xr" = (
 /turf/open/transparent/openspace,
 /area/outdoors/woods/west/crags)
-"xt" = (
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
-	},
-/area/outdoors/woods/berkleigh)
 "xu" = (
 /obj/structure/flora/grass/water/reeds,
 /turf/closed/mineral/random,
@@ -2565,9 +2548,7 @@
 	dir = 1;
 	icon_state = "border"
 	},
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "zQ" = (
 /turf/open/floor/metal,
@@ -2977,10 +2958,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 25
 	},
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
-	},
+/turf/open/floor/rooftop,
 /area/outdoors/woods/berkleigh)
 "Dj" = (
 /turf/open/floor/dirt/road,
@@ -3036,12 +3014,6 @@
 /obj/item/rope,
 /turf/open/floor/metal,
 /area/indoors/lostkeep)
-"DH" = (
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
-	},
-/area/under/cave/oldfort)
 "DK" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -3245,17 +3217,6 @@
 	},
 /turf/open/floor/concrete,
 /area/under/cave/lostkeep)
-"Fy" = (
-/obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
-	},
-/obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
-	},
-/turf/open/floor/carpet/royalblack,
-/area/under/cave/oldfort)
 "Fz" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
@@ -3972,9 +3933,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/lord{
-	icon_state = "carpet_l"
-	},
+/turf/open/floor/carpet/lord/center,
 /area/under/cave/oldfort)
 "LR" = (
 /obj/structure/fluff/railing/border{
@@ -4042,9 +4001,7 @@
 /area/under/cavewet)
 "MF" = (
 /obj/structure/fluff/railing/border,
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "MM" = (
 /obj/structure/bookcase/random/archive,
@@ -4189,10 +4146,7 @@
 /obj/structure/fluff/walldeco/customflag{
 	pixel_y = 32
 	},
-/turf/open/floor/rooftop{
-	dir = 4;
-	icon_state = "roofg"
-	},
+/turf/open/floor/rooftop,
 /area/under/cave/oldfort)
 "Oo" = (
 /obj/item/natural/stone,
@@ -4370,9 +4324,7 @@
 /area/under/cave/oldfort)
 "PJ" = (
 /obj/structure/guillotine,
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "PT" = (
 /obj/structure/closet/crate/chest/neu,
@@ -4421,18 +4373,14 @@
 /area/outdoors/woods/west)
 "Qj" = (
 /obj/effect/decal/remains/wolf,
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/turf/open/floor/metal,
 /area/under/cave/lostkeep)
 "Qk" = (
 /mob/living/simple_animal/hostile/skeleton/guard,
 /turf/open/floor/wood/nosmooth,
 /area/under/cave/oldfort)
 "Ql" = (
-/turf/open/floor/rooftop{
-	icon_state = "roofg"
-	},
+/turf/open/floor/rooftop,
 /area/under/cave/oldfort)
 "Qn" = (
 /obj/structure/gravemarker,
@@ -4696,16 +4644,8 @@
 /turf/open/floor/blocks,
 /area/under/cave/oldfort)
 "SO" = (
-/obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 8
-	},
-/obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/royalblack,
+/turf/closed/wall/mineral/stonebrick,
 /area/under/cave/oldfort)
 "SQ" = (
 /obj/effect/decal/cobbleedge{
@@ -5345,20 +5285,10 @@
 	},
 /turf/open/floor/grass,
 /area/outdoors/woods/berkleigh)
-"Zr" = (
-/obj/structure/table/wood{
-	icon_state = "largetable"
-	},
-/turf/open/floor/carpet/royalblack,
-/area/under/cave/oldfort)
 "Zv" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/blocks/green,
 /area/indoors/lostkeep)
-"Zw" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/carpet/lord/right,
-/area/under/cave/oldfort)
 "Zx" = (
 /obj/structure/fluff/railing/border{
 	dir = 1;
@@ -52881,7 +52811,7 @@ KA
 KA
 KA
 Ol
-DH
+Ql
 Id
 Id
 Id
@@ -53137,8 +53067,8 @@ kj
 RL
 ED
 ek
-DH
-DH
+Ql
+Ql
 Id
 Id
 Id
@@ -53394,8 +53324,8 @@ kj
 kj
 kj
 ek
-DH
-DH
+Ql
+Ql
 Id
 Id
 Id
@@ -54940,10 +54870,10 @@ KA
 dN
 kj
 Sj
-Fy
-Fy
+KA
+KA
 SO
-Zr
+KA
 Sj
 kj
 kj
@@ -55698,10 +55628,10 @@ Id
 KA
 KA
 cu
-Zw
+zl
 os
 zl
-Zw
+zl
 zl
 zl
 zl
@@ -73898,7 +73828,7 @@ EQ
 EQ
 Mo
 WA
-xt
+nc
 Hp
 Ll
 Ll
@@ -74155,7 +74085,7 @@ CB
 tr
 vp
 CB
-xt
+nc
 Hp
 Ll
 Ll
@@ -74412,7 +74342,7 @@ CB
 CB
 CB
 CB
-xt
+nc
 Hp
 Ll
 bF
@@ -74669,7 +74599,7 @@ EQ
 EQ
 Mo
 WA
-xt
+nc
 Hp
 Hp
 Ll
@@ -74926,7 +74856,7 @@ CB
 tr
 vp
 CB
-xt
+nc
 Hp
 Hp
 Ll
@@ -75183,7 +75113,7 @@ CB
 CB
 CB
 CB
-xt
+nc
 Hp
 Hp
 Ll
@@ -75440,7 +75370,7 @@ OK
 AA
 EQ
 WA
-xt
+nc
 Hp
 Hp
 Hp
@@ -75697,7 +75627,7 @@ yy
 wr
 EQ
 CB
-xt
+nc
 Hp
 Hp
 Hp
@@ -75954,7 +75884,7 @@ yy
 wr
 MY
 CB
-xt
+nc
 Hp
 Hp
 Hp
@@ -77225,12 +77155,12 @@ Hp
 Hp
 Hp
 Hp
-xt
-xt
-xt
-xt
-xt
-xt
+nc
+nc
+nc
+nc
+nc
+nc
 Hp
 Hp
 Hp
@@ -77482,12 +77412,12 @@ Ll
 Ll
 Hp
 Hp
-xt
-xt
-xt
-xt
-xt
-xt
+nc
+nc
+nc
+nc
+nc
+nc
 Hp
 Hp
 Hp
@@ -78253,12 +78183,12 @@ Ll
 Hp
 Hp
 Hp
-xt
-xt
-xt
-xt
-xt
-xt
+nc
+nc
+nc
+nc
+nc
+nc
 Hp
 Hp
 Hp
@@ -78510,12 +78440,12 @@ Za
 Hp
 Hp
 Hp
-xt
-xt
-xt
-xt
-xt
-xt
+nc
+nc
+nc
+nc
+nc
+nc
 Hp
 Hp
 Hp

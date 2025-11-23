@@ -114,9 +114,8 @@
 /turf/open/floor/twig,
 /area/indoors/shelter)
 "aZ" = (
-/turf/open/floor/metal{
-	icon_state = "plating2"
-	},
+/obj/structure/train/carriage/not_train/far_travel,
+/turf/open/floor/metal,
 /area/outdoors/beach/tutorial)
 "bd" = (
 /turf/open/floor/grass/yel,
@@ -499,6 +498,7 @@
 /turf/open/floor/ruinedwood,
 /area/outdoors/woods)
 "hU" = (
+/obj/structure/train/carriage/not_train/far_travel,
 /turf/open/floor/metal,
 /area/indoors/town)
 "hZ" = (
@@ -2570,9 +2570,6 @@
 /obj/machinery/light/fueled/torchholder/c,
 /turf/open/floor/twig,
 /area/indoors/shelter)
-"Wn" = (
-/turf/open/floor/metal,
-/area/outdoors/beach/tutorial)
 "WB" = (
 /obj/item/natural/stone,
 /obj/machinery/light/fueled/torchholder/c,
@@ -8496,7 +8493,7 @@ Rd
 Rd
 Rd
 SF
-Wn
+aZ
 SF
 Rd
 Rd

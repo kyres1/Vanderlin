@@ -248,10 +248,7 @@
 /turf/open/floor/cobble/mossy,
 /area/indoors/shelter/mountains/decap)
 "qx" = (
-/turf/open/floor/rooftop{
-	dir = 1;
-	icon_state = "roofg"
-	},
+/turf/open/floor/rooftop,
 /area/indoors/shelter/mountains/decap)
 "rd" = (
 /obj/structure/ladder,
@@ -263,10 +260,7 @@
 /turf/open/floor/twig/platform,
 /area/indoors/shelter/mountains/decap)
 "rA" = (
-/turf/open/floor/rooftop{
-	dir = 1;
-	icon_state = "roofg"
-	},
+/turf/open/floor/rooftop,
 /area/outdoors/mountains/decap)
 "rT" = (
 /obj/structure/ladder,
@@ -463,10 +457,6 @@
 	},
 /turf/open/floor/grass/cold,
 /area/outdoors/mountains)
-"CH" = (
-/turf/open/transparent/openspace,
-/turf/open/transparent/openspace,
-/area/outdoors/mountains)
 "CQ" = (
 /obj/structure/fluff/railing/border{
 	dir = 5
@@ -649,7 +639,6 @@
 /turf/open/floor/cobble/mossy,
 /area/outdoors/mountains/decap)
 "Mi" = (
-/turf/open/transparent/openspace,
 /turf/open/floor/grass/cold,
 /area/outdoors/mountains)
 "Mm" = (
@@ -54205,7 +54194,7 @@ bv
 fC
 bv
 bv
-Mi
+bv
 ii
 vE
 vE
@@ -54462,7 +54451,7 @@ bv
 fC
 fC
 bv
-Mi
+bv
 ii
 ii
 vE
@@ -54719,7 +54708,7 @@ bv
 fC
 fC
 fC
-Mi
+bv
 bv
 ii
 bv
@@ -66631,9 +66620,9 @@ bv
 bv
 bv
 vH
-CH
-CH
-CH
+vH
+vH
+vH
 vH
 vH
 vH
@@ -66888,9 +66877,9 @@ bv
 bv
 vH
 vH
-CH
-CH
-CH
+vH
+vH
+vH
 vH
 vH
 vH
