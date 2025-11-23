@@ -16547,9 +16547,7 @@
 	icon_state = "barsbent";
 	layer = 2.81
 	},
-/obj/structure/fake_machine/vendor{
-	keycontrol = "physician"
-	},
+/obj/structure/fake_machine/vendor,
 /turf/open/floor/blocks/newstone/alt,
 /area/indoors/town)
 "wHT" = (
