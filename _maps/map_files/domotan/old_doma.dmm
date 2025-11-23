@@ -1448,10 +1448,10 @@
 /turf/open/floor/carpet/red,
 /area/indoors/town/manor)
 "clk" = (
-/obj/structure/closet/crate/chest/crate,
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
+/obj/structure/stockpile_storage/metal,
 /turf/open/floor/herringbone,
 /area/indoors/town)
 "clp" = (
@@ -8424,10 +8424,7 @@
 	},
 /area/indoors/town)
 "lHd" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/obj/structure/closet/crate/chest/crate,
+/obj/structure/stockpile_storage/food,
 /turf/open/floor/herringbone,
 /area/indoors/town)
 "lHg" = (
@@ -15238,7 +15235,6 @@
 "uOL" = (
 /obj/structure/fluff/railing/border,
 /obj/machinery/light/fueled/torchholder/r,
-/obj/structure/closet/crate/chest/crate,
 /turf/open/floor/herringbone,
 /area/indoors/town)
 "uPk" = (
@@ -15409,7 +15405,7 @@
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors/town/shop)
 "uZJ" = (
-/obj/structure/closet/crate/chest/crate,
+/obj/structure/stockpile_storage,
 /turf/open/floor/herringbone,
 /area/indoors/town)
 "vbq" = (
@@ -16505,8 +16501,7 @@
 /turf/open/floor/ruinedwood,
 /area/indoors/town/magician)
 "wFf" = (
-/obj/structure/fluff/railing/border,
-/obj/structure/closet/crate/chest/crate,
+/obj/structure/stockpile_storage/metal,
 /turf/open/floor/herringbone,
 /area/indoors/town)
 "wFm" = (
@@ -33894,7 +33889,7 @@ sEO
 sEO
 sEO
 clk
-lHd
+clk
 hTq
 vxL
 sol
@@ -34157,10 +34152,10 @@ vpf
 vpf
 fgx
 yej
-uZJ
 nLb
 nLb
 nLb
+wFf
 kfC
 kfC
 aab
@@ -34289,7 +34284,7 @@ sEO
 sEO
 sEO
 sEO
-nLb
+uZJ
 nLb
 nLb
 nLb
@@ -34424,8 +34419,8 @@ nbp
 nLb
 nLb
 nLb
-nLb
-nLb
+lHd
+lHd
 kfC
 eDk
 eDk
@@ -34556,8 +34551,8 @@ gWg
 nLb
 nLb
 nLb
-nLb
-nLb
+lHd
+lHd
 kfC
 rzU
 aJX
@@ -34689,7 +34684,7 @@ nLb
 nLb
 nLb
 nLb
-nLb
+wFf
 uKT
 aJX
 aJX
@@ -35080,7 +35075,7 @@ mww
 hDX
 qEy
 uZJ
-wFf
+wVb
 lEa
 lEa
 lEa
