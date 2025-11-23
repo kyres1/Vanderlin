@@ -1060,10 +1060,6 @@
 /turf/open/water/cleanshallow,
 /area/outdoors/woods/berkleigh)
 "kC" = (
-/obj/structure/table/wood{
-	dir = 1;
-	icon_state = "largetable"
-	},
 /obj/item/flint{
 	pixel_x = -14
 	},
@@ -1081,6 +1077,7 @@
 /obj/item/reagent_containers/glass/bowl{
 	pixel_x = 6
 	},
+/obj/structure/table/wood,
 /turf/open/floor/twig,
 /area/indoors/shelter/woods)
 "kF" = (
@@ -1334,16 +1331,9 @@
 /turf/open/floor/concrete,
 /area/under/cave/oldtown)
 "nu" = (
-/obj/structure/table/wood{
-	icon_state = "largetable";
-	dir = 4
-	},
 /obj/machinery/light/fueled/torchholder/l,
 /obj/item/kitchen/rollingpin,
-/obj/structure/table/wood{
-	dir = 9;
-	icon_state = "largetable"
-	},
+/obj/structure/table/wood,
 /turf/open/floor/twig,
 /area/indoors/shelter/woods)
 "ny" = (
@@ -4651,15 +4641,12 @@
 /obj/effect/decal/cobbleedge{
 	icon_state = "cobbleedge-n"
 	},
-/obj/structure/fluff/millstone{
-	pixel_x = -5
-	},
-/obj/structure/table/wood{
-	dir = 5;
-	icon_state = "largetable"
-	},
 /obj/item/natural/bundle/stick{
 	amount = 10
+	},
+/obj/structure/table/wood,
+/obj/structure/fluff/millstone{
+	pixel_y = 7
 	},
 /turf/open/floor/twig,
 /area/indoors/shelter/woods)
