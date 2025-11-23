@@ -102,3 +102,9 @@
 	desc = "A wooden carriage to carry passengers across land without the blessings of Heartfeltian underground train infrastructure."
 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
 	icon_state = "carriage_normal"
+
+/obj/structure/train/carriage/not_train/far_travel//Surely there is a better way to do this
+	name = "far travel"
+	desc = "Your means of departing this mess, simply drag your sprite onto this to exit the round!"
+	icon_state = "grey"
+	icon = 'icons/turf/floors.dmi'

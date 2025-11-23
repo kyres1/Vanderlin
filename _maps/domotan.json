@@ -1,19 +1,23 @@
 {
 	"map_name": "Domotan Island",
 	"map_path": "map_files/domotan",
-	"map_file": "domotan_north.dmm",
+	"map_file": "old_doma.dmm",
 	"immigrant_origin": "the Sea of Fire",
 	"monarch_title": "Prince Regent",
 	"monarch_title_f": "Princess Regent",
 	"traits": [
-		{"Up": true, "Turf Weather Effects": true, "Cellar": true},
+		{"Up": true, "Turf Weather Effects": true, "Leylines": true},
 		{"Up": true, "Down": true, "Turf Weather Effects": true, "Leylines": true},
 		{"Up": true, "Down": true, "Turf Weather Effects": true, "Leylines": true},
 		{"Up": true, "Down": true, "Turf Weather Effects": true},
 		{"Down": true, "Turf Weather Effects": true}
 	],
 	"other_z": [
-		"map_files/domotan/domotan_mountain"
+		"map_files/domotan/domotan_north",
+		"map_files/domotan/domotan_south",
+		"map_files/domotan/domotan_east",
+		"map_files/domotan/domotan_west",
+		"map_files/domotan/fort_hellwatch"
 	],
 	"minetype": null,
 	"space_empty_levels": 0,

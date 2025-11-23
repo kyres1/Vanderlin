@@ -1155,6 +1155,10 @@
 /obj/structure/closet/crate/coffin/vampire,
 /turf/open/floor/herringbone,
 /area/indoors/vampire_manor)
+"dS" = (
+/obj/structure/closet/crate/crafted_closet/inn/south,
+/turf/open/floor/wood,
+/area/ship/middeck)
 "dT" = (
 /obj/structure/bed/hay,
 /turf/open/floor/blocks,
@@ -1207,6 +1211,11 @@
 	},
 /turf/open/floor/cobble,
 /area/indoors)
+"ef" = (
+/obj/machinery/light/fueled/torchholder/c,
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "eh" = (
 /turf/closed/wall/mineral/decostone/moss/long,
 /area/indoors/lich)
@@ -1241,6 +1250,11 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/indoors/vampire_manor)
+"ez" = (
+/obj/structure/door/iron,
+/obj/effect/mapping_helpers/access/locker,
+/turf/closed/indestructible/wooddark/hull,
+/area/ship/middeck)
 "eD" = (
 /turf/open/floor/ruinedwood/spiral,
 /area/indoors)
@@ -1429,6 +1443,13 @@
 /obj/structure/flora/grass,
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"fQ" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/obj/structure/chair/bench/church/smallbench,
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "fR" = (
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/ruinedwood/darker,
@@ -1488,6 +1509,10 @@
 /obj/item/natural/rock,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"gl" = (
+/obj/machinery/light/fueled/torchholder/l,
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "gm" = (
 /obj/structure/table/wood{
 	dir = 6;
@@ -1753,6 +1778,22 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/outdoors/bog/inhumen_camp)
+"ib" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/obj/structure/fluff/signage{
+	name = "To Wey Whisperen";
+	desc = "You can not go back to the real world! Use a main menu portal to respawn from this point onward."
+	},
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
+"ic" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "ij" = (
 /obj/item/clothing/shirt/dress/gen/colored/maid,
 /obj/item/clothing/shoes/shortboots,
@@ -1952,6 +1993,12 @@
 /obj/structure/fluff/wallclock,
 /turf/open/floor/ruinedwood/chevron,
 /area/indoors)
+"jx" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ship/middeck)
 "jA" = (
 /obj/structure/bed/inn/double,
 /turf/open/floor/carpet/purple,
@@ -2046,6 +2093,10 @@
 /obj/structure/bed,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/bandit_lair)
+"jY" = (
+/obj/structure/rack,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "jZ" = (
 /turf/open/floor/hexstone,
 /area/indoors/vampire_manor)
@@ -2505,6 +2556,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors)
+"nu" = (
+/obj/structure/door/weak,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "nv" = (
 /obj/item/clothing/shirt/dress/silkdress/colored/silkdressprimary,
 /obj/item/clothing/shoes/shortboots,
@@ -2571,6 +2626,11 @@
 /obj/item/reagent_containers/food/snacks/meat/steak,
 /turf/open/floor/tile,
 /area/indoors)
+"nM" = (
+/obj/structure/closet/crate/chest/crafted,
+/obj/structure/fluff/wallclock,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "nN" = (
 /obj/machinery/light/fueled/forge,
 /turf/open/floor/cobble,
@@ -2644,6 +2704,19 @@
 /obj/machinery/light/fueled/campfire/densefire,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"of" = (
+/obj/machinery/light/fueled/lanternpost/fixed,
+/obj/structure/fluff/traveltile{
+	aportalid = "dead_end_3";
+	name = "to Wey Whisperen";
+	aportalgoesto = "south_arrivals_out"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "og" = (
 /obj/structure/flora/tree,
 /turf/open/water/swamp,
@@ -2662,6 +2735,12 @@
 /obj/machinery/light/fueled/wallfire/candle/skull/r,
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/lich)
+"om" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "oo" = (
 /obj/structure/fluff/walldeco/psybanner/red{
 	icon_state = "zizobanner";
@@ -2691,6 +2770,20 @@
 /obj/item/clothing/head/hennin,
 /turf/open/floor/wood,
 /area/indoors)
+"ou" = (
+/obj/machinery/light/fueled/lanternpost/fixed,
+/obj/structure/fluff/traveltile{
+	aallmig = "arrivals";
+	aportalgoesto = "arrivals_out";
+	aportalid = "arrivals_in";
+	name = "to Old Doma"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "ov" = (
 /obj/structure/table/wood/counter/end,
 /obj/item/reagent_containers/peppermill,
@@ -2841,6 +2934,17 @@
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/herringbone,
 /area/indoors/vampire_manor)
+"pA" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
+"pB" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/obj/structure/rack,
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "pD" = (
 /obj/structure/window/stained/zizo,
 /turf/open/floor/naturalstone,
@@ -2933,6 +3037,10 @@
 	},
 /turf/open/floor/wood,
 /area/indoors)
+"qd" = (
+/obj/structure/closet/crate/chest/crate,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "qf" = (
 /obj/effect/decal/cobbleedge/alt{
 	dir = 4
@@ -2996,6 +3104,9 @@
 "qA" = (
 /turf/open/floor/cobblerock,
 /area/outdoors/bog/inhumen_camp)
+"qE" = (
+/turf/closed/sea_fog,
+/area)
 "qG" = (
 /obj/item/weapon/sword/scimitar/falchion,
 /obj/item/weapon/sword/scimitar/falchion,
@@ -3651,6 +3762,12 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/woods_safe)
+"uI" = (
+/obj/structure/fluff/railing/border{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "uL" = (
 /obj/structure/well,
 /turf/open/floor/cobblerock,
@@ -3770,6 +3887,11 @@
 	},
 /turf/open/floor/cobblerock,
 /area/outdoors)
+"vm" = (
+/obj/machinery/light/fueled/torchholder/r,
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/turf/open/floor/wood,
+/area/ship/middeck)
 "vq" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/grass,
@@ -3820,6 +3942,19 @@
 "vI" = (
 /turf/closed/wall/mineral/wooddark,
 /area/indoors)
+"vK" = (
+/obj/structure/fluff/traveltile{
+	aportalid = "no_escape_1";
+	name = "to Tutorial Island";
+	desc = "You can not go back to the real world! Use a main menu portal to respawn from this point onward.";
+	aportalgoesto = "tutorial_out"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "vL" = (
 /obj/structure/closet/dirthole/grave,
 /obj/effect/decal/remains/saiga{
@@ -3959,6 +4094,9 @@
 /obj/structure/closet/dirthole/closed,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"wu" = (
+/turf/open/floor/wood,
+/area/ship/middeck)
 "wz" = (
 /obj/structure/chair/bench/church,
 /obj/structure/fluff/walldeco/painting/skull{
@@ -3978,6 +4116,12 @@
 /obj/effect/landmark/start/new_player,
 /turf/open/floor/blocks,
 /area/start)
+"wG" = (
+/obj/machinery/light/fueled/torchholder/r,
+/obj/structure/bed/inn,
+/obj/item/bedsheet/cloth,
+/turf/open/floor/wood,
+/area/ship/middeck)
 "wH" = (
 /obj/machinery/light/fueled/torchholder/c,
 /obj/structure/chair/bench/coucha/redleft,
@@ -4141,6 +4285,13 @@
 	},
 /turf/open/floor/church,
 /area/indoors/lich)
+"xW" = (
+/obj/structure/fluff/railing/border{
+	icon_state = "border";
+	dir = 10
+	},
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "ya" = (
 /obj/structure/table/wood/large/corner_new{
 	dir = 5
@@ -4396,10 +4547,29 @@
 "zK" = (
 /turf/open/floor/carpet/green,
 /area/indoors/lich)
+"zN" = (
+/obj/machinery/light/fueled/torchholder/c,
+/obj/structure/closet/crate/chest/crate,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "zP" = (
 /obj/structure/fluff/statue/tdummy,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"zQ" = (
+/obj/machinery/light/fueled/lanternpost/fixed,
+/obj/structure/fluff/traveltile{
+	aallmig = "arrivals";
+	aportalgoesto = "west_arrivals_out";
+	aportalid = "west_arrivals_deadend_2";
+	name = "to the Weeping Wood"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "zS" = (
 /obj/structure/flora/tree/evil,
 /turf/open/floor/dirt,
@@ -4412,6 +4582,19 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"zX" = (
+/turf/open/water/ocean/deep,
+/area/ship/topdeck)
+"zZ" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/obj/structure/fluff/signage{
+	name = "To Old Doma";
+	desc = "You can not go back to the real world! Use a main menu portal to respawn from this point onward."
+	},
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "Ab" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/fluff/railing/border{
@@ -4476,6 +4659,16 @@
 /obj/structure/fluff/traveltile/exit_vampire,
 /turf/open/floor/cobblerock,
 /area/outdoors/woods_safe)
+"Ap" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/obj/structure/fluff/signage{
+	name = "To Tutorial Island";
+	desc = "You can not go back to the real world! Use a main menu portal to respawn from this point onward."
+	},
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "Aq" = (
 /obj/structure/fluff/railing/border{
 	layer = 2
@@ -4584,6 +4777,11 @@
 "Ba" = (
 /turf/open/floor/metal/barograte,
 /area/indoors/vampire_manor)
+"Bc" = (
+/obj/structure/bed/inn,
+/obj/item/bedsheet/cloth,
+/turf/open/floor/wood,
+/area/ship/middeck)
 "Bd" = (
 /obj/item/natural/rock,
 /turf/open/floor/dirt,
@@ -4660,6 +4858,20 @@
 /obj/structure/table/stone_small,
 /turf/open/floor/churchrough,
 /area/indoors/lich)
+"BG" = (
+/obj/machinery/light/fueled/lanternpost/fixed,
+/obj/structure/fluff/traveltile{
+	aportalid = "no_escape_1";
+	name = "to Tutorial Island";
+	desc = "You can not go back to the real world! Use a main menu portal to respawn from this point onward.";
+	aportalgoesto = "tutorial_out"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "BH" = (
 /obj/effect/decal/cobblerockedge{
 	dir = 6;
@@ -4690,6 +4902,9 @@
 /obj/effect/spawner/map_spawner/grass_low,
 /turf/open/floor/dirt/road,
 /area/outdoors/woods_safe)
+"BN" = (
+/turf/closed/indestructible/wooddark/hull,
+/area/ship/middeck)
 "BP" = (
 /obj/structure/mannequin/male,
 /obj/item/clothing/head/priesthat,
@@ -4740,6 +4955,9 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/bog/inhumen_camp)
+"Cc" = (
+/turf/closed/indestructible/wooddark/hull,
+/area/ship/topdeck)
 "Cd" = (
 /obj/effect/decal/cleanable/dirt/cobweb,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -4803,6 +5021,11 @@
 	},
 /turf/open/floor/cobble,
 /area/indoors)
+"Cy" = (
+/obj/structure/door/iron,
+/obj/effect/mapping_helpers/access/locker,
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "Cz" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/churchbrick,
@@ -4884,6 +5107,12 @@
 /obj/structure/fermentation_keg/random/beer,
 /turf/open/floor/tile/kitchen,
 /area/indoors/bandit_lair)
+"Dd" = (
+/obj/structure/fluff/railing/border{
+	dir = 6
+	},
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "Df" = (
 /obj/structure/fluff/traveltile/exit_inhumen,
 /turf/open/floor/cobblerock,
@@ -4894,6 +5123,10 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"Dk" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/wood,
+/area/ship/middeck)
 "Dn" = (
 /obj/effect/decal/cobbleedge/alt{
 	dir = 8
@@ -5005,6 +5238,10 @@
 /obj/structure/overlord_portal,
 /turf/open/floor/churchbrick,
 /area/overlord_lair)
+"Eg" = (
+/obj/machinery/light/fueled/torchholder/r,
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "Ei" = (
 /obj/item/painting/skull,
 /turf/closed/wall/mineral/craftstone,
@@ -5062,6 +5299,10 @@
 /obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
 /turf/open/floor/herringbone,
 /area/overlord_lair)
+"EE" = (
+/obj/structure/chair/bench/coucha/r,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "EF" = (
 /obj/effect/decal/cobblerockedge{
 	dir = 8
@@ -5275,6 +5516,10 @@
 	},
 /turf/open/floor/hexstone,
 /area/indoors)
+"Go" = (
+/obj/structure/door/window,
+/turf/open/floor/metal/alt,
+/area/ship/middeck)
 "Gq" = (
 /obj/structure/fluff/railing/wood{
 	dir = 8
@@ -5827,6 +6072,19 @@
 /obj/structure/closet/dirthole/closed/loot,
 /turf/open/floor/dirt,
 /area/outdoors/bog/inhumen_camp)
+"JC" = (
+/obj/structure/fluff/traveltile{
+	aallmig = "arrivals";
+	aportalgoesto = "arrivals_out";
+	aportalid = "arrivals_in";
+	name = "to Old Doma"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "JF" = (
 /obj/structure/healingfountain,
 /turf/open/floor/concrete,
@@ -5899,6 +6157,10 @@
 /obj/machinery/light/fueled/wallfire,
 /turf/closed/wall/mineral/decostone/long,
 /area/indoors/lich)
+"Km" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "Kn" = (
 /obj/structure/flora/grass,
 /turf/open/floor/grass,
@@ -6107,6 +6369,11 @@
 	},
 /turf/closed/wall/mineral/decostone/moss/long,
 /area/indoors/lich)
+"LT" = (
+/obj/structure/chair/bench/coucha/r,
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "LU" = (
 /obj/structure/fluff/psycross/crafted,
 /turf/open/floor/dirt,
@@ -6200,6 +6467,23 @@
 /obj/structure/door,
 /turf/open/floor/tile,
 /area/indoors)
+"Mz" = (
+/obj/structure/closet/crate/crafted_closet/inn/chest,
+/turf/open/floor/wood,
+/area/ship/middeck)
+"MB" = (
+/obj/structure/fluff/traveltile{
+	aallmig = "arrivals";
+	aportalgoesto = "west_arrivals_out";
+	aportalid = "west_arrivals_deadend_2";
+	name = "to the Weeping Wood"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "MC" = (
 /obj/structure/chair/hotspring_bench/left{
 	pixel_y = 12
@@ -6464,6 +6748,11 @@
 "Ot" = (
 /turf/open/floor/hexstone,
 /area/indoors)
+"Ov" = (
+/obj/structure/chair/bench/coucha,
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "Ox" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -6487,6 +6776,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/lord/center,
 /area/indoors/lich)
+"OB" = (
+/turf/closed/indestructible/roguewindow,
+/area/ship/middeck)
 "OC" = (
 /obj/effect/decal/cobblerockedge,
 /turf/open/floor/grass/yel,
@@ -6617,6 +6909,9 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors)
+"PP" = (
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "PT" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/clothing/armor/chainmail/iron/orc,
@@ -6897,6 +7192,18 @@
 /obj/structure/window/solid,
 /turf/open/floor/wood,
 /area/indoors/bandit_lair)
+"Rx" = (
+/obj/structure/fluff/traveltile{
+	aportalid = "dead_end_3";
+	name = "to Wey Whisperen";
+	aportalgoesto = "south_arrivals_out"
+	},
+/obj/structure/fluff/railing/border{
+	dir = 1;
+	icon_state = "border"
+	},
+/turf/open/floor/metal/alt,
+/area/ship/topdeck)
 "RA" = (
 /obj/structure/table/wood/reinforced,
 /obj/item/clothing/shirt/undershirt,
@@ -6971,6 +7278,16 @@
 /obj/structure/table/wood/fancy/royalblue,
 /turf/open/floor/carpet,
 /area/indoors)
+"RO" = (
+/obj/structure/fluff/railing/tall{
+	dir = 1
+	},
+/obj/structure/fluff/signage{
+	name = "To the Weeping Wood";
+	desc = "You can not go back to the real world! Use a main menu portal to respawn from this point onward."
+	},
+/turf/open/floor/ruinedwood,
+/area/ship/topdeck)
 "RP" = (
 /obj/structure/table/wood/large/corner_blue{
 	dir = 9
@@ -7095,6 +7412,10 @@
 "Sv" = (
 /turf/open/water/swamp/deep,
 /area/indoors/lich)
+"Sx" = (
+/obj/structure/chair/bench/coucha,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "Sy" = (
 /obj/structure/flora/tree,
 /turf/open/floor/dirt/road,
@@ -7946,6 +8267,10 @@
 /obj/item/clothing/face/shepherd/clothmask,
 /turf/open/floor/blocks/paving,
 /area/indoors/vampire_manor)
+"XX" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "XZ" = (
 /obj/item/weapon/sword/iron,
 /obj/item/weapon/sword/iron,
@@ -8161,6 +8486,10 @@
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/bog/inhumen_camp)
+"YZ" = (
+/obj/machinery/light/fueled/torchholder/l,
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "Zb" = (
 /obj/structure/fluff/statue/shisha{
 	pixel_x = -24;
@@ -8226,6 +8555,9 @@
 "Zz" = (
 /turf/open/floor/grass/red,
 /area/outdoors/woods_safe)
+"ZA" = (
+/turf/open/floor/ruinedwood/two,
+/area/ship/middeck)
 "ZG" = (
 /obj/machinery/light/fueled/torchholder/r,
 /turf/open/floor/carpet,
@@ -14160,10 +14492,10 @@ rQ
 rQ
 rQ
 rQ
-rQ
-rQ
-rQ
-rQ
+ag
+ag
+ag
+ag
 ag
 ag
 aw
@@ -14268,33 +14600,33 @@ bz
 Iw
 "}
 (47,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
 ag
 vI
 aw
@@ -14398,33 +14730,33 @@ bz
 Iw
 "}
 (48,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -14528,33 +14860,33 @@ bz
 Iw
 "}
 (49,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -14658,33 +14990,33 @@ bz
 Iw
 "}
 (50,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -14788,33 +15120,33 @@ bz
 Iw
 "}
 (51,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -14918,33 +15250,33 @@ bz
 Iw
 "}
 (52,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -15048,33 +15380,33 @@ bz
 Iw
 "}
 (53,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -15178,33 +15510,33 @@ bz
 Iw
 "}
 (54,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Qe
 av
@@ -15308,33 +15640,33 @@ bz
 Iw
 "}
 (55,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 Vm
 Qe
@@ -15438,33 +15770,33 @@ bz
 Iw
 "}
 (56,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+Cy
+Cc
+Cy
+BN
+BN
+BN
+BN
+BN
+BN
+BN
+BN
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -15568,33 +15900,33 @@ Sy
 Iw
 "}
 (57,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+ic
+gl
+PP
+BN
+Sx
+ZA
+YZ
+BN
+dS
+Dk
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -15698,33 +16030,33 @@ Ao
 Iw
 "}
 (58,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+Ap
+PP
+PP
+BN
+LT
+ZA
+XX
+BN
+dS
+wu
+Dk
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -15828,33 +16160,33 @@ sk
 Iw
 "}
 (59,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+BG
+PP
+PP
+PP
+OB
+ZA
+ZA
+ZA
+nu
+wu
+Dk
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -15958,33 +16290,33 @@ sk
 Iw
 "}
 (60,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+vK
+PP
+PP
+PP
+OB
+XX
+ZA
+ZA
+BN
+Bc
+wG
+Bc
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16088,33 +16420,33 @@ bz
 Iw
 "}
 (61,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+fQ
+PP
+PP
+BN
+qd
+ZA
+ZA
+BN
+BN
+BN
+BN
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16218,33 +16550,33 @@ bz
 Iw
 "}
 (62,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+zZ
+PP
+PP
+BN
+zN
+ZA
+ZA
+YZ
+ZA
+ZA
+ZA
+ez
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16348,33 +16680,33 @@ bz
 Iw
 "}
 (63,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+ou
+PP
+PP
+PP
+OB
+jY
+ZA
+XX
+ZA
+ZA
+XX
+pA
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16478,33 +16810,33 @@ bz
 Iw
 "}
 (64,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+JC
+PP
+PP
+PP
+Go
+ZA
+ZA
+ZA
+Dd
+om
+BN
+BN
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16608,33 +16940,33 @@ bz
 Iw
 "}
 (65,1,1) = {"
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+pB
+PP
+PP
+OB
+ZA
+ZA
+ZA
+ZA
+jx
+wu
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16738,33 +17070,33 @@ bz
 Iw
 "}
 (66,1,1) = {"
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+RO
+PP
+PP
+OB
+ZA
+ZA
+ZA
+ZA
+jx
+wu
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16868,33 +17200,33 @@ bz
 Iw
 "}
 (67,1,1) = {"
-rQ
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zQ
+PP
+PP
+PP
+Go
+ZA
+ZA
+ZA
+ZA
+jx
+wu
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -16998,33 +17330,33 @@ bz
 Iw
 "}
 (68,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+MB
+PP
+PP
+PP
+OB
+Km
+ZA
+ZA
+xW
+uI
+BN
+BN
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17128,33 +17460,33 @@ bz
 Iw
 "}
 (69,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+fQ
+PP
+PP
+BN
+ef
+ZA
+ZA
+ZA
+ZA
+ZA
+XX
+ez
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17258,33 +17590,33 @@ bz
 Iw
 "}
 (70,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+ib
+PP
+PP
+BN
+nM
+ZA
+ZA
+XX
+ZA
+ZA
+pA
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17388,33 +17720,33 @@ bz
 Iw
 "}
 (71,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+of
+PP
+PP
+PP
+OB
+ZA
+ZA
+ZA
+BN
+BN
+BN
+BN
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17518,33 +17850,33 @@ bz
 Iw
 "}
 (72,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Rx
+PP
+PP
+PP
+OB
+XX
+ZA
+ZA
+BN
+Bc
+Bc
+Bc
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17648,33 +17980,33 @@ bz
 Iw
 "}
 (73,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+pB
+PP
+PP
+BN
+Ov
+ZA
+ZA
+nu
+wu
+wu
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17778,33 +18110,33 @@ bz
 Iw
 "}
 (74,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+ic
+Eg
+PP
+BN
+EE
+XX
+pA
+BN
+Mz
+vm
+wu
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -17908,33 +18240,33 @@ HZ
 HZ
 "}
 (75,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+Cc
+Cy
+Cc
+Cy
+BN
+BN
+BN
+BN
+BN
+BN
+BN
+BN
+BN
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18038,33 +18370,33 @@ Ae
 HZ
 "}
 (76,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18168,33 +18500,33 @@ Ae
 HZ
 "}
 (77,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18298,33 +18630,33 @@ Ae
 HZ
 "}
 (78,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18428,33 +18760,33 @@ Ae
 HZ
 "}
 (79,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18558,33 +18890,33 @@ Ae
 HZ
 "}
 (80,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18688,33 +19020,33 @@ Ae
 HZ
 "}
 (81,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18818,33 +19150,33 @@ Ae
 HZ
 "}
 (82,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -18948,33 +19280,33 @@ Ae
 HZ
 "}
 (83,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+zX
+qE
 ag
 ag
 ag
@@ -19078,33 +19410,33 @@ Ae
 HZ
 "}
 (84,1,1) = {"
-rQ
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
-ag
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
+qE
 ag
 ag
 ag

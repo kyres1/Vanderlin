@@ -203,12 +203,9 @@
 	SPEC_ID_MEDICATOR,\
 )
 
-/// Vanderlin royalty
+/// Etgard royalty
 #define RACES_PLAYER_ROYALTY list(\
-	SPEC_ID_HUMEN,\
 	SPEC_ID_HALF_ELF,\
-	SPEC_ID_ELF,\
-	SPEC_ID_DWARF,\
 )
 
 /// The butler

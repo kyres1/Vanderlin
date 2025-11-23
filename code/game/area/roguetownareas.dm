@@ -98,7 +98,7 @@
 	name = "town basin"
 	icon_state = "rtfield"
 	soundenv = 19
-	ambush_times = list("night","dawn","dusk","day")
+	ambush_times = list("night")
 	ambush_types = list(
 				/turf/open/floor/grass)
 	ambush_mobs = list(
@@ -135,7 +135,7 @@
 	background_track_dusk = 'sound/music/area/septimus.ogg'
 	background_track_night = 'sound/music/area/forestnight.ogg'
 	soundenv = 15
-	ambush_times = list("night","dawn","dusk","day")
+	ambush_times = list("night")
 	ambush_types = list(
 				/turf/open/floor/grass)
 	ambush_mobs = list(
@@ -209,12 +209,15 @@
 	background_track_night = null
 
 /area/outdoors/beach
-	name = "sophia's cry"
+	name = "coast of Domotan Island"
 	icon_state = "beach"
 	droning_index = DRONING_LAKE
 	background_track = 'sound/music/area/townstreets.ogg'
 	background_track_dusk = 'sound/music/area/septimus.ogg'
 	background_track_night = 'sound/music/area/sleeping.ogg'
+
+/area/outdoors/beach/tutorial
+	name = "Tutorial Island"
 
 /area/outdoors/eora
 	name = "eoran grove"
@@ -934,7 +937,7 @@
 
 // Players should be fined for any damage they do to the Guild's property
 /area/outdoors/beach/boat
-	name = "sophia's cry"
+	name = "sea of fire, shipside"
 	droning_index = DRONING_LAKE
 	droning_index_night = DRONING_LAKE
 	background_track = 'sound/music/area/townstreets.ogg'
@@ -1008,7 +1011,7 @@
 	background_track = 'sound/music/area/topdeckdrone.ogg'
 	background_track_dusk = null
 	background_track_night = null
-	first_time_text = "The Voyager"
+	first_time_text = "Open Seas"
 	outdoors = TRUE
 
 /area/ship/middeck
@@ -1018,7 +1021,7 @@
 	background_track = 'sound/music/area/topdeckdrone.ogg'
 	background_track_dusk = null
 	background_track_night = null
-	first_time_text = "Waist Deck"
+	first_time_text = "Inbound to Domotan"
 
 /area/ship/nobledeck
 	name = "nobledeck"
