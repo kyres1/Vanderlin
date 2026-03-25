@@ -56,7 +56,11 @@
 
 /mob/living/simple_animal/hostile/retaliate/elemental/behemoth/death(gibbed)
 	var/turf/deathspot = get_turf(src)
+	new /obj/item/natural/melded/t1(deathspot)
 	new /obj/item/natural/elementalfragment(deathspot)
+	new /obj/item/natural/elementalfragment(deathspot)
+	new /obj/item/natural/elementalshard(deathspot)
+	new /obj/item/natural/elementalshard(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	new /obj/item/natural/elementalmote(deathspot)
 	spill_embedded_objects()
@@ -65,7 +69,7 @@
 /obj/effect/temp_visual/marker
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "trap"
-	light_outer_range = 2
+	light_range = 2
 	duration = 1.5 SECONDS
 	layer = ABOVE_ALL_MOB_LAYER //this doesnt render above mobs? it really should
 

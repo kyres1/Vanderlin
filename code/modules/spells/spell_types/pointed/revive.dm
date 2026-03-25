@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/revive
 	name = "Anastasis"
-	desc = "Petition the Elementals to return the soul of the deceased, or to utterly unmake one tainted by the curse of undeath."
+	desc = "Return a soul from Necra's grasp with the light of Astrata."
 	button_icon_state = "revive"
 	sound = 'sound/magic/revive.ogg'
 	charge_sound = 'sound/magic/holycharging.ogg'
@@ -8,8 +8,8 @@
 	cast_range = 1
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
-	associated_skill = /datum/skill/magic/holy
-	required_items = list(/obj/item/clothing/neck/psycross/silver/astrata)
+	associated_skill = /datum/attribute/skill/magic/holy
+	required_items = list(/obj/item/clothing/neck/psycross/silver/divine/astrata)
 
 	charge_time = 5 SECONDS
 	charge_slowdown = 0.7
@@ -50,7 +50,7 @@
 			return . | SPELL_CANCEL_CAST
 
 	if(HAS_TRAIT(cast_on, TRAIT_NECRA_CURSE))
-		to_chat(owner, span_warning("Valdala holds tight to this one."))
+		to_chat(owner, span_warning("Necra holds tight to this one."))
 		reset_spell_cooldown()
 		return . | SPELL_CANCEL_CAST
 
@@ -82,19 +82,15 @@
 	if(!cast_on.can_be_revived())
 		cast_on.visible_message(span_warning("Holy light engulfs [cast_on], but they remain limp..."))
 		return
-	if(!cast_on.ckey)
-		var/mob/living/carbon/spirit/underworld_spirit = cast_on.get_spirit()
-		if(underworld_spirit)
-			var/mob/dead/observer/ghost = underworld_spirit.ghostize()
-			qdel(underworld_spirit)
-			ghost.mind.transfer_to(cast_on, TRUE)
-		cast_on.grab_ghost(force = TRUE) // even suicides
-	if(!cast_on.revive(full_heal = FALSE))
-		to_chat(owner, span_warning("Divine light fails to revive [cast_on]!"))
+	if(!cast_on.revive())
+		to_chat(owner, span_warning("Astrata's light fails to revive [cast_on]!"))
 		return
+	if(cast_on.health > HALFWAYCRITDEATH)
+		cast_on.adjustOxyLoss(cast_on.health - HALFWAYCRITDEATH)
+	cast_on.grab_ghost(force = TRUE, grab_spirit = TRUE) // even suicides
 	record_round_statistic(STATS_ASTRATA_REVIVALS)
 	cast_on.emote("breathgasp")
-	cast_on.Jitter(100)
+	cast_on.adjust_jitter(100 SECONDS)
 	cast_on.visible_message(span_notice("[cast_on] is revived by holy light!"), span_green("I awake from the void."))
 	cast_on.apply_status_effect(/datum/status_effect/debuff/revive)
 	cast_on.remove_client_colour(/datum/client_colour/monochrome/death)

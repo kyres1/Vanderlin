@@ -31,6 +31,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/inhand_x_dimension = 64
 	var/inhand_y_dimension = 64
 
+	var/flags_ai_inventory = NONE
+
 	var/no_effect = FALSE
 
 	max_integrity = 200
@@ -167,7 +169,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/list/alt_intents //these replace main intents
 	var/gripsprite = FALSE //use alternate grip sprite for inhand
 	var/gripspriteonmob = FALSE //use alternate sprite for onmob
-	var/wieldsound = FALSE
 
 	/// Item will be scaled by this factor when on the ground.
 	var/dropshrink = 0
@@ -213,6 +214,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/anvilrepair
 	// Boolean. If TRUE, this item can be repaired using a needle.
 	var/sewrepair
+	// Boolean. sewrepair normally dictates dyeing, this is an override for non-sewn items to be dyeable.
+	// In the future this might deserve its own refactor.
+	var/dyeable
 
 	var/breakpath
 
@@ -288,6 +292,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	///do we block the offhand while wielding
 	var/wield_block = TRUE
 
+	var/toggle_state // Needed for grandmaster/martyr weapons, might be shitcode, might be usable for the future, *shrug, it works
+
 /obj/item/proc/set_quality(quality)
 	recipe_quality = clamp(quality, 0, 4)
 	update_appearance(UPDATE_OVERLAYS)
@@ -300,6 +306,14 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/update_overlays()
 	. = ..()
+	//details tags for items/clothes
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon, "[icon_state][detail_tag]")
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		. += pic
+
 	// Add quality overlay to the food item
 	if(recipe_quality <= 0 || !ismob(loc))
 		return
@@ -321,12 +335,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 /obj/item/proc/apply_components()
 	if(force_wielded || gripped_intents)
 		var/wielded_force = force_wielded ? force_wielded : force
-		AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = wielded_force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), wield_blocking = wield_block)
+		AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = wielded_force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)), wield_block_offhand = wield_block)
 
-/obj/item/proc/get_detail_tag() //this is for extra layers on clothes
+/obj/item/proc/get_detail_tag() //this is for extra layers on clothes or items
 	return detail_tag
 
-/obj/item/proc/get_detail_color() //this is for extra layers on clothes
+/obj/item/proc/get_detail_color() //this is for extra layers on clothes or items
 	return detail_color
 
 /// Handles sprite changes and decals
@@ -355,6 +369,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 					B.remove()
 					B.generate_appearance()
 					B.apply()
+			if(toggle_state)
+				icon_state = "[toggle_state]1" // Stupid thing needed for Grandmaster/Martyr weapons, if theres a better way to accomplish this tell me. I'm stupid.
 			if(gripspriteonmob)
 				item_state = "[initial(icon_state)]_wield"
 				var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
@@ -364,7 +380,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 					B.apply()
 			return
 		if(gripsprite)
-			icon_state = initial(icon_state)
+			if(toggle_state) // See above comment
+				icon_state ="[toggle_state]"
+			else
+				icon_state = initial(icon_state)
 			var/datum/component/decal/blood/B = GetComponent(/datum/component/decal/blood)
 			if(B)
 				B.remove()
@@ -444,8 +463,11 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		max_blade_int = 0
 		blade_int = 0
 
-	if(max_blade_int && !blade_int) //set blade integrity to randomized 60% to 100% if not already set
-		blade_int = max_blade_int + rand(-(max_blade_int * 0.4), 0)
+	//Randomizes blade sharpness on initialize to between 60-100%
+	if(max_blade_int && !blade_int)
+		blade_int = max_blade_int
+		if(randomize_blade_int)
+			blade_int += rand(-(max_blade_int * 0.4), 0)
 
 	if(!pixel_x && !pixel_y && !bigboy)
 		pixel_x = rand(-5,5)
@@ -460,6 +482,14 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		grid_width = (w_class * world.icon_size)
 	if(grid_height <= 0)
 		grid_height = (w_class * world.icon_size)
+
+	if(uses_lord_coloring)
+		if(GLOB.lordprimary && GLOB.lordsecondary)
+			lordcolor()
+		else
+			RegisterSignal(SSdcs, COMSIG_LORD_COLORS_SET, TYPE_PROC_REF(/obj/item, lordcolor))
+	else if(get_detail_color()) // Lord color does this
+		update_appearance(UPDATE_OVERLAYS)
 
 	update_transform()
 	apply_components()
@@ -573,7 +603,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		get_inspect_entries(inspec)
 		SEND_SIGNAL(src, COMSIG_TOPIC_INSPECT, inspec)
 
-		to_chat(usr, "[inspec.Join()]")
+		to_chat(usr, examine_block("[inspec.Join()]"))
 
 /obj/item
 	var/simpleton_price = FALSE
@@ -611,10 +641,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 //			inspec += "\n<b>ENCUMBRANCE:</b> [eweight]"
 
 	if(alt_intents)
-		inspect_list += "\n<b>ALT-GRIP</b>"
+		inspect_list += "\n<b>ALT-GRIPPABLE</b>"
 
 	if(can_parry)
-		inspect_list += "\n<b>DEFENSE:</b> [wdefense]"
+		inspect_list += "\n<b>PARRY:</b> [wdefense]"
 
 	if(max_blade_int)
 		inspect_list += "\n<b>SHARPNESS:</b> "
@@ -647,12 +677,15 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/attempt_pickup(mob/user)
 	. = TRUE
+	var/mob/living/carbon/C = user
+	if(C.has_status_effect(/datum/status_effect/tremor_grip_loss))
+		return
+
 	if(HAS_TRAIT(src, TRAIT_NEEDS_QUENCH))
 		to_chat(user, "<span class='warning'>[src] is too hot to touch.</span>")
 		return
 
 	if(resistance_flags & ON_FIRE)
-		var/mob/living/carbon/C = user
 		var/can_handle_hot = FALSE
 		if(!istype(C))
 			can_handle_hot = TRUE
@@ -673,7 +706,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			return
 
 	if(acid_level > 20 && !ismob(loc))// so we can still remove the clothes on us that have acid.
-		var/mob/living/carbon/C = user
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
 				to_chat(user, "<span class='warning'>The acid on [src] burns my hand!</span>")
@@ -736,7 +768,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 				C.visible_message(span_smallnotice("[C] starts taking off [src]..."), span_smallnotice("I start taking off [src]..."))
 
 			var/doafter_flags = edelay_type ? (IGNORE_USER_LOC_CHANGE) : (NONE)
-			return do_after(C, minone(unequip_delay_self-C.STASPD), timed_action_flags = doafter_flags)
+			return do_after(C, minone(unequip_delay_self-GET_MOB_ATTRIBUTE_VALUE(C, STAT_SPEED)), timed_action_flags = doafter_flags)
 
 	return TRUE
 
@@ -796,6 +828,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			animate(src, pixel_y = oldy, time = 0.5)
 	item_flags &= ~IN_INVENTORY
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED,user)
+	SEND_SIGNAL(user, COMSIG_MOB_DROPITEM,src)
 	if(!silent)
 		playsound(src, drop_sound, DROP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 	toggle_altgrip(user, FALSE)
@@ -809,14 +842,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
+
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
+
 	item_flags |= IN_INVENTORY
 
 // called just after an item is successfully picked up (loc has changed)
 /obj/item/proc/afterpickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ITEM_AFTER_PICKUP, user)
+
 	if(isliving(user))
-		user:encumbrance_to_speed()
+		var/mob/living/L = user
+		L.encumbrance_to_speed()
 
 /obj/item/proc/afterdrop(mob/user)
 
@@ -936,7 +975,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	src.add_fingerprint(user)
 
-	playsound(loc, src.hitsound, 30, TRUE, -1)
+	playsound(src, src.hitsound, 30, TRUE, -1)
 
 	user.do_attack_animation(M, used_intent = user.used_intent, used_item = src)
 
@@ -962,20 +1001,20 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
 		return
-	M.adjust_blurriness(3)
+	M.adjust_eye_blur(6 SECONDS)
 	eyes.applyOrganDamage(rand(2,4))
 	if(eyes.damage >= 10)
-		M.adjust_blurriness(15)
+		M.adjust_eye_blur(30 SECONDS)
 		if(M.stat != DEAD)
 			to_chat(M, "<span class='danger'>My eyes start to bleed profusely!</span>")
-		if(!(HAS_TRAIT(M, TRAIT_BLIND) || HAS_TRAIT(M, TRAIT_NEARSIGHT)))
+		if(!M.is_nearsighted_from(EYE_DAMAGE))
 			to_chat(M, "<span class='danger'>I become nearsighted!</span>")
 		M.become_nearsighted(EYE_DAMAGE)
 		if(prob(50))
 			if(M.stat != DEAD)
 				if(M.drop_all_held_items())
 					to_chat(M, "<span class='danger'>I drop what you're holding and clutch at my eyes!</span>")
-			M.adjust_blurriness(10)
+			M.adjust_eye_blur(20 SECONDS)
 			M.Unconscious(20)
 			M.Paralyze(40)
 		if (prob(eyes.damage - 10 + 1))
@@ -1210,7 +1249,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	if(tool_behaviour == TOOL_MINING && ishuman(user))
 		var/mob/living/carbon/human/H = user
-		skill_modifier = H.get_skill_speed_modifier(/datum/skill/labor/mining)
+		skill_modifier = GET_MOB_SKILL_SPEED_MOD(H, /datum/attribute/skill/labor/mining)
 
 	delay *= toolspeed * skill_modifier
 
@@ -1305,6 +1344,14 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		return TRUE
 
 /obj/item/proc/canStrip(mob/stripper, mob/owner)
+	if(HAS_TRAIT(loc, TRAIT_STUCKITEMS))
+		return FALSE
+	if(HAS_TRAIT(loc, TRAIT_HIGHVALUE_STUCK))
+		if(melting_material == /datum/material/steel)
+			return FALSE
+		if(item_flags & HIGH_VALUE)
+			return FALSE
+
 	return !HAS_TRAIT(src, TRAIT_NODROP)
 
 /obj/item/proc/doStrip(mob/stripper, mob/owner)
@@ -1316,13 +1363,15 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	wdefense += 1
-	if(!wieldsound)
-		playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 50, TRUE)
 	user.update_a_intents()
 
 /obj/item/proc/on_unwield(obj/item/source, mob/living/carbon/user)
 	wdefense -= 1
-	user.update_a_intents()
+	user?.update_a_intents()
+
+/obj/item/proc/is_wielded()
+	var/datum/component/two_handed/two_handed = GetComponent(/datum/component/two_handed)
+	return two_handed?.wielded
 
 /obj/item/proc/toggle_altgrip(mob/user, override_state)
 	if(!alt_intents)
@@ -1349,7 +1398,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(impactee.lying)
 		target_zone = BODY_ZONE_CHEST
 	*/
-	playsound(impactee.loc, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
+	playsound(impactee, pick('sound/combat/gib (1).ogg','sound/combat/gib (2).ogg'), 200, FALSE, 3)
 	add_blood_DNA(GET_ATOM_BLOOD_DNA(impactee))
 	impactee.visible_message(span_danger("[src] crashes into [impactee]'s [target_zone]!"), span_danger("A [src] hits you in your [target_zone]!"))
 	impactee.apply_damage(item_weight * fall_speed, BRUTE, target_zone, impactee.run_armor_check(target_zone, "blunt", damage = item_weight * fall_speed))
@@ -1395,7 +1444,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		if(!istype(loc, /turf))
 			return
 		source = loc
-	var/image/pickup_animation = image(icon = src, layer = layer + 0.1)
+	var/mutable_appearance/pickup_animation = mutable_appearance(icon, icon_state, layer = layer + 0.1)
 	pickup_animation.plane = GAME_PLANE
 	pickup_animation.transform.Scale(0.75)
 	pickup_animation.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
@@ -1476,7 +1525,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	. = ..()
 	if(!get_precursor_data(src))
 		return
-	var/alch_skill = user.get_skill_level(/datum/skill/craft/alchemy)
+	var/alch_skill = user.attributes ? GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/craft/alchemy) : 6
 	var/datum/natural_precursor/precursor = get_precursor_data(src)
 	if(precursor)
 		for(var/datum/thaumaturgical_essence/essence as anything in precursor.essence_yields)
@@ -1495,3 +1544,12 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 				if(1 to 4)
 					if(alch_skill >= SKILL_LEVEL_EXPERT)
 						. += span_notice(" Smells faintly of [smell].")
+
+/obj/item/atom_break(damage_flag, silent)
+	. = ..()
+
+	if(!ismob(loc))
+		return
+
+	if(!silent)
+		balloon_alert_to_viewers(span_warning("[name]<br>breaks!"))

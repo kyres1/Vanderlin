@@ -38,7 +38,8 @@
 	///our crafting difficulty
 	var/craftdiff = 1
 	///our skilltype
-	var/datum/skill/skillcraft = /datum/skill/craft/crafting
+	var/datum/attribute/skill/skillcraft = /datum/attribute/skill/craft/crafting
+	///sets the minimun skill required to craft
 	var/minimum_skill_level = 0
 	///the amount of time the atom in question spends doing this recipe
 	var/craft_time = 1 SECONDS
@@ -97,7 +98,7 @@
 		return FALSE
 
 	if(minimum_skill_level)
-		if(user?.get_skill_level(skillcraft) <= minimum_skill_level)
+		if(GET_MOB_SKILL_VALUE_OLD(user, skillcraft) < minimum_skill_level)
 			return FALSE
 
 	if(required_table && !locate(/obj/structure/table) in get_turf(attacked_item))
@@ -451,11 +452,13 @@
 				if(bottle.closed)
 					bottle.attack_self_secondary(user)
 
-			var/reagent_use_time_real = max(reagent_use_time * 0.1, reagent_use_time / max(1, user.get_skill_level(skillcraft)))
+			var/reagent_use_time_real = max(reagent_use_time * 0.1, reagent_use_time / max(1, GET_MOB_SKILL_VALUE_OLD(user, skillcraft)))
+			if(HAS_TRAIT(user, TRAIT_QUICK_HANDS))
+				reagent_use_time_real *= 0.9
 			if(!do_after(user, reagent_use_time_real, container, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), container)))
 				return FALSE
 
-			playsound(get_turf(user), pick(container.poursounds), 100, TRUE)
+			playsound(user, pick(container.poursounds), 100, TRUE)
 
 			// We transfer reagents to the copied container instead of deletion, so we can control reagent removal AFTER a successful crafting attempt
 			if(reagent_value < copied_reagent_requirements[required_path])
@@ -536,8 +539,10 @@
 	user.visible_message(span_info("[user] [tool_path_extra[1]]."), span_info("You [tool_path_extra[2]]."))
 
 	if(length(tool_path_extra) >= 3)
-		playsound(get_turf(user), tool_path_extra[3], 100, FALSE)
-	var/tool_use_time_real = max(tool_use_time * 0.1, tool_use_time / max(1, user.get_skill_level(skillcraft)))
+		playsound(user, tool_path_extra[3], 100, FALSE)
+	var/tool_use_time_real = max(tool_use_time * 0.1, tool_use_time / max(1, GET_MOB_SKILL_VALUE_OLD(user, skillcraft)))
+	if(HAS_TRAIT(user, TRAIT_QUICK_HANDS))
+		tool_use_time_real *= 0.9
 	if(!do_after(user, tool_use_time_real, potential_tool, extra_checks = CALLBACK(user, TYPE_PROC_REF(/atom/movable, CanReach), potential_tool)))
 		return FALSE
 
@@ -763,7 +768,7 @@
 				doomed.reagents.trans_to(key, doomed.reagents.total_volume)
 				qdel(doomed)
 
-			var/continue_crafting = alert(user, "Crafting failed. Continue attempting to craft [requested_crafts - successful_crafts] more [name]?", "Continue Crafting?", "Yes", "No")
+			var/continue_crafting = tgui_alert(user, "Crafting failed. Continue attempting to craft [requested_crafts - successful_crafts] more [name]?", "Continue Crafting?", list("Yes", "No"))
 			if(continue_crafting != "Yes")
 				break
 
@@ -833,7 +838,9 @@
 	if(crafting_sound)
 		playsound(user, crafting_sound, sound_volume, TRUE, -1)
 
-	var/crafting_time = max(craft_time * 0.1, craft_time / max(1, user.get_skill_level(skillcraft)))
+	var/crafting_time = max(craft_time * 0.1, craft_time / max(1, GET_MOB_SKILL_VALUE_OLD(user, skillcraft)))
+	if(HAS_TRAIT(user, TRAIT_QUICK_HANDS))
+		crafting_time *= 0.9
 	if(!do_after(user, crafting_time))
 		return FAIL_END_CRAFT
 
@@ -879,7 +886,7 @@
 
 	if(skillcraft)
 		if(user.mind)
-			prob2craft += (user.get_skill_level(skillcraft) * 25)
+			prob2craft += (GET_MOB_SKILL_VALUE_OLD(user, skillcraft) * 25)
 	else
 		prob2craft = 100
 
@@ -887,8 +894,8 @@
 
 	if(isliving(user))
 		var/mob/living/L = user
-		if(L.STAINT > 10)
-			prob2craft += ((10-L.STAINT)*-1)*2
+		if(GET_MOB_ATTRIBUTE_VALUE(L, STAT_INTELLIGENCE) > 10)
+			prob2craft += ((10-GET_MOB_ATTRIBUTE_VALUE(L, STAT_INTELLIGENCE))*-1)*2
 
 	return CLAMP(prob2craft, 0, 100)
 
@@ -903,10 +910,10 @@
 
 	if(isliving(user))
 		var/mob/living/L = user
-		if(L.STALUC > 10)
+		if(GET_MOB_ATTRIBUTE_VALUE(L, STAT_FORTUNE) > 10)
 			prob2fail = 0
-		if(L.STALUC < 10)
-			prob2fail += (10-L.STALUC)
+		if(GET_MOB_ATTRIBUTE_VALUE(L, STAT_FORTUNE) < 10)
+			prob2fail += (10-GET_MOB_ATTRIBUTE_VALUE(L, STAT_FORTUNE))
 
 	return prob2fail
 
@@ -958,7 +965,7 @@
 		return
 
 	var/mob/living/L = user
-	var/amt2raise = L.STAINT * 2
+	var/amt2raise = GET_MOB_ATTRIBUTE_VALUE(L, STAT_INTELLIGENCE) * 2
 
 	if(craftdiff > 0)
 		amt2raise += (craftdiff * 10)

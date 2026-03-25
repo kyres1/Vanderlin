@@ -1,3 +1,7 @@
+#define HEALING_DIVINE "divine"
+#define HEALING_PROFANE "profane"
+#define HEALING_HUNT "greathunt"
+
 /datum/action/cooldown/spell/healing
 	name = "Lesser Miracle"
 	desc = "Call upon your patron to heal the wounds of yourself or others."
@@ -8,8 +12,8 @@
 	cast_range = 6
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
-	associated_skill = /datum/skill/magic/holy
-	required_items = list(/obj/item/clothing/neck/psycross)
+	associated_skill = /datum/attribute/skill/magic/holy
+	required_items = list(/obj/item/clothing/neck/psycross/silver/divine)
 
 	charge_required = FALSE
 	cooldown_time = 10 SECONDS
@@ -23,8 +27,10 @@
 	var/blood_restoration = 0
 	/// Stuns undead
 	var/stun_undead = FALSE
-	/// Unholy, profane healing
-	var/is_profane = FALSE
+	/// What kind of healing is it?
+	var/healing_type = HEALING_DIVINE
+	/// Patron Restrictive
+	var/patron_restrictive = FALSE
 
 /datum/action/cooldown/spell/healing/is_valid_target(atom/cast_on)
 	. = ..()
@@ -34,41 +40,60 @@
 
 /datum/action/cooldown/spell/healing/cast(mob/living/cast_on)
 	. = ..()
-	if(!is_profane)
-		if(HAS_TRAIT(cast_on, TRAIT_ASTRATA_CURSE))
-			cast_on.visible_message(span_danger("[cast_on] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
-			cast_on.cursed_freak_out()
-			return
-		if(cast_on.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
-			if(cast_on.mind?.has_antag_datum(/datum/antagonist/vampire/lord))
-				cast_on.visible_message(span_warning("[cast_on] overpowers being burned!"), span_greentext("I overpower being burned!"))
+	var/datum/component/vampire_disguise/vampire_disguise = cast_on.GetComponent(/datum/component/vampire_disguise)
+	switch(healing_type)
+		if(HEALING_PROFANE)
+			if(patron_restrictive && !(cast_on.patron in ALL_PROFANE_PATRONS))
+				cast_on.visible_message(
+					span_warning("The Inhumen Four sear the flesh of [cast_on]! a non-believer and weakling!"),
+					span_notice("The Inhumen Four lash out at me with a wave of pain!"),
+				)
+				cast_on.emote("scream")
 				return
-			cast_on.visible_message(span_danger("[cast_on] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			if(stun_undead)
-				cast_on.Paralyze(5 SECONDS)
-			cast_on.adjustFireLoss(base_healing)
-			cast_on.adjust_divine_fire_stacks(1)
-			cast_on.IgniteMob()
-			return
-		if((cast_on.real_name in GLOB.excommunicated_players) && !HAS_TRAIT(cast_on, TRAIT_FANATICAL))
-			cast_on.visible_message(
-				span_warning("The angry Elementals burn the flesh of [cast_on]! A foolish blasphemer and heretic!"),
-				span_notice("I am despised by the Elementals, rejected, and they remind me of my crimes with a wave of pain!"),
-			)
-			cast_on.emote("scream")
-			return
+		if(HEALING_DIVINE, HEALING_HUNT)
+			if(cast_on.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
+				if(!(cast_on.mind?.has_antag_datum(/datum/antagonist/vampire) && vampire_disguise?.disguised)) //vampire disguises are handled later
+					if(cast_on.mind?.has_antag_datum(/datum/antagonist/vampire/lord))
+						cast_on.visible_message(span_warning("[cast_on] overpowers being burned!"), span_greentext("I overpower being burned!"))
+						return
+					cast_on.visible_message(span_danger("[cast_on] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+					if(stun_undead)
+						cast_on.Paralyze(5 SECONDS)
+					cast_on.adjustFireLoss(base_healing)
+					cast_on.adjust_divine_fire_stacks(1)
+					cast_on.IgniteMob()
+					return
+		if(HEALING_DIVINE)
+			if(HAS_TRAIT(cast_on, TRAIT_ASTRATA_CURSE))
+				cast_on.visible_message(span_danger("[cast_on] recoils in pain!"), span_userdanger("Divine healing shuns me!"))
+				cast_on.cursed_freak_out()
+				return
+			/// The Ten won't provide greater healing to centrist worshippers, they do not approve.
+			/// This is ignored if they're already a divine servant, like a Templar, as undivded can only become church roles from round start.
+			if(HAS_TRAIT(cast_on, TRAIT_DIVINE_CENTRIST) && !HAS_TRAIT(cast_on, TRAIT_DIVINE_SERVANT) && patron_restrictive)
+				cast_on.visible_message(span_danger("[cast_on] recoils in shame!"), span_userdanger("The Ten reject my indecisiveness!"))
+				cast_on.cursed_freak_out()
+				return
+			if(((cast_on.real_name in GLOB.excommunicated_players) || (cast_on.real_name in GLOB.heretical_players)) && !HAS_TRAIT(cast_on, TRAIT_FANATICAL))
+				cast_on.visible_message(
+					span_warning("The angry Ten sear the flesh of [cast_on]! a foolish blasphemer and heretic!"),
+					span_notice("I am despised by the Ten, rejected, and they remind me just how unlovable I am with a wave of pain!"),
+				)
+				cast_on.emote("scream")
+				return
 
 	var/conditional_buff = FALSE
 	var/situational_bonus = 10
+	var/situational_blood = 0
 	//this if chain is stupid, replace with variables on /datum/patron when possible?
 	if(isliving(owner))
 		var/mob/living/living_owner = owner
 		switch(living_owner.patron?.type)
-			if(/datum/patron/divine/undivided)
-				cast_on.visible_message(span_info("A strange stirring feeling pours from [cast_on]!"), span_notice("Purest faith brings balance to my humours!"))
+			if(/datum/patron/psydon, /datum/patron/psydon/extremist)
+				cast_on.visible_message(span_info("A strange stirring feeling pours from [cast_on]!"), span_notice("Sentimental thoughts drive away my pains!"))
 
 			if(/datum/patron/divine/astrata)
-				cast_on.visible_message(span_info("A wreath of fierce sunlight passes over [cast_on]!"), span_notice("I'm bathed in blazing sunlight!"))
+				cast_on.visible_message(span_info("A wreath of gentle light passes over [cast_on]!"), span_notice("I'm bathed in holy light!"))
 				// during the day, heal 10 more (basic as fuck)
 				if(GLOB.tod == "day")
 					conditional_buff = TRUE
@@ -91,11 +116,12 @@
 					conditional_buff = TRUE
 
 			if(/datum/patron/divine/abyssor)
-				cast_on.visible_message(span_info("The implacable power of the tides fortifies [cast_on]!"), span_notice("I'm invigorated by healing waters!"))
+				cast_on.visible_message(span_info("A mist of salt-scented vapour settles on [cast_on]!"), span_notice("I'm invigorated by healing vapours!"))
 				// if our owner or cast_on is standing in water, heal a flat amount extra
 				if(istype(get_turf(cast_on), /turf/open/water) || istype(get_turf(owner), /turf/open/water))
 					conditional_buff = TRUE
 					situational_bonus = 15
+				situational_blood += BLOOD_VOLUME_SURVIVE/2
 
 			if(/datum/patron/divine/ravox)
 				cast_on.visible_message(span_info("An air of righteous defiance rises near [cast_on]!"), span_notice("I'm filled with an urge to fight on!"))
@@ -106,7 +132,7 @@
 				conditional_buff = TRUE
 
 			if(/datum/patron/divine/necra)
-				cast_on.visible_message(span_info("A sense of quiet resolve radiates from [cast_on]!"), span_notice("I feel the Valkyrie's gaze turn from me for now!"))
+				cast_on.visible_message(span_info("A sense of quiet respite radiates from [cast_on]!"), span_notice("I feel the Undermaiden's gaze turn from me for now!"))
 				if(iscarbon(cast_on))
 					var/mob/living/carbon/C = cast_on
 					// if the cast_on is "close to death" (at or below 25% health)
@@ -125,7 +151,7 @@
 				cast_on.visible_message(span_info("An aura of clinical care encompasses [cast_on]!"), span_notice("I'm sewn back together by sacred medicine!"))
 				// pestra always heals a little more toxin damage and restores a bit more blood
 				cast_on.adjustToxLoss(-situational_bonus)
-				cast_on.blood_volume += BLOOD_VOLUME_SURVIVE/2
+				situational_blood += BLOOD_VOLUME_SURVIVE/2
 
 			if(/datum/patron/divine/malum)
 				cast_on.visible_message(span_info("A tempering heat is discharged out of [cast_on]!"), span_notice("I feel the heat of a forge soothing my pains!"))
@@ -145,18 +171,8 @@
 					conditional_buff = TRUE
 					situational_bonus = 25
 
-			if(/datum/patron/psydon)
-				// Angros is dying, it's faith in him that sustains the worldflame - there's little left to sustain us, so no conditional heal bonus.
-				cast_on.visible_message(span_info("Flickering, dying embers swirl around [cast_on]!"), span_notice("The solemn respite of the sundered God soothes me!"))
-
 			if(/datum/patron/inhumen/zizo)
-				cast_on.visible_message(span_info("A foreign light burns impossibly bright around [cast_on]!"), span_notice("Light empowers my body, making quick work of my wounds. I hear the voice of a divine being which is far too close to me."))
-				if (HAS_TRAIT(target, TRAIT_CABAL))
-					conditional_buff = TRUE
-					situational_bonus = 2.5
-
-			if(/datum/patron/inhumen/graggar)
-				cast_on.visible_message(span_info("Vital energies are sapped towards [cast_on]! The very Earth cries out!"), span_notice("The life around me pales as I am restored!"))
+				cast_on.visible_message(span_info("Vital energies are sapped towards [cast_on]!"), span_notice("The life around me pales as I am restored!"))
 				// set up a ritual pile of bones (or just cast near a stack of bones whatever) around us for massive bonuses, cap at 50 for 75 healing total (wowie)
 				situational_bonus = 0
 				for(var/obj/item/alch/bone/O in oview(5, owner))
@@ -164,10 +180,19 @@
 				if(situational_bonus > 0)
 					conditional_buff = TRUE
 
+			if(/datum/patron/inhumen/graggar)
+				cast_on.visible_message(span_info("Foul fumes billow outward as [cast_on] is restored!"), span_notice("A noxious scent burns my nostrils, but I feel better!"))
+				// if you've got lingering toxin damage, you get healed more, but your bonus healing doesn't affect toxin
+				var/toxloss = cast_on.getToxLoss()
+				if(toxloss >= 10)
+					conditional_buff = TRUE
+					situational_bonus = 25
+					cast_on.adjustToxLoss(situational_bonus) // remember we do a global toxloss adjust down below so this is okay
+
 			if(/datum/patron/inhumen/matthios)
-				cast_on.visible_message(span_info("Unfamiliar shadowy tendrils crawl forth and embrace [cast_on], mending their wounds."), span_notice("A hidden being of great power is stitching me shut!"))
-				message_admins("A hidden Deceiver God has shown favor to [cast_on]! The One of Envy stirs.")
-				if(HAS_TRAIT(cast_on, TRAIT_MATTHIOS_EYES) || (cast_on.real_name in GLOB.outlawed_players))
+				cast_on.visible_message(span_info("A shadowed hand passes [cast_on] a small, stolen vial... its contents glimmer faintly before sinking into their veins..."), span_notice("A quick swig and the ache fades..."))
+				// COMRADES! WE MUST BAND TOGETHER! Or Outlaw.
+				if(HAS_TRAIT(cast_on, TRAIT_BANDITCAMP) || (cast_on.real_name in GLOB.outlawed_players))
 					conditional_buff = TRUE
 					situational_bonus = 25
 
@@ -188,43 +213,72 @@
 						situational_bonus = 25
 						break
 
-			if(/datum/patron/psydon/extremist)
-				// Heretical Angros worshippers suppliment the weakened power of their god with Hell's magic, so they get a bonus heal on fellow Absolutionists.
-				cast_on.visible_message(span_info("Stubbornly burning shadowy embers blaze about [cast_on]!"), span_notice("The defiant fury of a dying and dark flame sears my wounds shut!"))
-				if (HAS_TRAIT(target, TRAIT_PSYDONITE))
+			if(/datum/patron/alternate/great_hunt/proven)
+				cast_on.visible_message(span_info("The smell of wet grass and earth surrounds [cast_on]!"), span_notice("I'm surrounded by the smell of wet grass and earth!"))
+				// The more alchemically significant body parts around the caster, the greater the effect.
+				situational_bonus = check_hunt_bonuses(owner, 5, 50, 0.5)
+				situational_bonus = min(situational_bonus, 25)
+				if(situational_bonus > 0)
 					conditional_buff = TRUE
-					situational_bonus = 2.5
+
+				//Holding the head of an animal can restore blood.
+				var/obj/item/natural/head/animal_head = owner.get_active_held_item()
+				if(animal_head)
+					if(!animal_head.blood_value)
+						to_chat(owner, span_warning("This head is not valuable enough to aid in healing!"))
+					else
+						situational_blood = animal_head.blood_value
+						consume_hunt_bonus(animal_head)
 
 			else
 				if(istype(living_owner.patron, /datum/patron/godless))
 					cast_on.visible_message(span_info("No Gods answer these prayers."), span_notice("No Gods answer these prayers."))
 					return
 				cast_on.visible_message(span_info("A choral sound comes from above and [cast_on] is healed!"), span_notice("I am bathed in healing choral hymns!"))
+	var/amount_healed = base_healing
 
 	if(conditional_buff)
 		to_chat(owner, span_greentext("Channeling my patron's power is easier in these conditions!"))
-		base_healing += situational_bonus
+		amount_healed += situational_bonus
 
-	cast_on.adjustToxLoss(-base_healing)
-	cast_on.adjustOxyLoss(-base_healing)
-	cast_on.blood_volume += blood_restoration
+	if(vampire_disguise?.disguised) //vamps can pretend to be normal for a little bit
+		var/vitae_loss = amount_healed * (cast_on.mind?.has_antag_datum(/datum/antagonist/vampire/lord) ? 0.3 : 0.6)
+		cast_on.adjust_bloodpool(-vitae_loss)
+		if(cast_on.bloodpool)
+			to_chat(cast_on, span_danger("My disguise holds at the cost of [round(vitae_loss)] vitae!"))
+		else
+			vampire_disguise.force_undisguise(cast_on)
+		return
+
+	SEND_SIGNAL(owner, COMSIG_LIVING_HEALED_OTHER, amount_healed)
+	cast_on.adjustToxLoss(-amount_healed)
+	cast_on.adjustOxyLoss(-amount_healed)
+	cast_on.blood_volume = max(cast_on.blood_volume, min(cast_on.blood_volume + blood_restoration + situational_blood, BLOOD_VOLUME_NORMAL))
 	if(!iscarbon(cast_on))
-		cast_on.adjustBruteLoss(-base_healing)
-		cast_on.adjustFireLoss(-base_healing)
+		cast_on.adjustBruteLoss(-amount_healed)
+		cast_on.adjustFireLoss(-amount_healed)
 		return
 
 	var/mob/living/carbon/C = cast_on
 	var/obj/item/bodypart/affecting = C.get_bodypart(check_zone(owner.zone_selected))
 	if(affecting)
-		affecting.heal_damage(base_healing, base_healing)
-		affecting.heal_wounds(base_healing * wound_modifier)
+		affecting.heal_damage(amount_healed, amount_healed)
+		affecting.heal_wounds(amount_healed * wound_modifier, src)
 		C.update_damage_overlays()
 
 /datum/action/cooldown/spell/healing/profane
 	name = "Corrupt Lesser Miracle"
 	antimagic_flags = MAGIC_RESISTANCE_UNHOLY
 	required_items = null
-	is_profane = TRUE
+	healing_type = HEALING_PROFANE
+
+/datum/action/cooldown/spell/healing/hunt
+	name = "Hunter's Will"
+	required_items = list(/obj/item/clothing/neck/psycross/great_hunt)
+	healing_type = HEALING_HUNT
+
+	base_healing = 35
+	wound_modifier = 0.35
 
 /datum/action/cooldown/spell/healing/greater
 	name = "Miracle"
@@ -239,10 +293,17 @@
 	wound_modifier = 0.5
 	blood_restoration = BLOOD_VOLUME_SURVIVE
 	stun_undead = TRUE
+	patron_restrictive = TRUE
 
 /datum/action/cooldown/spell/healing/greater/profane
 	name = "Corrupt Miracle"
 	antimagic_flags = MAGIC_RESISTANCE_UNHOLY
 	required_items = null
 	stun_undead = FALSE
-	is_profane = TRUE
+	healing_type = HEALING_PROFANE
+
+
+
+#undef HEALING_DIVINE
+#undef HEALING_PROFANE
+#undef HEALING_HUNT

@@ -199,12 +199,12 @@
 
 /obj/item/clothing/face/facemask/yoruku_oni
 	name = "oni mask"
-	desc = "A wood mask carved in the visage of demons said to stalk the mountains of Kazengun."
+	desc = "A wood mask carved in the visage of demons said to stalk distant mountains."
 	icon_state = "oni"
 
 /obj/item/clothing/face/facemask/yoruku_kitsune
 	name = "kitsune mask"
-	desc = "A wood mask carved in the visage of the fox spirits said to ply their tricks in the forests of Kazengun."
+	desc = "A wood mask carved in the visage of the fox spirits said to ply their tricks in far off forests."
 	icon_state = "kitsune"
 
 
@@ -241,7 +241,7 @@
 
 /obj/item/clothing/pants/trou/leather/eastpants2
 	name = "strange ripped pants"
-	desc = "Weird pants typically worn by the destitute in Kazengun. Or, those looking to make a fashion statement."
+	desc = "Weird pants typically worn by the destitute, or those looking to make a fashion statement."
 	icon_state = "eastpants2"
 	allowed_race = RACES_PLAYER_ALL
 
@@ -317,6 +317,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_race = RACES_PLAYER_ALL
+	misc_flags = CRAFTING_TEST_EXCLUDE
 	surgery_cover = FALSE
 	max_integrity = 600 //Bad armor protection and very basic crit protection, but incredibly hard to break completely
 	flags_inv = null //free the breast
@@ -350,3 +351,7 @@
 		src.last_repair = world.time
 		update_integrity(min(atom_integrity + src.repair_amount, src.max_integrity))
 	..()
+
+/obj/item/clothing/shirt/undershirt/easttats/tribal
+	name = "Tribal Tattoos"
+	desc = "Detailed tribal tattoos carved upon half-orc warriors to inspire courage within those who bear them, always on proud display to the world."

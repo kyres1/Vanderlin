@@ -4,7 +4,7 @@
 	icon_state = "trap"
 	layer = BELOW_MOB_LAYER
 	plane = GAME_PLANE
-	light_outer_range = 2
+	light_range = 2
 	duration = 1.2 SECONDS
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
 
@@ -61,7 +61,7 @@
 			mob.apply_damage(damage_on_contact, BRUTE)
 			to_chat(mob, "<span class='danger'>Coral shard fly into you!</span>")
 
-/obj/structure/coral_formation/attackby(obj/item/W, mob/user, params)
+/obj/structure/coral_formation/attackby(obj/item/W, mob/user, list/modifiers)
 	. = ..()
 	health -= W.force
 	if(health <= 0)

@@ -2,7 +2,7 @@
 GLOBAL_LIST_EMPTY(graggar_cullings)
 
 /datum/round_event_control/graggar_culling
-	name = "Archdevil's Culling"
+	name = "Graggar's Culling"
 	track = EVENT_TRACK_INTERVENTION
 	typepath = /datum/round_event/graggar_culling
 	weight = 8
@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 	. = ..()
 	if(!.)
 		return FALSE
-	if(GLOB.patron_follower_counts["Archdevil"] < 2)
+	if(GLOB.patron_follower_counts[/datum/patron/inhumen/graggar::name] < 2)
 		return FALSE
 
 /datum/round_event/graggar_culling/start()
@@ -58,10 +58,10 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		// Notify first chosen
 		bordered_message(first_chosen, list(
 			span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"),
-			span_red("Weak should feed the strong, that is Archdevil's will. Prove that you are not weak by eating the heart of [span_notice(second_chosen.real_name)], the [second_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
+			span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(second_chosen.real_name)], the [second_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
 		))
 		if(grand_culling)
-			to_chat(first_chosen, span_notice("Archdevil has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
+			to_chat(first_chosen, span_notice("Graggar has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
 		first_chosen.playsound_local(first_chosen, 'sound/misc/gods/graggar_omen.ogg', 100)
 
 		var/datum/objective/personal/eat_rival_heart/first_chosen_objective = new(owner = first_chosen.mind, rival_name = second_chosen.real_name, rival_job = second_chosen.job)
@@ -71,10 +71,10 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		// Notify second chosen
 		bordered_message(second_chosen, list(
 			span_userdanger("YOU ARE GRAGGAR'S CONTESTANT!"),
-			span_red("Weak should feed the strong, that is Archdevil's will. Prove that you are not weak by eating the heart of [span_notice(first_chosen.real_name)], the [first_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
+			span_red("Weak should feed the strong, that is Graggar's will. Prove that you are not weak by eating the heart of [span_notice(first_chosen.real_name)], the [first_chosen.job] and gain unimaginable power in turn. Fail, and you will be the one eaten."),
 		))
 		if(grand_culling)
-			to_chat(second_chosen, span_notice("Archdevil has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
+			to_chat(second_chosen, span_notice("Graggar has decreed a GRAND CULLING! Many hearts will feed the strong todae!"))
 		second_chosen.playsound_local(second_chosen, 'sound/misc/gods/graggar_omen.ogg', 100)
 
 		var/datum/objective/personal/eat_rival_heart/second_chosen_objective = new(owner = second_chosen.mind, rival_name = first_chosen.real_name, rival_job = first_chosen.job)
@@ -125,7 +125,7 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 		winner.add_stress(/datum/stress_event/graggar_culling_finished)
 		winner.adjust_triumphs(1)
 		adjust_storyteller_influence(GRAGGAR, 20)
-		to_chat(winner, span_notice("Your rival's heart has been DESTROYED! While not the glorious consumption Archdevil has desired, you have overcome the culling nevertheless."))
+		to_chat(winner, span_notice("Your rival's heart has been DESTROYED! While not the glorious consumption Graggar has desired, you have overcome the culling nevertheless."))
 
 	finish_culling(winner, loser)
 
@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(graggar_cullings)
 	if(loser)
 		loser.remove_stress(/datum/stress_event/graggar_culling_unfinished)
 		loser.remove_spell(/datum/action/cooldown/spell/undirected/seek_rival)
-		to_chat(loser, span_boldred("You have FAILED Archdevil for the LAST TIME!"))
+		to_chat(loser, span_boldred("You have FAILED Graggar for the LAST TIME!"))
 		loser.gib()
 
 	qdel(src)

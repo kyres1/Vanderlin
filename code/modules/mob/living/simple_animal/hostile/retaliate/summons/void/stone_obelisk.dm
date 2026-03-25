@@ -92,7 +92,7 @@
 	QDEL_NULL(beam)
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/RangedAttack(atom/target, modifiers)
+/mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/RangedAttack(atom/target, list/modifiers)
 	beam.Activate(target = target)
 
 /mob/living/simple_animal/hostile/retaliate/voidstoneobelisk/get_sound(input)
@@ -110,7 +110,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	light_color = "#008080"
 	light_power = 4
-	light_outer_range = 3
+	light_range = 3
 	/// Who made us?
 	var/datum/weakref/creator
 

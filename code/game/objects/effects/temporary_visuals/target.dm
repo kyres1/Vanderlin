@@ -5,7 +5,7 @@
 	icon_state = "trap"
 	layer = BELOW_MOB_LAYER
 	plane = GAME_PLANE
-	light_outer_range = 2
+	light_range = 2
 	duration = 9
 	var/duration_extra
 
@@ -105,13 +105,13 @@
 	icon = 'icons/effects/32x200.dmi'
 	icon_state = "lightning"
 	light_color = COLOR_PALE_BLUE_GRAY
-	light_outer_range = 15
+	light_range = 15
 	light_power = 25
 	duration = 12
 
 /obj/effect/temp_visual/lightning/Initialize(mapload)
 	. = ..()
-	playsound(get_turf(src),'sound/weather/rain/thunder_1.ogg', 80, TRUE)
+	playsound(src,'sound/weather/rain/thunder_1.ogg', 80, TRUE)
 	add_overlay(emissive_appearance(icon, icon_state))
 
 /obj/effect/temp_visual/target/lightning

@@ -6,15 +6,15 @@
 
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
-	associated_skill = /datum/skill/magic/holy
-	required_items = list(/obj/item/clothing/neck/psycross/silver/necra)
+	associated_skill = /datum/attribute/skill/magic/holy
+	required_items = list(/obj/item/clothing/neck/psycross/silver/divine/necra)
 
 	invocation = "Undermaiden, guide my hand to those who have lost their way."
 	invocation_type = INVOCATION_WHISPER
 
 	charge_required = FALSE
-	cooldown_time = 60 SECONDS
-	spell_cost = 50
+	cooldown_time = 30 SECONDS
+	spell_cost = 15
 
 /datum/action/cooldown/spell/undirected/locate_dead/cast(atom/cast_on)
 	. = ..()

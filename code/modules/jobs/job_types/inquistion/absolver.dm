@@ -1,3 +1,21 @@
+/datum/attribute_holder/sheet/job/absolver
+	raw_attribute_list = list(
+		STAT_ENDURANCE = 3,
+		STAT_SPEED = -2,
+		STAT_CONSTITUTION = 7,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/misc/climbing = 40,
+		/datum/attribute/skill/misc/sewing = 30,
+		/datum/attribute/skill/misc/reading = 30,
+		/datum/attribute/skill/combat/unarmed = 10,
+		/datum/attribute/skill/misc/medicine = 30,
+		/datum/attribute/skill/craft/cooking = 30,
+		/datum/attribute/skill/labor/fishing = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/craft/crafting = 30,
+		/datum/attribute/skill/magic/holy = 20
+	)
+
 /datum/job/absolver
 	title = "Absolver"
 	department_flag = INQUISITION
@@ -5,8 +23,9 @@
 	job_flags = (JOB_ANNOUNCE_ARRIVAL | JOB_SHOW_IN_CREDITS | JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE)
 	total_positions = 1 // THE ONE.
 	spawn_positions = 1
-	allowed_races = list(SPEC_ID_HUMEN, SPEC_ID_AASIMAR)
-	allowed_patrons = list(/datum/patron/psydon) //You MUST have a Psydonite character to start. Just so people don't get japed into Oops Suddenly Angros!
+	allowed_races = list(SPEC_ID_HUMEN)
+	//You MUST have a Psydonite character to start. Just so people don't get japed into Oops Suddenly Psydon!
+	allowed_patrons = list(/datum/patron/psydon) // no e. psydon, according to ook
 	tutorial = "The Oratorium claims you are naught more than a 'cleric', but you know the truth; you are a sacrificial lamb. Your hands, unmarred through prayer and pacifism, have been gifted with the power to manipulate blood - to siphon away the wounds of others, so that you may endure in their stead. Let your censer's light shepherd the Inquisitor's retinue forth, lest they're led astray by wrath and temptation."
 	selection_color = JCOLOR_INQUISITION
 	outfit = /datum/outfit/absolver
@@ -16,6 +35,9 @@
 	cmode_music = 'sound/music/cmode/church/CombatInquisitor.ogg'
 	antag_role = /datum/antagonist/purishep
 
+	mind_traits = list(
+		TRAIT_KNOW_INQUISITION_DOORS
+	)
 	traits = list(
 		TRAIT_NOPAINSTUN,
 		TRAIT_PACIFISM,
@@ -26,12 +48,7 @@
 		TRAIT_SILVER_BLESSED,
 		TRAIT_PSYDONIAN_GRIT,
 		TRAIT_PSYDONITE,
-	)
-
-	jobstats = list(
-		STATKEY_END = 3,
-		STATKEY_SPD = -2,
-		STATKEY_CON = 7,
+		TRAIT_FOREIGNER,
 	)
 
 	spells = list(
@@ -40,24 +57,12 @@
 		/datum/action/cooldown/spell/diagnose,
 	)
 
-	skills = list(
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/sewing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/cooking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/labor/fishing = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/crafting = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/magic/holy = SKILL_LEVEL_APPRENTICE, // they need this so Angros' Grace works
-	)
+	attribute_sheet = /datum/attribute_holder/sheet/job/absolver
 
-	languages = list(/datum/language/oldpsydonic)
+	languages = list(/datum/language/oldpsydonic, /datum/language/newpsydonic)
 
 	exp_type = list(EXP_TYPE_INQUISITION)
-	exp_types_granted  = list(EXP_TYPE_INQUISITION)
+	exp_types_granted = list(EXP_TYPE_INQUISITION)
 	exp_requirements = list(
 		EXP_TYPE_INQUISITION = 600
 	)
@@ -69,12 +74,12 @@
 	. = ..()
 	GLOB.inquisition.add_member_to_school(spawned, "Sanctae", 0, "Absolver")
 
-	spawned.verbs |= /mob/living/carbon/human/proc/view_inquisition
+	add_verb(spawned, /mob/living/carbon/human/proc/view_inquisition)
 
 	spawned.hud_used?.shutdown_bloodpool()
 	spawned.hud_used?.initialize_bloodpool()
 	spawned.hud_used?.bloodpool.set_fill_color("#dcdddb")
-	spawned.hud_used?.bloodpool?.name = "Angros' Grace: [spawned.bloodpool]"
+	spawned.hud_used?.bloodpool?.name = "Psydon's Grace: [spawned.bloodpool]"
 	spawned.hud_used?.bloodpool?.desc = "Devotion: [spawned.bloodpool]/[spawned.maxbloodpool]"
 	spawned.maxbloodpool = 1000
 

@@ -3,6 +3,21 @@
 	explanation_text = "FOLLOWING my HEART shall be the WHOLE of the law."
 	flavor = "Dream"
 
+/datum/attribute_holder/sheet/job/maniac
+	raw_attribute_list = list(
+		STAT_STRENGTH = 6,
+		STAT_CONSTITUTION = 6,
+		STAT_ENDURANCE = 6,
+
+		/datum/attribute/skill/combat/knives = 60,
+		/datum/attribute/skill/combat/wrestling = 50,
+		/datum/attribute/skill/combat/unarmed = 50,
+		/datum/attribute/skill/misc/climbing = 50,
+		/datum/attribute/skill/misc/athletics = 40,
+		/datum/attribute/skill/misc/medicine = 40
+
+	)
+
 /datum/antagonist/maniac
 	name = "Maniac"
 	roundend_category = "Maniacs"
@@ -67,12 +82,6 @@
 	var/list/wonders_made = list()
 	/// Hallucinations screen object
 	var/atom/movable/screen/fullscreen/maniac/hallucinations
-	/// Whether the combat music is enabled
-	var/music_enabled = FALSE
-	var/custom_music_track = null
-	var/last_music_change = 0
-	var/datum/looping_sound/maniac_theme_song/combat_music_loop
-	var/curthemefile = 'sound/music/cmode/antag/combat_maniac.ogg'
 	var/old_cm = null //Cheffie's Req, Cache the old combat music and given back upon removal.
 
 GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
@@ -85,6 +94,19 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 /datum/antagonist/maniac/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+/datum/antagonist/maniac/examine_target(mob/examiner, mob/living/carbon/examined, list/P, list/examine_contents)
+	. = ..()
+	if(!istype(examined))
+		return
+	var/obj/item/organ/heart/heart = examined.getorganslot(ORGAN_SLOT_HEART)
+	if(!heart)
+		return
+
+	var/inscryption_key = LAZYACCESS(heart.inscryption_keys, src) // SPECIFICALLY the key that WE wrote
+	if(inscryption_key && (inscryption_key in key_nums))
+		. += span_danger("[P[THEY]] know[examined.p_s()] [inscryption_key], I AM SURE OF IT!")
+
 
 /datum/antagonist/maniac/on_gain()
 	. = ..()
@@ -99,23 +121,12 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.set_patron(/datum/patron/inhumen/graggar_zizo)
 			old_cm = dreamer.cmode_music
 			dreamer.cmode_music = 'sound/music/cmode/antag/combat_maniac.ogg'
-			dreamer.adjust_skillrank(/datum/skill/combat/knives, 6, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-			dreamer.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 			phy.bleed_mod *= 0.5
 			for(var/datum/status_effect/effect in dreamer.status_effects) //necessary to prevent exploits
 				dreamer.remove_status_effect(effect)
-			dreamer.modifier_set_stat_to("[type]", STATKEY_STR, 16)
-			dreamer.modifier_set_stat_to("[type]", STATKEY_CON, 16)
-			dreamer.modifier_set_stat_to("[type]", STATKEY_END, 16)
-			combat_music_loop = new /datum/looping_sound/maniac_theme_song(dreamer, FALSE)
-			dreamer.verbs += /mob/living/carbon/human/proc/toggle_maniac_music
-			dreamer.verbs += /mob/living/carbon/human/proc/set_custom_music
+			dreamer.attributes?.add_sheet(/datum/attribute_holder/sheet/job/maniac)
 			var/obj/item/organ/heart/heart = dreamer.getorganslot(ORGAN_SLOT_HEART)
-			dreamer.remove_stat_modifier(STATMOD_AGE)
+			dreamer.update_age_stats(dreamer.age, TRUE)
 			if(heart) // clear any inscryptions, in case of being made maniac midround
 				heart.inscryptions = list()
 				heart.inscryption_keys = list()
@@ -123,7 +134,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 				heart.maniacs = list()
 			dreamer.remove_stress(/datum/stress_event/saw_wonder)
 			dreamer.remove_curse(/datum/curse/zizo)
-			RegisterSignal(dreamer, COMSIG_LIVING_DEATH, PROC_REF(on_death))
+			dreamer.AddComponent(/datum/component/theme_music)
 		//	dreamer.remove_client_colour(/datum/client_colour/maniac_marked)
 		owner.current.refresh_looping_ambience()
 		hallucinations = owner.current.overlay_fullscreen("maniac", /atom/movable/screen/fullscreen/maniac)
@@ -147,6 +158,9 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			dreamer.set_patron(/datum/patron/inhumen/zizo)
 			dreamer.cmode_music = old_cm
 			dreamer.remove_stat_modifier("[type]")
+			var/datum/component/themesong = dreamer.GetComponent(/datum/component/theme_music)
+			if(themesong)
+				themesong.RemoveComponent()
 			phy.bleed_mod *= 2
 			UnregisterSignal(dreamer, COMSIG_LIVING_DEATH)
 			var/client/client = dreamer?.client
@@ -155,8 +169,6 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		for(var/trait in final_traits)
 			REMOVE_TRAIT(owner.current, trait, "[type]")
 		owner.current.clear_fullscreen("maniac")
-		owner.current.verbs -= /mob/living/carbon/human/proc/toggle_maniac_music
-		owner.current.verbs -= /mob/living/carbon/human/proc/set_custom_music
 	QDEL_LIST(wonders_made)
 	wonders_made = null
 	owner.learned_recipes -= recipe_progression
@@ -273,26 +285,26 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		trey_liam.SetSleeping(25 SECONDS)
 		trey_liam.add_stress(/datum/stress_event/maniac_woke_up)
 		sleep(1.5 SECONDS)
-		to_chat(trey_liam, span_deadsay("<span class='reallybig'>... WHERE AM I? ...</span>"))
+		to_chat(trey_liam, span_userdanger("<span class='reallybig'>... WHERE AM I? ...</span>"))
 		sleep(1.5 SECONDS)
 		var/static/list/slop_lore = list(
-			span_deadsay("... Rockhill? Vanderlin? No ... They don't exist ..."),
-			span_deadsay("... My name is Trey. Trey Liam, Scientific Overseer ..."),
-			span_deadsay("... I'm on the Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
-			span_deadsay("... Launched into the stars, preserving their memories ... Their personalities ..."),
-			span_deadsay("... Keeps them alive in vessels, oblivious to the catastrophe ..."),
-			span_deadsay("... There is no hope left. Only the program lets me live through the avatars ..."),
-			span_deadsay("... What have I done?! ..."),
+			span_userdanger("... Rockhill? Vanderlin? No ... They don't exist ..."),
+			span_userdanger("... My name is Trey. Trey Liam, Scientific Overseer ..."),
+			span_userdanger("... I'm on the Aeon, a self sustaining ship, used to preserve what remains of humanity ..."),
+			span_userdanger("... Launched into the stars, preserving their memories ... Their personalities ..."),
+			span_userdanger("... Keeps them alive in vessels, oblivious to the catastrophe ..."),
+			span_userdanger("... There is no hope left. Only the program lets me live through the avatars ..."),
+			span_userdanger("... What have I done?! ..."),
 		)
 		for(var/slop in slop_lore)
 			to_chat(trey_liam, slop)
 			sleep(3 SECONDS)
-		to_chat(trey_liam, span_big(span_deadsay("I have to go back, I have to go back, I have to go back to Vanderlin.")))
+		to_chat(trey_liam, span_big(span_userdanger("I have to go back, I have to go back, I have to go back to Vanderlin.")))
 	else
 		INVOKE_ASYNC(src, GLOBAL_PROC_REF(cant_wake_up), dreamer)
 		cull_competitors(dreamer)
 	// sleep(15 SECONDS)
-	// to_chat(world, span_deadsay("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
+	// to_chat(world, span_userdanger("<span class='reallybig'>The Maniac has TRIUMPHED!</span>"))
 	// SSticker.declare_completion()
 
 /proc/cant_wake_up(mob/living/target)
@@ -300,11 +312,11 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 		return
 	ADD_TRAIT(target, TRAIT_SHAKY_SPEECH, TRAIT_GENERIC)
 	target.Knockdown(10 SECONDS)
-	to_chat(target, span_deadsay("<span class='reallybig'>I CAN'T WAKE UP.</span>"))
+	to_chat(target, span_userdanger("<span class='reallybig'>I CAN'T WAKE UP.</span>"))
 	target.say("I CAN'T WAKE UP!", spans = list("reallybig"), ignore_spam = TRUE)
 	sleep(2 SECONDS)
 	for(var/i in 1 to 10)
-		to_chat(target, span_deadsay("<span class='reallybig'>ICANTWAKEUP</span>"))
+		to_chat(target, span_userdanger("<span class='reallybig'>ICANTWAKEUP</span>"))
 		target.say("ICANTWAKEUP!!", spans = list("reallybig"), ignore_spam = TRUE)
 		sleep(0.5 SECONDS)
 	var/obj/item/organ/brain/brain = target.getorganslot(ORGAN_SLOT_BRAIN)
@@ -383,7 +395,7 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
-	light_outer_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = COLOR_CYAN
 	density = TRUE
 
@@ -398,78 +410,3 @@ GLOBAL_VAR_INIT(maniac_highlander, 0) // THERE CAN ONLY BE ONE!
 			user.status_flags |= GODMODE // To prevent Trey Liam from dying
 		return TRUE
 	. = ..()
-
-
-/mob/living/carbon/human/proc/toggle_maniac_music() //BRO.
-	set name = "Toggle Theme Music"
-	set category = "MANIAC"
-
-	var/datum/antagonist/maniac/dreamer = src.mind.has_antag_datum(/datum/antagonist/maniac)
-	if(!dreamer)
-		return
-	dreamer.music_enabled = !dreamer.music_enabled
-	if(dreamer.music_enabled)
-		dreamer.combat_music_loop.start()
-		to_chat(src, span_notice("Theme Song Active"))
-	else
-		dreamer.combat_music_loop.stop()
-		to_chat(src, span_notice("Theme Song disabled."))
-
-/mob/living/carbon/human/proc/set_custom_music()
-	set name = "Set Custom Theme Music"
-	set category = "MANIAC"
-
-	var/datum/antagonist/maniac/dreamer = src.mind.has_antag_datum(/datum/antagonist/maniac)
-	if(!dreamer)
-		return
-
-	if(dreamer.music_enabled)
-		to_chat(src, span_warning("theme song active, can't set a new one."))
-		return
-
-	if(dreamer.last_music_change)
-		if(world.time < dreamer.last_music_change + 3 MINUTES)
-			to_chat(src, span_warning("Can't set a new theme song yet."))
-			return
-
-	var/infile = input(src, "Choose a custom OGG file for your theme song", src) as null|file
-	if(!infile)
-		return
-
-	var/filename = SANITIZE_FILENAME("[infile]")
-	var/file_ext = lowertext(copytext(filename, -4))
-	var/file_size = length(infile)
-
-	if(file_ext != ".ogg")
-		to_chat(src, span_warning("The file must be an OGG."))
-		return
-	if(file_size > 6485760) // 6MB limit
-		to_chat(src, span_warning("The file is too large. Maximum size is 6 MB."))
-		return
-
-	fcopy(infile, "data/jukeboxUploads/[src.ckey]/[filename]")
-	dreamer.custom_music_track = file("data/jukeboxUploads/[src.ckey]/[filename]")
-
-	dreamer.last_music_change = world.time
-	dreamer.curthemefile = dreamer.custom_music_track
-	dreamer.combat_music_loop.mid_sounds = list(dreamer.custom_music_track)
-	dreamer.combat_music_loop.cursound = null
-	src.cmode_music = dreamer.custom_music_track
-
-	to_chat(src, span_notice("Done, check your combat mode music and/or theme song."))
-
-/datum/looping_sound/maniac_theme_song
-	mid_sounds = list()
-	mid_length = 240 SECONDS
-	volume = 100
-	falloff_exponent = 5
-	extra_range = 6
-	channel = CHANNEL_IMSICK
-	persistent_loop = TRUE
-
-/datum/antagonist/maniac/proc/on_death(mob/living/source) //Upon death, this should basically stop the music.
-	SIGNAL_HANDLER
-
-	if(combat_music_loop)
-		combat_music_loop.stop()
-	music_enabled = FALSE

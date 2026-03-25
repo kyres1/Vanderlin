@@ -45,9 +45,7 @@
 /turf/closed/mineral/random/med,
 /area/under/mountains/anvil/lower)
 "aO" = (
-/obj/structure/gate/bars{
-	gid = "dwarfkeepgate"
-	},
+/obj/structure/gate/bars,
 /turf/open/floor/blocks,
 /area/under/mountains/anvil/lower/building)
 "aW" = (
@@ -390,7 +388,7 @@
 /turf/open/floor/ruinedwood/darker,
 /area/indoors/mountains/anvil/surface/building)
 "gx" = (
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/indoors/mountains/anvil/surface/building)
 "gy" = (
 /obj/structure/stairs/stone{
@@ -756,7 +754,7 @@
 /turf/open/floor/church,
 /area/under/mountains/anvil/lower)
 "lU" = (
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/under/mountains/anvil/lower)
 "lX" = (
 /obj/structure/chair/bench/ancientlog,
@@ -1095,7 +1093,7 @@
 /turf/open/floor/dirt,
 /area/outdoors/mountains/anvil/snowyforest)
 "qx" = (
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/outdoors/mountains/anvil/snowyforest)
 "qy" = (
 /obj/machinery/light/fueled/torchholder/r,
@@ -1513,7 +1511,7 @@
 /turf/open/floor/dirt,
 /area/under/mountains/anvil/lower/building)
 "wG" = (
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/outdoors/mountains/anvil/lavaexposed)
 "wN" = (
 /obj/machinery/light/fueled/firebowl/standing,
@@ -1704,7 +1702,7 @@
 /obj/machinery/light/fueled/torchholder{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/outdoors/mountains/anvil/snowyforest)
 "Ab" = (
 /obj/structure/chair/wood/alt{
@@ -2023,7 +2021,7 @@
 /turf/open/floor/naturalstone,
 /area/under/mountains/anvil/lower)
 "Fj" = (
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/outdoors/mountains/anvil/castle)
 "FB" = (
 /obj/structure/stairs/stone{
@@ -2770,7 +2768,7 @@
 /turf/open/floor/twig,
 /area/under/mountains/anvil/lower/building)
 "Qi" = (
-/turf/open/transparent/openspace,
+/turf/open/openspace,
 /area/under/mountains/anvil/lower/building)
 "Ql" = (
 /obj/item/chair{
@@ -2859,7 +2857,7 @@
 /turf/open/floor/dirt,
 /area/outdoors/mountains/anvil/lavaexposed)
 "Rw" = (
-/obj/item/clothing/neck/psycross/silver/malum,
+/obj/item/clothing/neck/psycross/silver/divine/malum,
 /turf/open/floor/naturalstone,
 /area/under/mountains/anvil/lower)
 "RB" = (

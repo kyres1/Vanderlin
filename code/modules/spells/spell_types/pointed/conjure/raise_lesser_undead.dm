@@ -18,7 +18,7 @@
 	summon_lifespan = 5 MINUTES
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
-	associated_skill = /datum/skill/magic/holy
+	associated_skill = /datum/attribute/skill/magic/holy
 	attunements = list(
 		/datum/attunement/arcyne = 0.4,
 	)
@@ -59,9 +59,10 @@
 
 
 /datum/action/cooldown/spell/conjure/raise_lesser_undead/necromancer
+	name = "Lesser Necromancy"
 	spell_type = SPELL_MANA
 	antimagic_flags = MAGIC_RESISTANCE
-	associated_skill = /datum/skill/magic/arcane
+	associated_skill = /datum/attribute/skill/magic/arcane
 	cabal_affine = TRUE
 	cooldown_time = 30 SECONDS
 	summon_lifespan = 1 MINUTES

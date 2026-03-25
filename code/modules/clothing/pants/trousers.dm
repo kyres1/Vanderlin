@@ -51,7 +51,7 @@
 
 /obj/item/clothing/pants/trou/leather/quiltedkilt //close enough!
 	name = "quilted kilt"
-	desc = "A sturdy quilted kilt, commonly worn by Lakkarian soldiers or worn casually by Lakkarian commoners."
+	desc = "A sturdy quilted kilt."
 	icon_state = "lakkarikilt"
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
@@ -132,3 +132,30 @@
 	prevent_crits = MINOR_CRITICALS
 	max_integrity = INTEGRITY_STANDARD
 
+/obj/item/clothing/pants/trou/formal
+	name = "formal trousers"
+	desc = "A formal pair of formal trousers."
+	icon_state = "butlerpants"
+	item_state = "butlerpants"
+	detail_tag = "_detail"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_maids.dmi'
+	salvage_result = /obj/item/natural/cloth
+	detail_color = CLOTHING_DARK_INK
+
+/obj/item/clothing/pants/trou/formal/shorts
+	name = "trouser shorts"
+	desc = "A pair of formal trouser shorts, fit for any strapping young lad."
+	icon_state = "butlershorts"
+	item_state = "butlershorts"
+	detail_color = CLOTHING_SOOT_BLACK
+
+/obj/item/clothing/pants/trou/courtphysician
+	name = "sanguine trousers"
+	desc = "A pair of formal trousers, clean to the best of the servant's ability, but some bloodstains are impossible to rid them of"
+	icon_state = "docpants"
+	item_state = "docpants"
+	icon = 'icons/roguetown/clothing/courtphys.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_courtphys.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/courtphys.dmi'
+	detail_tag = "_detail"
+	uses_lord_coloring = LORD_PRIMARY

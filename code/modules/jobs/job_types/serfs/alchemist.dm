@@ -1,3 +1,19 @@
+/datum/attribute_holder/sheet/job/alchemist
+	attribute_variance = list(
+		/datum/attribute/skill/craft/alchemy = list(0, 20)
+	)
+	raw_attribute_list = list(
+		STAT_INTELLIGENCE = 3,
+		STAT_SPEED = -1,
+		/datum/attribute/skill/craft/crafting = 30,
+		/datum/attribute/skill/misc/reading = 20,
+	)
+
+/datum/attribute_holder/sheet/job/alchemist/old
+	attribute_variance = list(
+		/datum/attribute/skill/craft/alchemy = list(40, 60)
+	)
+
 /datum/job/alchemist
 	title = "Alchemist"
 	tutorial = "You came to Vanderlin either to seek knowledge or riches."
@@ -9,36 +25,21 @@
 	spawn_positions = 0
 	bypass_lastclass = TRUE
 
-	allowed_races = RACES_PLAYER_NONDISCRIMINATED
+	allowed_races = RACES_PLAYER_ALL
 
 	outfit = /datum/outfit/alchemist
 	give_bank_account = 12
 
+	attribute_sheet = /datum/attribute_holder/sheet/job/alchemist
+	attribute_sheet_old = /datum/attribute_holder/sheet/job/alchemist/old
+
+
 /datum/outfit/alchemist
 	name = "Alchemist"
-
-/datum/outfit/alchemist/pre_equip(mob/living/carbon/human/H)
-	..()
-	H.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, pick(2,5), TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.change_stat(STATKEY_INT, 3)
-	H.change_stat(STATKEY_SPD, -1)
-	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/craft/alchemy, pick(4,6), TRUE)
-//Requires a lot of sprites, so this is just a placeholder
-	if(H.gender == MALE)
-		pants = /obj/item/clothing/pants/trou
-		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/shirt/shortshirt
-		belt = /obj/item/storage/belt/leather
-		beltl = /obj/item/storage/belt/pouch/coins/poor
-		cloak = /obj/item/clothing/cloak/apron/brown
-	else
-		pants = /obj/item/clothing/pants/trou
-		shoes = /obj/item/clothing/shoes/boots/leather
-		shirt = /obj/item/clothing/shirt/shortshirt
-		belt = /obj/item/storage/belt/leather
-		beltl = /obj/item/storage/belt/pouch/coins/poor
-		cloak = /obj/item/clothing/cloak/apron/brown
+	pants = /obj/item/clothing/pants/trou
+	shoes = /obj/item/clothing/shoes/boots/leather
+	shirt = /obj/item/clothing/shirt/shortshirt
+	belt = /obj/item/storage/belt/leather
+	beltl = /obj/item/storage/belt/pouch/coins/poor
+	cloak = /obj/item/clothing/cloak/apron/brown
 

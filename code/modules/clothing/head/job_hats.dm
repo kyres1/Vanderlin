@@ -111,6 +111,15 @@
 	detail_tag = "_detail"
 	detail_color = CLOTHING_SOOT_BLACK
 
+/obj/item/clothing/head/wizhat/bogwitch
+	name = "bog witch hat"
+	desc = "A hat of unusual design, derived from Osslandic attire, it has become something unique to a hermit in the terrorbog."
+	icon_state = "bogwitch"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/head.dmi'
+	worn_x_dimension = 32
+	worn_y_dimension = 48
+	misc_flags = CRAFTING_TEST_EXCLUDE
+
 /obj/item/clothing/head/wizhat/gen
 	icon_state = "wizardhatgen"
 
@@ -141,3 +150,54 @@
 	item_state = "courthat"
 	icon = 'icons/roguetown/clothing/courtphys.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/courtphys.dmi'
+
+/obj/item/clothing/head/courtphysician/male
+	name = "sanguine hat"
+	desc = "A hat for keeping the splattered blood out of your face, for when your trade is required."
+	icon_state = "dochat1"
+	item_state = "dochat1"
+	detail_tag = "_detail"
+	uses_lord_coloring = LORD_PRIMARY
+
+/obj/item/clothing/head/courtphysician/female
+	name = "sanguine cap"
+	desc = "A cap for keeping the splattered blood out of your hair, for when your trade is required."
+	icon_state = "dochat2"
+	item_state = "dochat2"
+	detail_tag = "_detail"
+	uses_lord_coloring = LORD_PRIMARY
+
+/obj/item/clothing/head/maidband
+	name = "maid headband"
+	desc = "A pleated cloth headband. It has gained widespread popularity from Valorian nobles travelling with their servants."
+	icon_state = "maidband"
+	body_parts_covered = NONE
+
+/obj/item/clothing/head/maidband/Initialize(mapload, ...)
+	. = ..()
+	// I fucking love pilgrims
+	AddComponent(
+		/datum/component/equipment_stress/job_specific, \
+		/datum/stress_event/maidband, \
+		list(TRAIT_VILLAIN = null, TRAIT_NOBLE_BLOOD = /datum/stress_event/maidband/noble), \
+		immune_jobs = list(/datum/job/prince, /datum/job/squire, /datum/job/advclass/pilgrim/noble, /datum/job/advclass/pilgrim/rare/zaladin, /datum/job/advclass/pilgrim/rare/grenzelhoft, /datum/job/advclass/pilgrim/rare/merchant), \
+		immune_departments = (NOBLEMEN | GARRISON | OUTSIDERS | COMPANY), \
+		department_exceptions = list(/datum/job/advclass/pilgrim, /datum/job/grabber), \
+		inverse = TRUE, \
+	)
+
+/obj/item/clothing/head/gnomecap
+	name = "dwarven tallhat"
+	desc = "A warm, tall hat, made for colder climates."
+	icon_state = "gnomecap"
+	item_state = "gnomecap"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/head.dmi'
+	worn_x_dimension = 32
+	worn_y_dimension = 32
+	max_integrity = INTEGRITY_STANDARD
+	allowed_race = list(SPEC_ID_HALFLING, SPEC_ID_DWARF)  //Something malicious is brewing
+	min_cold_protection_temperature = -20
+
+/obj/item/clothing/head/gnomecap/Initialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/grid/coin_pouch)

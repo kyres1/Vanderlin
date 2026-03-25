@@ -218,8 +218,8 @@
 	data += "<font color='#228B22'><span class='bold'>Half-Orcs:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_HALF_ORCS]]<br>"
 	data += "<font color='#CD853F'><span class='bold'>Kobolds:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_KOBOLDS]]<br>"
 	data += "<font color='#DC143C'><span class='bold'>Tieflings:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_TIEFLINGS]]<br>"
-	data += "<font color='#FFD700'><span class='bold'>Raksharis:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_RAKSHARI]]<br>"
-	data += "<font color='#e7e3d9'><span class='bold'>Aasimars:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_AASIMAR]]<br>"
+	data += "<font color='#FFD700'><span class='bold'>Rakshari:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_RAKSHARI]]<br>"
+	data += "<font color='#e7e3d9'><span class='bold'>Aasimar:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_AASIMAR]]<br>"
 	data += "<font color='#d49d7c'><span class='bold'>Hollowkins:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_HOLLOWKINS]]<br>"
 	data += "<font color='#99dfd5'><span class='bold'>Harpies:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_HARPIES]]<br>"
 	data += "<font color='#a0936b'><span class='bold'>Medicators:</span></font> [GLOB.vanderlin_round_stats[STATS_ALIVE_MEDICATORS]]<br>"
@@ -563,7 +563,7 @@
 
 				data += "</div>"
 			else
-				data += "<div style='text-align: center; color: #999; font-style: italic;'>Angros was the last hero to live</div>"
+				data += "<div style='text-align: center; color: #999; font-style: italic;'>Psydon was the last hero to live</div>"
 
 		if("Villains")
 			data += "<div style='text-align: center; color: #d4b4b4; font-size: 1.2em; margin-bottom: 15px;'>VILLAINS OF THE REALM</div>"
@@ -876,7 +876,7 @@
 		data += "<a href='byond://?src=[REF(src)];viewinfluences=1;debug=[!debug]' style='color: [debug ? "#00FF00" : "#FF0000"];'>[debug ? "DEBUG MODE ON" : "DEBUG MODE OFF"]</a>"
 		data += "</div>"
 
-	// Angros Section
+	// Psydon Section
 	var/psydonite_user = FALSE
 	if(mob)
 		if(isliving(mob))
@@ -884,17 +884,17 @@
 			if(istype(living_user_mob.patron, /datum/patron/psydon))
 				psydonite_user = TRUE
 
-	var/psydon_followers = GLOB.patron_follower_counts["Angros"] || 0
+	var/psydon_followers = GLOB.patron_follower_counts[/datum/patron/psydon::name] || 0
 	var/largest_religion = (psydon_followers > 0)
 	if(largest_religion)
 		for(var/patron in GLOB.patron_follower_counts)
-			if(patron == "Angros")
+			if(patron == /datum/patron/psydon::name)
 				continue
 			if(GLOB.patron_follower_counts[patron] >= psydon_followers)
 				largest_religion = FALSE
 				break
-	var/apostasy_followers = GLOB.patron_follower_counts["Godless"] + GLOB.patron_follower_counts["Autotheist"] + GLOB.patron_follower_counts["Defiant"] + GLOB.patron_follower_counts["Dystheist"] + GLOB.patron_follower_counts["Naivety"]|| 0
-	var/psydonite_monarch = GLOB.vanderlin_round_stats[STATS_MONARCH_PATRON] == "Angros" ? TRUE : FALSE
+	var/apostasy_followers = GLOB.patron_follower_counts[/datum/patron/godless/godless::name] + GLOB.patron_follower_counts[/datum/patron/godless/autotheist::name] + GLOB.patron_follower_counts[/datum/patron/godless/defiant::name] + GLOB.patron_follower_counts[/datum/patron/godless/dystheist::name] + GLOB.patron_follower_counts[/datum/patron/godless/naivety::name]|| 0
+	var/psydonite_monarch = GLOB.vanderlin_round_stats[STATS_MONARCH_PATRON] == /datum/patron/psydon::name ? TRUE : FALSE
 	var/psydon_influence = (psydon_followers * 20) + (GLOB.confessors.len * 20) + (GLOB.vanderlin_round_stats[STATS_HUMEN_DEATHS] * -10) + (GLOB.vanderlin_round_stats[STATS_ALIVE_TIEFLINGS] * -20) + (psydonite_monarch ? (psydonite_monarch * 500) : -250) + (largest_religion? (largest_religion * 500) : -250) + (GLOB.vanderlin_round_stats[STATS_PSYCROSS_USERS] * 10) + (apostasy_followers * -20) + (GLOB.vanderlin_round_stats[STATS_LUX_HARVESTED] * -50) + (psydonite_user ? 10000 : -10000)
 
 	data += "<div style='width: 42.5%; margin: 0 auto 30px; border: 2px solid #99b2b1; background: #47636d; color: #d0d0d0; max-height: 420px;'>"
@@ -933,38 +933,38 @@
 	data += "<div style='width: 91.5%; margin: 0 auto 40px;'>"
 	data += "<div style='display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-bottom: 30px;'>"
 
-	// Visires
+	// Astrata
 	data += god_ui_block("ASTRATA", "#e7a962", "#642705", /datum/storyteller/astrata, debug)
 
-	// Gani
+	// Dendor
 	data += god_ui_block("DENDOR", "#412938", "#66745c", /datum/storyteller/dendor, debug)
 
-	// Mordsol
+	// Ravox
 	data += god_ui_block("RAVOX", "#2c232d", "#710f0f", /datum/storyteller/ravox, debug)
 
-	// Pomette
+	// Eora
 	data += god_ui_block("EORA", "#a95063", "#e7c3da", /datum/storyteller/eora, debug)
 
-	// Valdala
+	// Necra
 	data += god_ui_block("NECRA", "#2a2459", "#4c82a8", /datum/storyteller/necra, debug)
 
 	data += "</div>"
 
 	data += "<div style='display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;'>"
 
-	// Akan
+	// Noc
 	data += god_ui_block("NOC", "#4e72a1", "#282137", /datum/storyteller/noc, debug)
 
-	// Mjallidhorn
+	// Abyssor
 	data += god_ui_block("ABYSSOR", "#50090f", "#bbace0", /datum/storyteller/abyssor, debug)
 
-	// Goler Kanh
+	// Malum
 	data += god_ui_block("MALUM", "#3d4139", "#955454", /datum/storyteller/malum, debug)
 
-	// Iliope
+	// Xylix
 	data += god_ui_block("XYLIX", "#7e632c", "#f6feff", /datum/storyteller/xylix, debug)
 
-	// Erdl
+	// Pestra
 	data += god_ui_block("PESTRA", "#517b27", "#1b2a2a", /datum/storyteller/pestra, debug)
 
 	data += "</div></div>"
@@ -977,16 +977,16 @@
 	data += "<div style='width: 91.5%; margin: 0 auto;'>"
 	data += "<div style='display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr; gap: 20px; margin-bottom: 20px;'>"
 
-	// Deceivers
+	// Matthios
 	data += god_ui_block("MATTHIOS", "#20202e", "#99b2b1", /datum/storyteller/matthios, debug)
 
-	// Hertannea
+	// Baotha
 	data += god_ui_block("BAOTHA", "#46254a", "#e2abee", /datum/storyteller/baotha, debug)
 
-	// Archdevil
+	// Graggar
 	data += god_ui_block("GRAGGAR", "#3b5e51", "#99bbc7", /datum/storyteller/graggar, debug)
 
-	// One Envy
+	// Zizo
 	data += god_ui_block("ZIZO", "#661239", "#ed9da3", /datum/storyteller/zizo, debug)
 
 	data += "</div></div>"
@@ -1068,6 +1068,6 @@
 /// Global proc to show debug version of gods influences
 /client/proc/debug_influences()
 	set name = "Debug Gods' Influences"
-	set category = "Debug"
+	set category = "Debug.Debug"
 
 	show_influences(debug = TRUE)

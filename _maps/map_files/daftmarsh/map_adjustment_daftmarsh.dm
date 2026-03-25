@@ -11,7 +11,6 @@
 		/datum/job/courtphys, //Against design idea.
 		/datum/job/tapster, //Unneeded.
 		/datum/job/shophand, //Unneeded honestly.
-		/datum/job/gaffer_assistant, //Never filled, prefer to just ditch it.
 		/datum/job/minor_noble, //Minor nobles will have to approach via pilgrim waves and be guests that way.
 		/datum/job/absolver,
 	)
@@ -21,6 +20,7 @@
 		/datum/job/cook = 1,
 		/datum/job/servant = 2,
 		/datum/job/carpenter = 2, //Towner roles don't need nearly as many, here.
+		/datum/job/mason = 2,
 		/datum/job/hunter = 2,
 		/datum/job/bard = 3,
 		/datum/job/miner = 4,

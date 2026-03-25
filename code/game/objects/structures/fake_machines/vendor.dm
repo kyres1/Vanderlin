@@ -26,6 +26,7 @@
 
 /obj/structure/fake_machine/vendor/Initialize()
 	. = ..()
+	set_light(1, 1, l_color = lighting_color)
 	update_appearance(UPDATE_ICON_STATE)
 	START_PROCESSING(SSroguemachine, src)
 
@@ -71,12 +72,14 @@
 /obj/structure/fake_machine/vendor/update_overlays()
 	. = ..()
 	if(!length(held_items) || !locked() || obj_broken)
-		set_light(0)
+		set_light(l_on = FALSE)
 		return
-	set_light(1, 1, 1, l_color = lighting_color)
+
+	set_light(l_on = TRUE)
+
 	. += mutable_appearance(icon, filled_overlay)
 
-/obj/structure/fake_machine/vendor/attackby(obj/item/I, mob/user, params)
+/obj/structure/fake_machine/vendor/attackby(obj/item/I, mob/user, list/modifiers)
 	if(istype(I, /obj/item/coin))
 		if(!lock_check())
 			to_chat(user, span_notice("There is no lock on \the [src]! It is not ready to sell!"))
@@ -85,12 +88,12 @@
 		budget += money
 		qdel(I)
 		to_chat(user, span_info("I put [money] mammon in \the [src]."))
-		playsound(get_turf(src), 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+		playsound(src, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		attack_hand(user)
 		return
 	return ..()
 
-/obj/structure/fake_machine/vendor/attackby_secondary(obj/item/weapon, mob/user, params)
+/obj/structure/fake_machine/vendor/attackby_secondary(obj/item/weapon, mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -118,7 +121,7 @@
 	held_items[I]["NAME"] = I.name
 	held_items[I]["PRICE"] = 0
 	I.forceMove(src)
-	playsound(get_turf(src), 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+	playsound(src, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 	update_appearance(UPDATE_ICON)
 
 /obj/structure/fake_machine/vendor/Topic(href, href_list)
@@ -202,7 +205,7 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
+	playsound(src, 'sound/misc/beep.ogg', 100, FALSE, -1)
 	var/canread = user.can_read(src, TRUE)
 	var/contents
 	if(canread)
@@ -269,6 +272,22 @@
 	held_items[I]["NAME"] = I.name
 	held_items[I]["PRICE"] = 20
 
+/obj/structure/fake_machine/vendor/voyage
+	lockids = list(ACCESS_INN)
+
+/obj/structure/fake_machine/vendor/voyage/Initialize()
+	. = ..()
+	for(var/X in list(/obj/item/key/roomi, /obj/item/key/roomii, /obj/item/key/roomiii))
+		var/obj/I = new X(src)
+		held_items[I] = list()
+		held_items[I]["NAME"] = I.name
+		held_items[I]["PRICE"] = 20
+	for(var/X in list(/obj/item/key/luxroomi))
+		var/obj/I = new X(src)
+		held_items[I] = list()
+		held_items[I]["NAME"] = I.name
+		held_items[I]["PRICE"] = 60
+
 /obj/structure/fake_machine/vendor/steward
 	lockids = list(ACCESS_STEWARD)
 	light_color = "#1b7bf1"
@@ -304,12 +323,15 @@
 	name = "INNKEEP"
 	lockids = list(ACCESS_INN)
 
+/obj/structure/fake_machine/vendor/voyage
+	name = "SHIPMATE"
+	lockids = list(ACCESS_INN)
+
 /obj/structure/fake_machine/vendor/butcher
 	name = "BUTCHER"
 	lockids = list(ACCESS_BUTCHER)
 	lighting_color = "#8d1818"
 	filled_overlay = "vendor-butcher"
-
 
 /obj/structure/fake_machine/vendor/soilson
 	name = "FARMHAND"
@@ -332,13 +354,13 @@
 /obj/structure/fake_machine/vendor/centcom/attack_hand(mob/living/user)
 	return
 
-/obj/structure/fake_machine/vendor/centcom/attackby(obj/item/P, mob/user, params)
+/obj/structure/fake_machine/vendor/centcom/attackby(obj/item/P, mob/user, list/modifiers)
 	if(istype(P, /obj/item/coin))
 		if(!cachey[user])
 			cachey[user] = list()
 		cachey[user]["moneydonate"] += P.get_real_price()
 		qdel(P)
-		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+		playsound(src, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 
 		if(cachey[user]["moneydonate"] > 99)
 			if(!cachey[user]["trisawarded"])

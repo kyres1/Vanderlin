@@ -23,7 +23,7 @@
 	icon_state = "oyster_open"
 	grid_height = 96
 	grid_width = 64
-	sellprice = 320
+	sellprice = 10
 
 /obj/item/carvedgem/shell/rawshell
 	name = "clamshell"
@@ -300,7 +300,7 @@
 
 /obj/item/carvedgem/rose/flower
 	name = "rosellusk flower carving"
-	desc = " A carving of a beautiful flower made out of rosellusk. Pomette would be proud of such artistry."
+	desc = " A carving of a beautiful flower made out of rosellusk. Eora would be proud of such artistry."
 	icon_state = "flower_rose"
 	dropshrink = 0.8
 	grid_height = 64
@@ -730,8 +730,8 @@
 	sellprice = 95
 
 /obj/item/carvedgem/turq/ka
-	name = "ceruleabaster ka statue"
-	desc = "A large carving of a ka spirit from Lakkarian myth. Believed to help guide the recently parted to Valdala's domain."
+	name = "ceruleabaster bird statue"
+	desc = "A large carving of a bird."
 	icon_state = "ka_turq"
 	grid_height = 64
 	grid_width = 32
@@ -739,7 +739,7 @@
 
 /obj/item/carvedgem/turq/scarab
 	name = "ceruleabaster scarab"
-	desc = "A large carving of a scarab made out of ceruleabaster. An insect sacred to Lakkarians. Scarabs are commonly seen at Lakkarian temples and mastabas."
+	desc = "A large carving of a scarab made out of ceruleabaster."
 	icon_state = "scarab_turq"
 	dropshrink = 0.8
 	grid_height = 64
@@ -886,7 +886,7 @@
 
 /obj/item/carvedgem/coral/shark
 	name = "aoetal shark statue"
-	desc = "A statue of a shark carved out of aoetal. Some sailors believe them to be agents of Mjallidhorn."
+	desc = "A statue of a shark carved out of aoetal. Some sailors believe them to be agents of Abyssor."
 	icon_state = "shark_coral"
 	grid_height = 64
 	grid_width = 64

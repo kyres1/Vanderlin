@@ -45,8 +45,7 @@
 /datum/controller/subsystem/mapping/proc/levels_by_trait(trait)
 	. = list()
 	var/list/_z_list = z_list
-	for(var/A in _z_list)
-		var/datum/space_level/S = A
+	for(var/datum/space_level/S as anything in _z_list)
 		if (S.traits[trait])
 			. += S.z_value
 
@@ -54,30 +53,11 @@
 /datum/controller/subsystem/mapping/proc/levels_by_any_trait(list/traits)
 	. = list()
 	var/list/_z_list = z_list
-	for(var/A in _z_list)
-		var/datum/space_level/S = A
+	for(var/datum/space_level/S as anything in _z_list)
 		for (var/trait in traits)
 			if (S.traits[trait])
 				. += S.z_value
 				break
-
-// Attempt to get the turf below the provided one according to Z traits
-/datum/controller/subsystem/mapping/proc/get_turf_below(turf/T)
-	if (!T || !initialized)
-		return
-	var/offset = multiz_levels[T.z]["[DOWN]"]
-	if (!offset)
-		return
-	return locate(T.x, T.y, T.z - offset)
-
-// Attempt to get the turf above the provided one according to Z traits
-/datum/controller/subsystem/mapping/proc/get_turf_above(turf/T)
-	if (!T || !initialized)
-		return
-	var/offset = multiz_levels[T.z]["[UP]"]
-	if (!offset)
-		return
-	return locate(T.x, T.y, T.z + offset)
 
 // Prefer not to use this one too often
 /datum/controller/subsystem/mapping/proc/get_station_center()

@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/open/floor/naturalstone, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /atom/movable/lighting_object))
+	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /atom/movable/lighting_object, /atom/movable/outdoor_effect))
 	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
@@ -67,12 +67,16 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(flags & CHANGETURF_SKIP)
 		return new path(src)
 
-	var/old_opacity = opacity
 	var/old_dynamic_lighting = dynamic_lighting
-	var/old_affecting_lights = affecting_lights
 	var/old_lighting_object = lighting_object
+	var/old_lighting_corner_NE = lighting_corner_NE
+	var/old_lighting_corner_SE = lighting_corner_SE
+	var/old_lighting_corner_SW = lighting_corner_SW
+	var/old_lighting_corner_NW = lighting_corner_NW
+
 	var/old_outdoor_effect = outdoor_effect
-	var/old_corners = corners
+
+	var/old_directional_opacity = directional_opacity
 
 	var/old_exl = explosion_level
 	var/old_exi = explosion_id
@@ -116,23 +120,31 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	W.blueprint_data = old_bp
 
+	lighting_corner_NE = old_lighting_corner_NE
+	lighting_corner_SE = old_lighting_corner_SE
+	lighting_corner_SW = old_lighting_corner_SW
+	lighting_corner_NW = old_lighting_corner_NW
+
 	if(SSlighting.initialized)
 		if(SSoutdoor_effects.initialized)
 			outdoor_effect = old_outdoor_effect
-			get_sky_and_weather_states()
+			update_sky_and_weather_states()
 
-		recalc_atom_opacity()
 		lighting_object = old_lighting_object
-		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if (old_opacity != opacity || dynamic_lighting != old_dynamic_lighting)
-			reconsider_lights()
+
+		directional_opacity = old_directional_opacity
+		recalculate_directional_opacity()
 
 		if (dynamic_lighting != old_dynamic_lighting)
 			if (IS_DYNAMIC_LIGHTING(src))
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
+
+	// only queue for smoothing if SSatom initialized us, and we'd be changing smoothing state
+	if(flags_1 & INITIALIZED_1)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		QUEUE_SMOOTH(src)
 
 	return W
 
@@ -162,8 +174,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		if(new_baseturfs.len == 1)
 			new_baseturfs = new_baseturfs[1]
 
-		if(turf_type == /turf/open/transparent/openspace)
-			var/turf/below = get_step_multiz(src, DOWN)
+		if(turf_type == /turf/open/openspace)
+			var/turf/below = GET_TURF_BELOW(src)
 			if(!below) //We are at the LOWEST z-level.
 				turf_type = /turf/open/floor/naturalstone
 			else
@@ -181,16 +193,16 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 //		else
 //			if(istype(turf_type, /turf/open) && istype(src, /turf/closed))
 //				var/turf/closed/CL = src
-//				var/turf/above = get_step_multiz(src, UP)
+//				var/turf/above = GET_TURF_ABOVE(src)
 //				if(above)
 //					if(istype(above, CL.above_floor))
-//						above.ChangeTurf(/turf/open/transparent/openspace, list(/turf/open/transparent/openspace), flags)
+//						above.ChangeTurf(/turf/open/openspace, list(/turf/open/openspace), flags)
 		return ChangeTurf(turf_type, new_baseturfs, flags)
 
 	var/used_type = baseturfs
 
-	if(baseturfs == /turf/open/transparent/openspace)
-		var/turf/below = get_step_multiz(src, DOWN)
+	if(baseturfs == /turf/open/openspace)
+		var/turf/below = GET_TURF_BELOW(src)
 		if(!below) //We are at the LOWEST z-level.
 			used_type = /turf/open/floor/naturalstone
 		else
@@ -322,8 +334,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		ImmediateCalculateAdjacentTurfs()
 	else
 		CALCULATE_ADJACENT_TURFS(src)
-
-	QUEUE_SMOOTH_NEIGHBORS(src)
 
 	HandleTurfChange(src)
 

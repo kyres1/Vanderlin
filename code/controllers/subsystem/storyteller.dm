@@ -381,7 +381,7 @@ SUBSYSTEM_DEF(gamemode)
 					"... you kneel, not knowing why... the voice behind you compels it",
 					"... a collar of roses and rust... worn by the willing"
 				),
-			/datum/antagonist/vampire/lesser = list (
+			/datum/antagonist/vampire/lords_spawn = list (
 					"... fangs bloom from cracked lips... hunger shudders through the air",
 					"... you see your reflection... it smiles with borrowed teeth",
 					"... a laugh beneath floorboards... young, broken, blood-wet"
@@ -554,53 +554,59 @@ SUBSYSTEM_DEF(gamemode)
 /// Gets candidates for antagonist roles.
 /datum/controller/subsystem/gamemode/proc/get_candidates(be_special, job_ban, observers, ready_newplayers, living_players, required_time, inherit_required_time = TRUE, midround_antag_pref, no_antags = TRUE, list/restricted_roles, list/required_roles)
 	var/list/candidates = list()
-	var/list/candidate_candidates = list() //lol
 
 	for(var/mob/player as anything in GLOB.player_list)
-		if(QDELETED(player) || player.mind?.picking)
+		if(QDELETED(player) || !player.client || !player.mind || player.mind.picking)
 			continue
+
+		if(job_ban && is_banned_from(player.ckey, list(job_ban)))
+			continue
+
+		var/checked_one_box = FALSE
+
 		if(ready_newplayers && isnewplayer(player))
 			var/mob/dead/new_player/new_player = player
-			if(new_player.ready == PLAYER_READY_TO_PLAY && new_player.mind && new_player.check_preferences())
-				candidate_candidates += player
-		else if(observers && isobserver(player))
-			candidate_candidates += player
-		else if(living_players && isliving(player))
-			if(!ishuman(player))
+			if(new_player.ready != PLAYER_READY_TO_PLAY || !new_player.check_preferences())
 				continue
-			candidate_candidates += player
+			checked_one_box = TRUE
 
-	for(var/mob/candidate as anything in candidate_candidates)
-		if(QDELETED(candidate) || !candidate.key || !candidate.client || (!observers && !candidate.mind))
-			continue
-		if(!observers)
-			if(!ready_players && !isliving(candidate))
+		if(observers && isobserver(player))
+			checked_one_box = TRUE
+
+		if(living_players && isliving(player))
+			if(!ishuman(player) || isautomaton(player))
 				continue
-			if(no_antags && !isnull(candidate.mind.antag_datums))
+
+			var/datum/job/tested_job = player.mind.assigned_role
+			if(tested_job.parent_job)
+				tested_job = tested_job.parent_job
+
+			if(length(restricted_roles) && is_type_in_typecache(tested_job, restricted_roles))
+				continue
+
+			if(length(required_roles) && !is_type_in_typecache(tested_job, required_roles))
+				continue
+
+			if(player.mind.special_role)
+				continue
+
+			if(be_special && !(be_special in player.client.prefs?.be_special))
+				continue
+
+			if(no_antags && length(player.mind.antag_datums))
 				var/real = FALSE
-				for(var/datum/antagonist/antag_datum as anything in candidate.mind.antag_datums)
+				for(var/datum/antagonist/antag_datum as anything in player.mind.antag_datums)
 					if(!(antag_datum.antag_flags & FLAG_FAKE_ANTAG))
 						real = TRUE
 						break
 				if(real)
 					continue
-			if(restricted_roles && (candidate.mind.assigned_role.title in restricted_roles))
-				continue
-			if(length(required_roles) && !(candidate.mind.assigned_role.title in required_roles))
-				continue
-			if(candidate.mind.special_role)
-				continue
 
-		if(be_special)
-			if(!(candidate.client.prefs) || !(be_special in candidate.client.prefs.be_special))
-				continue
+			checked_one_box = TRUE
 
-		//if(midround_antag_pref)
-			//continue
+		if(checked_one_box)
+			candidates += player
 
-		if(job_ban && is_banned_from(candidate.ckey, list(job_ban, ROLE_MANIAC)))
-			continue
-		candidates += candidate
 	return candidates
 
 /// Gets the correct popcount, returning READY people if roundstart, and active people if not.
@@ -1558,7 +1564,7 @@ SUBSYSTEM_DEF(gamemode)
 			current_valid_humans += human_mob
 			record_round_statistic(STATS_TOTAL_POPULATION)
 			for(var/obj/item/clothing/neck/current_item in human_mob.get_equipped_items(TRUE))
-				if(current_item.type in list(/obj/item/clothing/neck/psycross, /obj/item/clothing/neck/psycross/silver, /obj/item/clothing/neck/psycross/g))
+				if(current_item.type in list(/obj/item/clothing/neck/psycross, /obj/item/clothing/neck/psycross/silver, /obj/item/clothing/neck/psycross/gold))
 					record_round_statistic(STATS_PSYCROSS_USERS)
 					break
 			switch(human_mob.gender)
@@ -1579,8 +1585,9 @@ SUBSYSTEM_DEF(gamemode)
 					record_round_statistic(STATS_ELDERLY_POPULATION)
 				if(AGE_IMMORTAL)
 					record_round_statistic(STATS_IMMORTAL_POPULATION)
-			if(human_mob.charflaw)
-				record_featured_object_stat(FEATURED_STATS_FLAWS, human_mob.charflaw.name)
+			if(length(human_mob.quirks))
+				for(var/datum/quirk/vice/charflaw in human_mob.quirks)
+					record_featured_object_stat(FEATURED_STATS_FLAWS, charflaw.name)
 			if(human_mob.is_noble())
 				record_round_statistic(STATS_ALIVE_NOBLES)
 			if(human_mob.mind.assigned_role.title in GLOB.garrison_positions)
@@ -1593,17 +1600,17 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ILLITERATES)
 			if(HAS_TRAIT(human_mob, TRAIT_FOREIGNER))
 				record_round_statistic(STATS_FOREIGNERS)
-			if(human_mob.has_flaw(/datum/charflaw/clingy))
+			if(human_mob.has_quirk(/datum/quirk/vice/clingy))
 				record_round_statistic(STATS_CLINGY_PEOPLE)
-			if(human_mob.has_flaw(/datum/charflaw/addiction/alcoholic))
+			if(human_mob.has_quirk(/datum/quirk/vice/alcoholic))
 				record_round_statistic(STATS_ALCOHOLICS)
-			if(human_mob.has_flaw(/datum/charflaw/addiction/junkie))
+			if(human_mob.has_quirk(/datum/quirk/vice/junkie))
 				record_round_statistic(STATS_JUNKIES)
-			if(human_mob.has_flaw(/datum/charflaw/addiction/kleptomaniac))
+			if(human_mob.has_quirk(/datum/quirk/vice/kleptomaniac))
 				record_round_statistic(STATS_KLEPTOMANIACS)
-			if(human_mob.has_flaw(/datum/charflaw/greedy))
+			if(human_mob.has_quirk(/datum/quirk/vice/greedy))
 				record_round_statistic(STATS_GREEDY_PEOPLE)
-			if(human_mob.has_flaw(/datum/charflaw/hunted))
+			if(human_mob.has_quirk(/datum/quirk/vice/hunted))
 				record_round_statistic(STATS_HUNTED_PEOPLE)
 			if(HAS_TRAIT_NOT_FROM(human_mob, TRAIT_PACIFISM, "hugbox"))
 				record_round_statistic(STATS_PACIFISTS)
@@ -1653,38 +1660,38 @@ SUBSYSTEM_DEF(gamemode)
 			if(human_mob.client.has_triumph_buy(TRIUMPH_BUY_PSYDON_FAVOURITE))
 				valid_psydon_favourite = human_mob
 
-			var/total_stats = human_mob.STASTR + human_mob.STAINT + human_mob.STAEND + human_mob.STACON + human_mob.STAPER + human_mob.STASPD + human_mob.STALUC
+			var/total_stats = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH) + GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE) + GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE) + GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION) + GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION) + GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED) + GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)
 			if(total_stats > highest_total_stats)
 				highest_total_stats = total_stats
 				set_chronicle_stat(CHRONICLE_STATS_MOST_SKILLS_PERSON, human_mob, "PRODIGY", "#e9de43", "[total_stats] total stats")
 
-			if(human_mob.STASTR > highest_strength)
-				highest_strength = human_mob.STASTR
-				set_chronicle_stat(CHRONICLE_STATS_STRONGEST_PERSON, human_mob, "STRONGMAN", "#bd1717", "[human_mob.STASTR] strength")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH) > highest_strength)
+				highest_strength = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH)
+				set_chronicle_stat(CHRONICLE_STATS_STRONGEST_PERSON, human_mob, "STRONGMAN", "#bd1717", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH)] strength")
 
-			if(human_mob.STAINT > highest_intelligence)
-				highest_intelligence = human_mob.STAINT
-				set_chronicle_stat(CHRONICLE_STATS_SMARTEST_PERSON, human_mob, "GENIUS", "#5eb6e6", "[human_mob.STAINT] intelligence")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE) > highest_intelligence)
+				highest_intelligence = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE)
+				set_chronicle_stat(CHRONICLE_STATS_SMARTEST_PERSON, human_mob, "GENIUS", "#5eb6e6", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE)] intelligence")
 
-			if(human_mob.STALUC > highest_luck)
-				highest_luck = human_mob.STALUC
-				set_chronicle_stat(CHRONICLE_STATS_LUCKIEST_PERSON, human_mob, "LUCKY DEVIL", "#54d666", "[human_mob.STALUC] luck")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE) > highest_luck)
+				highest_luck = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)
+				set_chronicle_stat(CHRONICLE_STATS_LUCKIEST_PERSON, human_mob, "LUCKY DEVIL", "#54d666", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)] luck")
 
-			if(human_mob.STASPD > highest_speed)
-				highest_speed = human_mob.STASPD
-				set_chronicle_stat(CHRONICLE_STATS_FASTEST_PERSON, human_mob, "SPEEDSTER", "#54d6c2", "[human_mob.STASPD] speed")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED) > highest_speed)
+				highest_speed = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED)
+				set_chronicle_stat(CHRONICLE_STATS_FASTEST_PERSON, human_mob, "SPEEDSTER", "#54d6c2", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED)] speed")
 
-			if(human_mob.STAPER > highest_perception)
-				highest_perception = human_mob.STAPER
-				set_chronicle_stat(CHRONICLE_STATS_MOST_PERCEPTIVE_PERSON, human_mob, "EAGLE-EYED", "#a8d654", "[human_mob.STAPER] perception")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION) > highest_perception)
+				highest_perception = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION)
+				set_chronicle_stat(CHRONICLE_STATS_MOST_PERCEPTIVE_PERSON, human_mob, "EAGLE-EYED", "#a8d654", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION)] perception")
 
-			if(human_mob.STACON > highest_constitution)
-				highest_constitution = human_mob.STACON
-				set_chronicle_stat(CHRONICLE_STATS_MOST_RESILIENT_PERSON, human_mob, "THE ROCK", "#d67c54", "[human_mob.STACON] constitution")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION) > highest_constitution)
+				highest_constitution = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION)
+				set_chronicle_stat(CHRONICLE_STATS_MOST_RESILIENT_PERSON, human_mob, "THE ROCK", "#d67c54", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION)] constitution")
 
-			if(human_mob.STAEND > highest_endurance)
-				highest_endurance = human_mob.STAEND
-				set_chronicle_stat(CHRONICLE_STATS_MOST_ENDURANT_PERSON, human_mob, "WORKHORSE", "#dbb169", "[human_mob.STAEND] endurance")
+			if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE) > highest_endurance)
+				highest_endurance = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE)
+				set_chronicle_stat(CHRONICLE_STATS_MOST_ENDURANT_PERSON, human_mob, "WORKHORSE", "#dbb169", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE)] endurance")
 
 			var/wealth = get_mammons_in_atom(human_mob)
 			total_wealth += wealth
@@ -1700,32 +1707,32 @@ SUBSYSTEM_DEF(gamemode)
 				set_chronicle_stat(CHRONICLE_STATS_LEAST_SKILLS_PERSON, human_mob, "HOPELESS", "#8a8887", "[total_stats] total stats")
 
 			if(isnull(lowest_strength))
-				lowest_strength = human_mob.STASTR
-				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[human_mob.STASTR] strength")
-			else if(human_mob.STASTR < lowest_strength)
-				lowest_strength = human_mob.STASTR
-				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[human_mob.STASTR] strength")
+				lowest_strength = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH)
+				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH)] strength")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH) < lowest_strength)
+				lowest_strength = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH)
+				set_chronicle_stat(CHRONICLE_STATS_WEAKEST_PERSON, human_mob, "WIMP", "#a0836a", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_STRENGTH)] strength")
 
 			if(isnull(lowest_intelligence))
-				lowest_intelligence = human_mob.STAINT
-				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[human_mob.STAINT] intelligence")
-			else if(human_mob.STAINT < lowest_intelligence)
-				lowest_intelligence = human_mob.STAINT
-				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[human_mob.STAINT] intelligence")
+				lowest_intelligence = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE)
+				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE)] intelligence")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE) < lowest_intelligence)
+				lowest_intelligence = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE)
+				set_chronicle_stat(CHRONICLE_STATS_DUMBEST_PERSON, human_mob, "IDIOT", "#e67e22", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_INTELLIGENCE)] intelligence")
 
 			if(isnull(lowest_speed))
-				lowest_speed = human_mob.STASPD
-				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[human_mob.STASPD] speed")
-			else if(human_mob.STASPD < lowest_speed)
-				lowest_speed = human_mob.STASPD
-				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[human_mob.STASPD] speed")
+				lowest_speed = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED)
+				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED)] speed")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED) < lowest_speed)
+				lowest_speed = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED)
+				set_chronicle_stat(CHRONICLE_STATS_SLOWEST_PERSON, human_mob, "TURTLE", "#a569bd", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_SPEED)] speed")
 
 			if(isnull(lowest_luck))
-				lowest_luck = human_mob.STALUC
-				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[human_mob.STALUC] luck")
-			else if(human_mob.STALUC < lowest_luck)
-				lowest_luck = human_mob.STALUC
-				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[human_mob.STALUC] luck")
+				lowest_luck = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)
+				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)] luck")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE) < lowest_luck)
+				lowest_luck = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)
+				set_chronicle_stat(CHRONICLE_STATS_UNLUCKIEST_PERSON, human_mob, "WALKING DISASTER", "#e74c3c", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_FORTUNE)] luck")
 
 			if(isnull(lowest_wealth))
 				lowest_wealth = wealth
@@ -1735,25 +1742,25 @@ SUBSYSTEM_DEF(gamemode)
 				set_chronicle_stat(CHRONICLE_STATS_POOREST_PERSON, human_mob, "PAUPER", "#909c63", "[wealth] mammons")
 
 			if(isnull(lowest_perception))
-				lowest_perception = human_mob.STAPER
-				set_chronicle_stat(CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON, human_mob, "CLUELESS", "#9fb9b9", "[human_mob.STAPER] perception")
-			else if(human_mob.STAPER < lowest_perception)
-				lowest_perception = human_mob.STAPER
-				set_chronicle_stat(CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON, human_mob, "CLUELESS", "#9fb9b9", "[human_mob.STAPER] perception")
+				lowest_perception = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION)
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON, human_mob, "CLUELESS", "#9fb9b9", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION)] perception")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION) < lowest_perception)
+				lowest_perception = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION)
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_PERCEPTIVE_PERSON, human_mob, "CLUELESS", "#9fb9b9", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_PERCEPTION)] perception")
 
 			if(isnull(lowest_constitution))
-				lowest_constitution = human_mob.STACON
-				set_chronicle_stat(CHRONICLE_STATS_LEAST_RESILIENT_PERSON, human_mob, "FRAGILE", "#a8917d", "[human_mob.STACON] constitution")
-			else if(human_mob.STACON < lowest_constitution)
-				lowest_constitution = human_mob.STACON
-				set_chronicle_stat(CHRONICLE_STATS_LEAST_RESILIENT_PERSON, human_mob, "FRAGILE", "#a8917d", "[human_mob.STACON] constitution")
+				lowest_constitution = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION)
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_RESILIENT_PERSON, human_mob, "FRAGILE", "#a8917d", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION)] constitution")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION) < lowest_constitution)
+				lowest_constitution = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION)
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_RESILIENT_PERSON, human_mob, "FRAGILE", "#a8917d", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_CONSTITUTION)] constitution")
 
 			if(isnull(lowest_endurance))
-				lowest_endurance = human_mob.STAEND
-				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[human_mob.STAEND] endurance")
-			else if(human_mob.STAEND < lowest_endurance)
-				lowest_endurance = human_mob.STAEND
-				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[human_mob.STAEND] endurance")
+				lowest_endurance = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE)
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE)] endurance")
+			else if(GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE) < lowest_endurance)
+				lowest_endurance = GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE)
+				set_chronicle_stat(CHRONICLE_STATS_LEAST_ENDURANT_PERSON, human_mob, "TIRED", "#a8a0a0", "[GET_MOB_ATTRIBUTE_VALUE(human_mob, STAT_ENDURANCE)] endurance")
 
 	force_set_round_statistic(STATS_MAMMONS_HELD, total_wealth)
 

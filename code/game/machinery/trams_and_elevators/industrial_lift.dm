@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 /obj/structure/industrial_lift
 	name = "lift platform"
 	desc = "A lightweight lift platform. It moves up and down."
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/constructed/wood.dmi'
 	icon_state = "weird1"
 	density = FALSE
 	anchored = TRUE
@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 
 /obj/structure/industrial_lift/proc/AddItemOnLift(datum/source, atom/movable/new_lift_contents)
 	SIGNAL_HANDLER
-	var/static/list/blacklisted_types = typecacheof(list(/obj/effect/decal/cleanable, /atom/movable/outdoor_effect, /obj/structure/industrial_lift, /mob/camera, /obj/effect/overlay/water, /atom/movable/lighting_object))
+	var/static/list/blacklisted_types = typecacheof(list(/obj/effect/decal/cleanable, /obj/structure/industrial_lift, /mob/camera, /obj/effect/overlay/water, /atom/movable/outdoor_effect, /atom/movable/lighting_object))
 	if(is_type_in_typecache(new_lift_contents, blacklisted_types) || new_lift_contents.invisibility == INVISIBILITY_ABSTRACT) //prevents the tram from stealing things like landmarks
 		return FALSE
 	if(new_lift_contents in lift_load)
@@ -671,7 +671,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 		return FALSE
 	return TRUE
 
-/obj/structure/industrial_lift/attack_hand(mob/user, params)
+/obj/structure/industrial_lift/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -696,7 +696,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 
 	return open_lift_radial(user)
 
-/obj/structure/industrial_lift/attackby(obj/item/attacking_item, mob/user, params)
+/obj/structure/industrial_lift/attackby(obj/item/attacking_item, mob/user, list/modifiers)
 	if(!radial_travel)
 		return ..()
 
@@ -779,7 +779,7 @@ GLOBAL_LIST_INIT(all_radial_directions, list(
 	lift_id = TRAM_LIFT_ID
 	lift_master_type = /datum/lift_master/tram
 	radial_travel = FALSE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	/// Set by the tram control console in late initialize
 	var/travelling = FALSE

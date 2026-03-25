@@ -8,7 +8,7 @@
 #define JOB_UNAVAILABLE_SEX 7
 #define JOB_UNAVAILABLE_DEITY 8
 #define JOB_UNAVAILABLE_QUALITY 9
-#define JOB_UNAVAILABLE_PATREON 10
+#define JOB_UNAVAILABLE_DONATOR 10
 #define JOB_UNAVAILABLE_LASTCLASS 11
 #define JOB_UNAVAILABLE_ACCOUNTAGE 12
 #define JOB_UNAVAILABLE_JOB_COOLDOWN 13
@@ -40,6 +40,7 @@
 	FACTION_RATS, \
 	FACTION_ORCS, \
 	FACTION_BUMS, \
+	FACTION_VIKINGS, \
 	FACTION_MATTHIOS \
 )
 
@@ -56,7 +57,8 @@
 #define FACTION_RATS		"Rats"
 #define FACTION_ORCS		"Orcs"
 #define FACTION_BUMS		"Bums"
-#define FACTION_MATTHIOS	"Deceivers"
+#define FACTION_MATTHIOS	"Matthios"
+#define FACTION_VIKINGS     "Vikings"
 
 #define NOBLEMEN		(1<<0)
 #define GARRISON		(1<<1)
@@ -98,7 +100,6 @@
 #define JDO_CLINICAPPRENTICE 6.2
 
 #define JDO_CAPTAIN 7
-#define JDO_VET 7.1
 #define JDO_ROYALKNIGHT 7.2
 #define JDO_MENATARMS 8
 #define JDO_CITYWATCHMEN 8.1
@@ -110,6 +111,7 @@
 #define JDO_FORGUARD 11.1
 
 #define JDO_PRIEST 12
+#define JDO_GMTEMPLAR 12.1
 #define JDO_CLERIC 13
 #define JDO_MONK 14
 #define JDO_GRAVETENDER 15
@@ -124,12 +126,11 @@
 
 #define JDO_TAILOR 19
 
-#define JDO_ARMORER 20
-#define JDO_WSMITH 21
+#define JDO_BLACKSMITH 21
 #define JDO_BAPP 22
 #define JDO_ARTIFICER 23
 
-#define JDO_MASON 24
+
 
 #define JDO_BUTLER 25
 #define JDO_SERVANT 26
@@ -143,25 +144,29 @@
 #define JDO_FISHER 28.3
 #define JDO_HUNTER 28.4
 #define JDO_CARPENTER 28.6
+#define JDO_MASON 28.61
 #define JDO_CHEESEMAKER 28.7
 #define JDO_MINER 28.8
 #define JDO_MATRON 28.9
 #define JDO_GRAVEMAN 29
+
 
 #define JDO_JESTER 30
 #define JDO_BARD 30.1
 #define JDO_PRISONER 31
 
 #define JDO_CHIEF 32
+#define JDO_TOMBWARDEN 32.1
 
 #define JDO_ADVENTURER 33
-#define JDO_GAFFER 33.1
 #define JDO_PILGRIM 34.2
 #define JDO_MIGRANT  34.3
 #define JDO_BANDIT 34.3
 #define JDO_WRETCH 34.4
 
 #define JDO_MERCENARY 35
+#define JDO_BOGWITCH 35.1
+#define JDO_BOGWITCH_APP 35.2
 
 #define JDO_VAGRANT 36
 #define JDO_ORPHAN 37
@@ -176,3 +181,5 @@
 #define BITFLAG_CONSTRUCTOR (1<<2)
 #define BITFLAG_GARRISON (1<<3)
 
+#define JOB_BOGWITCH "Bog Witch"
+#define JOB_BOGWITCH_APP "Bog Witch Apprentice"

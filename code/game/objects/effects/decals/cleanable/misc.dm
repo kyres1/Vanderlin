@@ -63,7 +63,7 @@
 	desc = ""
 	icon_state = "greenglow"
 	light_power = 3
-	light_outer_range =  2
+	light_range =  2
 	light_color = LIGHT_COLOR_GREEN
 	beauty = -300
 
@@ -214,7 +214,7 @@
 
 /obj/effect/decal/cleanable/debris/glass/Crossed(mob/living/L)
 	. = ..()
-	playsound(loc,'sound/foley/glass_step.ogg', 50, FALSE)
+	playsound(src,'sound/foley/glass_step.ogg', 50, FALSE)
 
 /obj/effect/decal/cleanable/debris/stone
 	name = "stone chippings"

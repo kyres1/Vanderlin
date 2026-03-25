@@ -6,7 +6,7 @@
 	icon_state = "minibar"
 	anchored = TRUE
 	density = FALSE
-	opacity = 0
+	opacity = FALSE
 	blade_dulling = DULLING_BASHCHOP
 	max_integrity = 150
 	var/deconstructible = TRUE
@@ -151,7 +151,7 @@
 /obj/structure/fluff/railing/tall
 	name = "wooden fence"
 	desc = "A sturdy fence of wooden planks."
-	icon = 'icons/roguetown/misc/tallwoodenrailing.dmi'
+	icon = 'icons/roguetown/misc/tallrailing.dmi'
 	icon_state = "tallwoodenrailing"
 	max_integrity = 500
 	pass_crawl = FALSE
@@ -167,6 +167,11 @@
 	climb_offset = 6
 	pass_projectile = FALSE
 
+/obj/structure/fluff/railing/tall/stone
+	name = "stone railing"
+	desc = "A sturdy railing made of stone."
+	icon_state = "tallstonerailing"
+
 /obj/structure/bars
 	name = "bars"
 	desc = "Iron bars made to keep things in or out."
@@ -175,6 +180,7 @@
 	density = TRUE
 	anchored = TRUE
 	blade_dulling = DULLING_BASHCHOP
+	pass_flags_self = PASSGRILLE|LETPASSTHROW|PASSSTRUCTURE|NOTLETPASSTHROWNMOB
 	max_integrity = 700
 	damage_deflection = 12
 	integrity_failure = 0.15
@@ -185,13 +191,16 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 
 /obj/structure/bars/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(.)
-		return
 	if(isobserver(mover))
 		return TRUE
-	if(mover.throwing && isitem(mover))
-		return prob(66)
+	. = ..()
+	if(. && density && mover.throwing && isitem(mover))
+		var/obj/item/I = mover
+		var/chance = 100 - (I.w_class-1) * 30
+		if(isliving(I.throwing.thrower))
+			var/mob/living/L = I.throwing.thrower
+			chance += (GET_MOB_ATTRIBUTE_VALUE(L, STAT_FORTUNE) - 10) * 10
+		return prob(clamp(chance, 0, 100))
 
 /obj/structure/bars/bent
 	icon_state = "barsbent"
@@ -217,6 +226,12 @@
 /obj/structure/bars/cemetery
 	icon_state = "cemetery"
 
+/// like bars but indestructible and you cant throw through them
+/obj/structure/bars/cemetery/underworld
+	pass_flags_self = PASSSTRUCTURE
+	resistance_flags = INDESTRUCTIBLE
+	max_integrity = 9999
+
 /obj/structure/bars/passage
 	icon_state = "passage0"
 	density = TRUE
@@ -238,6 +253,7 @@
 	density = TRUE
 	opacity = TRUE
 	redstone_structure = TRUE
+	pass_flags_self = PASSSTRUCTURE
 
 /obj/structure/bars/passage/shutter/redstone_triggered(mob/user)
 	if(obj_broken)
@@ -271,7 +287,7 @@
 	var/togg = FALSE
 
 /obj/structure/bars/grille/Initialize()
-	AddComponent(/datum/component/squeak, list('sound/foley/footsteps/FTMET_A1.ogg','sound/foley/footsteps/FTMET_A2.ogg','sound/foley/footsteps/FTMET_A3.ogg','sound/foley/footsteps/FTMET_A4.ogg'), 40, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
+	AddElement(/datum/element/footstep_override, footstep = FOOTSTEP_CATWALK)
 	dir = pick(GLOB.cardinals)
 	return ..()
 
@@ -321,6 +337,11 @@
 	attacked_sound = list('sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg', 'sound/combat/hits/onmetal/grille (3).ogg')
 	smeltresult = /obj/item/ingot/bronze
 	var/togg = FALSE
+
+/obj/structure/bars/pipe/Initialize()
+	. = ..()
+	AddElement(/datum/element/footstep_override, footstep = FOOTSTEP_CATWALK)
+
 
 /obj/structure/bars/pipe/left
 	name = "bronze pipe"
@@ -376,7 +397,7 @@
 	soundloop.start()
 	attacked_sound = initial(attacked_sound)
 
-/obj/structure/fluff/clock/attack_hand_secondary(mob/user, params)
+/obj/structure/fluff/clock/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -540,7 +561,7 @@
 /obj/structure/fluff/signage/examine(mob/user)
 	. = ..()
 	if(!user.is_literate())
-		user.adjust_experience(/datum/skill/misc/reading, 2, FALSE)
+		user.adjust_experience(/datum/attribute/skill/misc/reading, 2, FALSE)
 		. += "I have no idea what it says."
 	else
 		. += "It says something."
@@ -553,7 +574,7 @@
 /obj/structure/fluff/buysign/examine(mob/user)
 	. = ..()
 	if(!user.is_literate())
-		user.adjust_experience(/datum/skill/misc/reading, 2, FALSE)
+		user.adjust_experience(/datum/attribute/skill/misc/reading, 2, FALSE)
 		. += "I have no idea what it says."
 	else
 		. += "It says something."
@@ -566,7 +587,7 @@
 /obj/structure/fluff/sellsign/examine(mob/user)
 	. = ..()
 	if(!user.is_literate())
-		user.adjust_experience(/datum/skill/misc/reading, 2, FALSE)
+		user.adjust_experience(/datum/attribute/skill/misc/reading, 2, FALSE)
 		. += "I have no idea what it says."
 	else
 		. += "It says something."
@@ -585,12 +606,12 @@
 	. = ..()
 	if(wrotesign)
 		if(!user.is_literate())
-			user.adjust_experience(/datum/skill/misc/reading, 2, FALSE)
+			user.adjust_experience(/datum/attribute/skill/misc/reading, 2, FALSE)
 			. += "I have no idea what it says."
 		else
 			. += "It says \"[wrotesign]\"."
 
-/obj/structure/fluff/customsign/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/customsign/attackby(obj/item/W, mob/user, list/modifiers)
 	if(!user.cmode)
 		if(!user.is_literate())
 			to_chat(user, "<span class='warning'>I don't know any verba.</span>")
@@ -630,7 +651,7 @@
 		P.handle_drop()
 		return BULLET_ACT_HIT
 
-/obj/structure/fluff/statue/attack_hand_secondary(mob/user, params)
+/obj/structure/fluff/statue/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
@@ -675,7 +696,7 @@
 
 /obj/structure/fluff/statue/OnCrafted(dirin, mob/user)
 	. = ..()
-	for(var/obj/structure/fluff/statue/carving_block in contents)
+	for(var/obj/structure/fluff/carving_block in contents)
 		dir = carving_block.dir
 		qdel(carving_block)
 	update_appearance(UPDATE_ICON_STATE)
@@ -727,6 +748,26 @@
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "pillar"
 
+/obj/structure/fluff/statue/topiary
+	name = "topiary"
+	icon = 'icons/roguetown/misc/decoration.dmi'
+	icon_state = "topiary_saiga"
+
+/obj/structure/fluff/statue/topiary/saiga
+	icon_state = "topiary_saiga"
+
+/obj/structure/fluff/statue/topiary/sphere
+	icon_state = "topiary_sphere"
+
+/obj/structure/fluff/statue/topiary/spiral
+	icon_state = "topiary_spiral"
+
+/obj/structure/fluff/statue/topiary/stack
+	icon_state = "topiary_stack"
+
+/obj/structure/fluff/statue/topiary/spear
+	icon_state = "topiary_spear"
+
 /obj/structure/fluff/statue/femalestatue
 	icon = 'icons/roguetown/misc/ay.dmi'
 	icon_state = "1"
@@ -765,7 +806,7 @@
 
 /obj/structure/fluff/statue/zizo/Initialize()
 	. = ..()
-	set_light(1, 1, 1, l_color = COLOR_PURPLE)
+	set_light(1, 1, l_color = COLOR_PURPLE)
 
 /obj/structure/fluff/statue/musician/OnCrafted(dirin, mob/user)
 	. = ..()
@@ -867,13 +908,13 @@
 	icon_state = "p_dummy"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
-/obj/structure/fluff/statue/tdummy/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/statue/tdummy/attackby(obj/item/W, mob/user, list/modifiers)
 	if(!user.cmode)
 		if(W.istrainable) // Prevents using dumb shit to train with. With temporary exceptions...
 			if(W.associated_skill)
 				if(user.mind && isliving(user))
 					var/mob/living/L = user
-					var/probby = (L.STALUC / 10) * 100
+					var/probby = (GET_MOB_ATTRIBUTE_VALUE(L, STAT_FORTUNE) / 10) * 100
 					probby = min(probby, 99)
 					user.changeNext_move(CLICK_CD_MELEE)
 					if(W.max_blade_int)
@@ -886,28 +927,28 @@
 						probby = 0
 					if(L.body_position == LYING_DOWN)
 						probby = 0
-					if(L.STAINT < 3)
+					if(GET_MOB_ATTRIBUTE_VALUE(L, STAT_INTELLIGENCE) < 3)
 						probby = 0
 					if(prob(probby) && !L.has_status_effect(/datum/status_effect/debuff/trainsleep) && !user.buckled)
 						user.visible_message("<span class='info'>[user] trains on [src]!</span>")
 						var/boon = user.get_learning_boon(W.associated_skill)
-						var/amt2raise = L.STAINT/2
-						if(user.get_skill_level(W.associated_skill) >= 2)
+						var/amt2raise = GET_MOB_ATTRIBUTE_VALUE(L, STAT_INTELLIGENCE)/2
+						if(GET_MOB_SKILL_VALUE(user, W.associated_skill) >= 15)
 							if(!HAS_TRAIT(user, TRAIT_INTRAINING))
 								to_chat(user, "<span class='warning'>I've learned all I can from doing this, it's time for the real thing.</span>")
 								amt2raise = 0
 							else
-								if(user.get_skill_level(W.associated_skill) >= 3)
+								if(GET_MOB_SKILL_VALUE(user, W.associated_skill) >= 20)
 									to_chat(user, "<span class='warning'>I've learned all I can from doing this, it's time for the real thing.</span>")
 									amt2raise = 0
 						if(amt2raise > 0)
 							user.adjust_experience(W.associated_skill, amt2raise * boon, FALSE)
-						playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
+						playsound(src,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 					else
 						user.visible_message("<span class='danger'>[user] trains on [src], but [src] ripostes!</span>")
 						L.AdjustKnockdown(1)
 						L.throw_at(get_step(L, get_dir(src,L)), 2, 2, L, spin = FALSE)
-						playsound(loc, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
+						playsound(src, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
 					flick(pick("p_dummy_smashed","p_dummy_smashedalt"),src)
 					return
 			else //sanity
@@ -918,7 +959,7 @@
 			user.visible_message("<span class='danger'>[user] awkwardly tries to hit \the [src] with \the [W], but \the [src] ripostes!</span>")
 			goof.AdjustKnockdown(1)
 			goof.throw_at(get_step(goof, get_dir(src,goof)), 2, 2, goof, spin = FALSE)
-			playsound(loc, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
+			playsound(src, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
 			flick(pick("p_dummy_smashed","p_dummy_smashedalt"),src)
 			return
 	..()
@@ -941,11 +982,11 @@
 	if(isdarkelf(user))
 		say("BRING ME [goal - current] EARS. I HUNGER.",language = /datum/language/elvish)
 
-/obj/structure/fluff/statue/spider/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/statue/spider/attackby(obj/item/W, mob/user, list/modifiers)
 	if(istype(W, objective))
 		if(user.mind)
 			if(isdarkelf(user))
-				playsound(loc,'sound/misc/eat.ogg', rand(30,60), TRUE)
+				playsound(src,'sound/misc/eat.ogg', rand(30,60), TRUE)
 				current += 1
 				SSmapping.retainer.delf_ears += 1
 				if(current >= goal)
@@ -966,7 +1007,7 @@
 	icon_state = "evilidol"
 	icon = 'icons/roguetown/misc/structure.dmi'
 
-/obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, params)
+/obj/structure/fluff/statue/evil/attackby(obj/item/W, mob/user, list/modifiers)
 	if(user.mind)
 		var/datum/antagonist/bandit/B = user.mind.has_antag_datum(/datum/antagonist/bandit)
 		if(B)
@@ -989,8 +1030,8 @@
 			if(B.contrib >= 80)
 				give_rewards(B, user)
 			else
-				playsound(loc,'sound/items/matidol1.ogg', 50, TRUE)
-			playsound(loc,'sound/misc/eat.ogg', rand(30, 60), TRUE)
+				playsound(src,'sound/items/matidol1.ogg', 50, TRUE)
+			playsound(src,'sound/misc/eat.ogg', rand(30, 60), TRUE)
 			qdel(W)
 			return
 
@@ -1013,11 +1054,11 @@
 		if(4)
 			I = new /obj/item/clothing/head/helmet/horned(user.loc)
 		if(6)
-			if(user.get_skill_level(/datum/skill/combat/polearms) > 2)
+			if(GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/combat/polearms) > 2)
 				I = new /obj/item/weapon/polearm/spear/billhook(user.loc)
-			else if(user.get_skill_level(/datum/skill/combat/bows) > 2)
+			else if(GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/combat/bows) > 2)
 				I = new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/long(user.loc)
-			else if(user.get_skill_level(/datum/skill/combat/swords) > 2)
+			else if(GET_MOB_SKILL_VALUE_OLD(user, /datum/attribute/skill/combat/swords) > 2)
 				I = new /obj/item/weapon/sword/long(user.loc)
 			else
 				I = new /obj/item/weapon/mace/steel(user.loc)
@@ -1029,7 +1070,7 @@
 	if(offering_bandit.contrib >= 100 && offering_bandit.tri_amt < 8)
 		give_rewards(offering_bandit, user)
 	else
-		playsound(loc,'sound/items/matidol2.ogg', 50, TRUE)
+		playsound(src,'sound/items/matidol2.ogg', 50, TRUE)
 
 /obj/structure/fluff/psycross
 	name = "pantheon cross"
@@ -1090,6 +1131,19 @@
 	break_sound = null
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 
+/obj/structure/fluff/psycross/astrata
+	name = "astratan cross"
+	icon_state = "astratancross"
+	desc = "A towering monument to Astrata. Those who stand beneath it feel the warmth of her light."
+	break_sound = null
+	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+
+/obj/structure/fluff/psycross/astrata/gold
+	name = "astratan cross"
+	icon_state = "astratancross_g"
+	break_sound = null
+	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
+
 /obj/structure/fluff/psycross/zizocross
 	name = "inverted cross"
 	desc = "An unholy symbol. Blasphemy for most, reverence for few."
@@ -1147,7 +1201,39 @@
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	max_integrity = 450
 
-/obj/structure/fluff/psycross/attackby(obj/item/W, mob/living/carbon/human/user, params)
+/obj/structure/fluff/psycross/attack_hand_secondary(mob/living/carbon/user, list/modifiers)
+	. = ..()
+	if(!istype(user))
+		return
+	if(!divine)
+		return
+	if(!HAS_TRAIT(user, TRAIT_DIVINE_CENTRIST) || (HAS_TRAIT(user, TRAIT_DIVINE_SERVANT) && !(user.job == "Churchling")))
+		return
+	if(user?.patron.type != /datum/patron/divine/centrist)
+		return
+
+	var/datum/patron/old_patron = user.patron
+	var/pick_one = tgui_alert(user, "Do you wish to devote yourself to a Patron?", "Pick a Patron", list("Yes","No"))
+	if(pick_one != "Yes")
+		return
+
+	var/datum/patron/new_patron = GLOB.patrons_by_name[tgui_input_list(user, "Choose your new Patron.", "Pick a Patron", TEMPLE_PATRON_NAMES)]
+	if(!istype(new_patron, /datum/patron) || !(new_patron.type in ALL_TEMPLE_PATRONS))
+		return
+
+	var/confirm = tgui_alert(user, "Your new Patron is [new_patron]. Is this correct?", "Confirm choice", list("Yes", "No"))
+	if(confirm != "Yes")
+		return
+
+	ADD_TRAIT(user, TRAIT_DIVINE_CONVERT, DEVOTION_TRAIT)
+	user.set_patron(new_patron)
+	to_chat(user, "<span class='god_[lowertext(new_patron.name)]'>You have devoted yourself to [new_patron]!</span>")
+	log_game("PATRON: [key_name(user)] changed their patron from [old_patron.name] to [new_patron]")
+	visible_message("A bright light flashes out from [src] as it channels divine focus.")
+	AOE_flash(user, range = 5)
+	playsound(src, 'sound/magic/bless.ogg', 50, TRUE)
+
+/obj/structure/fluff/psycross/attackby(obj/item/W, mob/living/carbon/human/user, list/modifiers)
 	if(!user.mind)
 		return ..()
 
@@ -1319,8 +1405,7 @@
 	if(generic_message && M != user)
 		to_chat(M, span_danger("[src] emits a blinding light!"))
 	if(M.flash_act())
-		var/diff = power - M.confused
-		M.confused += min(power, diff)
+		M.set_confusion_if_lower(power SECONDS)
 
 /obj/structure/fluff/psycross/psydon
 	name = "psydonian cross"
@@ -1360,74 +1445,10 @@
 	blade_dulling = DULLING_BASH
 	max_integrity = 300
 
-//..................................................................................................................................
-/*------------------------------------------------------------------------------------------------------------------------------------\
-|  Gaffer shit, yes I'm making my own place here just for that and maaan its cozy, in this gated community for myself and no one else |
-\------------------------------------------------------------------------------------------------------------------------------------*/
-
 /obj/structure/fluff/statue/gaffer
 	name = "Subdued Statue"
+	desc = "It sleeps eternally."
 	icon_state = "subduedstatue"
-	anchored = TRUE
-	density = FALSE
-	opacity = 0
-	blade_dulling = DULLING_BASHCHOP
-	max_integrity = 999999
-	deconstructible = FALSE
-	var/ring_destroyed = FALSE
-
-/obj/structure/fluff/statue/gaffer/Initialize()
-	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GAFFER_RING_DESTROYED, PROC_REF(ringdied))
-
-/obj/structure/fluff/statue/gaffer/proc/ringdied(datum/source)
-	SIGNAL_HANDLER
-	if(ring_destroyed == FALSE)
-		ring_destroyed = TRUE
-		update_appearance(UPDATE_ICON_STATE)
-
-/obj/structure/fluff/statue/gaffer/update_icon_state()
-	. = ..()
-	if(ring_destroyed == TRUE)
-		icon_state = "subduedstatue_hasring"
-	if(ring_destroyed == FALSE)
-		icon_state = "subduedstatue"
-
-/obj/structure/fluff/statue/gaffer/examine(mob/user)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_BURDEN))
-		. += "slumped and tortured, broken body pertrified and in pain, its chest rose and fell in synch with mine banishing any doubt left, it is me! my own visage glares back at me!"
-		user.add_stress(/datum/stress_event/ring_madness)
-		return
-	if(ring_destroyed == TRUE)
-		. += "a statue depicting a decapitated man writhing in chains on the ground, it holds its hands out, pleading, in its palms is a glowing ring..."
-		return
-	. += "a statue depicting a decapitated man writhing in chains on the ground, it holds its hands out, pleading"
-
-/obj/structure/fluff/statue/gaffer/attack_hand(mob/living/user)
-	. = ..()
-	if(!user.mind)
-		return
-	if(!ring_destroyed)
-		return
-	if(is_gaffer_assistant_job(user.mind?.assigned_role))
-		to_chat(user, span_danger("It is not mine to have..."))
-		return
-	to_chat(user, span_danger("As you extend your hand over to the glowing ring, you feel a shiver go up your spine, as if unseen eyes turned to glare at you..."))
-	var/gaffed = alert(user, "Will you bear the burden? (Be the next Gaffer)", "YOUR DESTINY", "Yes", "No")
-
-	if(gaffed == "No" && ring_destroyed == TRUE)
-		to_chat(user, span_danger("yes...best to leave it alone."))
-		return
-
-	if((gaffed == "Yes") && Adjacent(user) && ring_destroyed == TRUE)
-		var/obj/item/ring = new /obj/item/clothing/ring/gold/burden(loc)
-		ADD_TRAIT(user, TRAIT_BURDEN, type)
-		user.put_in_hands(ring)
-		user.equip_to_slot_if_possible(ring, ITEM_SLOT_RING, FALSE, FALSE, TRUE, TRUE)
-		to_chat(user, span_danger("Once your hand is close enough to the ring, it jumps upwards and burrows itself onto your palm"))
-		ring_destroyed = FALSE
-		update_appearance(UPDATE_ICON_STATE)
 
 /obj/structure/fluff/statue/knight/interior/gen/update_icon_state()
 	if(dir == EAST)
@@ -1447,17 +1468,21 @@
 		icon_state = pick("knightstatue2_l", "knightstatue2_r")
 	return ..()
 
-/obj/structure/fluff/statue/carving_block
+/obj/structure/fluff/carving_block
 	name = "carving block"
 	desc = "Ready for sculpting."
+	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "block"
 	density = TRUE
 	anchored = FALSE
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	blade_dulling = DULLING_BASH
 	max_integrity = 100
 	debris = list(/obj/item/natural/stoneblock = 1)
 	drag_slowdown = 3
 
-/obj/structure/fluff/statue/carving_block/Initialize(mapload, ...)
+/obj/structure/fluff/carving_block/Initialize(mapload, ...)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 
@@ -1473,4 +1498,6 @@
 
 /obj/structure/fluff/steamvent/Initialize()
 	. = ..()
-	MakeParticleEmitter(/particles/smoke/cig/big)
+	AddElement(/datum/element/footstep_override, footstep = FOOTSTEP_CATWALK)
+	var/obj/effect/abstract/shared_particle_holder/steamvent_particle = add_shared_particles(/particles/smoke/cig/big, "steam_vent", pool_size = 4)
+	steamvent_particle.particles.position = generator(GEN_BOX, list(-14, -14), list(14, 14))

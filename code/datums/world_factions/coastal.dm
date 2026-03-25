@@ -86,6 +86,7 @@
 		/datum/supply_pack/seeds/rasberry,
 		/datum/supply_pack/seeds/avocado,
 		/datum/supply_pack/seeds/pineapple,
+		/datum/supply_pack/seeds/cocaudo,
 		// Livestock - coastal communities
 		/datum/supply_pack/livestock/chicken,
 		/datum/supply_pack/livestock/cat
@@ -196,11 +197,14 @@
 		/datum/supply_pack/jewelry/silverring,
 		// Luxury goods
 		/datum/supply_pack/luxury/spectacles_golden,
+		/datum/supply_pack/luxury/spectacles_monocle,
 		// Seeds
 		/datum/supply_pack/seeds/pear,
 		/datum/supply_pack/seeds/mangosteen,
 		/datum/supply_pack/seeds/dragonfruit,
-		/datum/supply_pack/seeds/poppy
+		/datum/supply_pack/seeds/poppy,
+		/datum/supply_pack/seeds/tamto
+
 	)
 	exotic_pool = list(
 		/datum/supply_pack/food/drinks/elfred,

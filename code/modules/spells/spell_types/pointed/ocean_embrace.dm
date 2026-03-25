@@ -8,10 +8,10 @@
 	cast_range = 6
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
-	associated_skill = /datum/skill/magic/holy
-	required_items = list(/obj/item/clothing/neck/psycross/silver/abyssor)
+	associated_skill = /datum/attribute/skill/magic/holy
+	required_items = list(/obj/item/clothing/neck/psycross/silver/divine/abyssor)
 
-	invocation = "Embrace the waters of Mjallidhorn's domain!"
+	invocation = "Embrace the waters of Abyssor's domain!"
 	invocation_type = INVOCATION_SHOUT
 
 	charge_time = 1 SECONDS
@@ -39,8 +39,8 @@
 		else
 			cast_on.Knockdown(5)
 			cast_on.Slowdown(60)
-			cast_on.Dizzy(10)
-			cast_on.blur_eyes(20)
+			cast_on.set_dizzy(10 SECONDS)
+			cast_on.set_eye_blur_if_lower(40 SECONDS)
 			cast_on.emote("drown")
 		return
 
@@ -53,5 +53,5 @@
 		if(is_type_in_list(T, water))
 			situational_bonus = min(situational_bonus + 0.1, 2)
 	if(situational_bonus > 1)
-		to_chat(owner, span_greentext("Channeling Mjallidhorn's power is easier in these conditions!"))
-	cast_on.blood_volume += BLOOD_VOLUME_OKAY * situational_bonus
+		to_chat(owner, span_greentext("Channeling Abyssor's power is easier in these conditions!"))
+	cast_on.blood_volume = max(cast_on.blood_volume, min(cast_on.blood_volume + BLOOD_VOLUME_OKAY * situational_bonus, BLOOD_VOLUME_NORMAL))

@@ -29,7 +29,7 @@
 	name = "condensed light"
 	desc = "An orb of condensed light."
 	w_class = WEIGHT_CLASS_NORMAL
-	light_outer_range = 10
+	light_range = 10
 	light_color = LIGHT_COLOR_WHITE
 	force = 10
 	icon = 'icons/roguetown/rav/obj/cult.dmi'
@@ -44,7 +44,6 @@
 	slot_flags = ITEM_SLOT_HIP
 	max_integrity = 200
 	fuel = 10 MINUTES
-	light_depth = 0
 	light_height = 0
 
 /obj/item/flashlight/flare/light/getonmobprop(tag)
@@ -79,7 +78,7 @@
 				return
 
 /obj/item/flashlight/flare/light/turn_off()
-	playsound(src.loc, 'sound/items/firesnuff.ogg', 100)
+	playsound(src, 'sound/items/firesnuff.ogg', 100)
 	STOP_PROCESSING(SSobj, src)
 	..()
 	if(ismob(loc))
@@ -92,7 +91,7 @@
 /obj/item/flashlight/flare/light/fire_act(added, maxstacks)
 	if(fuel)
 		if(!on)
-			playsound(src.loc, 'sound/items/firelight.ogg', 100)
+			playsound(src, 'sound/items/firelight.ogg', 100)
 			on = TRUE
 			damtype = BURN
 			update_brightness()
@@ -104,7 +103,7 @@
 			return TRUE
 	..()
 
-/obj/item/flashlight/flare/light/afterattack(atom/movable/A, mob/user, proximity)
+/obj/item/flashlight/flare/light/afterattack(atom/movable/A, mob/user, proximity, list/modifiers)
 	. = ..()
 	if(!proximity)
 		return

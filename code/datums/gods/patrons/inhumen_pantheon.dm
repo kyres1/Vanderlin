@@ -1,8 +1,7 @@
 /datum/patron/inhumen
-	name = null
+	abstract_type = /datum/patron/inhumen
 	associated_faith = /datum/faith/inhumen_pantheon
 
-	profane_words = list()
 	confess_lines = list(
 		"PSYDON AND HIS CHILDREN ARE THE DEMIURGE!",
 		"THE TEN ARE WORTHLESS COWARDS!",
@@ -19,21 +18,20 @@
 
 /* ----------------- */
 
-/datum/patron/inhumen/zizo // The One Envy considers non-royals chuds and doesn't give them magic or abilities
+/datum/patron/inhumen/zizo
 	name = ZIZO
-	display_name = "The Jealous God"
-	domain = "Domotan Island, and seemingly little else."
-	desc = "She whose name is unknown, she whose agenda is lost; the Jealous God embodies no elemental aspect, and serves neither the divine nor ilk of Hell. Her solemn devotees are the royal family of Etgard itself, the Shirleigh Dynasty and their constituents. They are the only divine to lay absolute claim over Domotan Island, and is thus praised only in hushed tones beyond the walls of Etgard Keep."
-	flaws = "Unknown."
-	worshippers = "The Shirleigh Dynasty, the brainwashed and the desperate"
-	sins = "Unknown."
-	boons = "You can recognise other worshippers at a glance. For the Shirleighs; access to innate and sinister miracles, and the awareness of when and where a mortal meets their demise, but not how. For all else; nothing."
-	added_traits = list(TRAIT_CABAL_CHUD)
+	domain = "Ascended Goddess of Forbidden Magic, Domination, and Power"
+	desc = "Snow elf who slaughtered her kind in ascension, conquered and remade the Dark Elven empires in her name. She proves that any with will can achieve divinity... though at a cost."
+	flaws = "Hubris, Superiority, Fury"
+	worshippers = "Dark Elves, Aspirants, Necromancers, Misandrists"
+	sins = "Pearl-clutching, Moralism, Wastefulness"
+	boons = "You may perform fleshcrafting. Access to roles with magic."
+	//added_traits = list(TRAIT_CABAL)	No need for this. They have fleshcrafting now.
 	devotion_holder = /datum/devotion/inhumen/zizo
 	confess_lines = list(
-		"SHE SEES! SHE LAUGHS!",
-		"SHE LAUGHS! SHE SEES!",
-		"SHE KNOWS! SHE KNOWS!",
+		"I FOLLOW THE PATH OF ZIZO!",
+		"LONG LIVE QUEEN ZIZO!",
+		"ZIZO SHOWED ME THE WAY!",
 	)
 	storyteller = /datum/storyteller/zizo
 	added_verbs = list(
@@ -43,74 +41,73 @@
 
 /datum/patron/inhumen/graggar
 	name = GRAGGAR
-	display_name = "The Archdevils"
-	domain = "All heretical anti-deities subservient to Hell."
-	desc = "The Archdevils of Hell, despite their hand in bringing the world to its knees, attract worshippers for any number of reasons - for vengeance, for power, from indoctrination, or from those who yet quake in terror from the threat it poses - but such belief is a poisoned chalice, for Hell's power corrupts all it touches. You may worship the Archdevils directly, or worship a Deceiver God who has been corrupted by Hell's power; but whatever the case, you seek the disruption of the Elemental balance and the downfall of the Aspects."
-	flaws = "Rage, hatred, bloodthirst."
-	worshippers = "The vengeful, the power-hungry, the indoctrinated, the fearful."
-	sins = "Compassion, frailty, servility."
-	boons = "You are drawn to the flavour of raw flesh, organs, and rotten food, and may consume without worry. You can recognise other Archdevil worshippers at a glance, as well as servants of other Hell-corrupted deities."
-	added_traits = list(TRAIT_ROT_EATER, TRAIT_ORGAN_EATER, TRAIT_ARCHDEVILS, TRAIT_CORRUPTED)
+	domain = "Ascended God, the Dark Sini-Star of Unnatural Beasts, Unsated Consumption, and Unbridled Hatred"
+	desc = "Became the first orc upon ascension through his habit of consuming the bodies of those he conquered. His forces continue to ravage the lands in his name. Through him, one may achieve true strength."
+	flaws = "Rage, Hatred, Bloodthirst"
+	worshippers = "Greenskins, The Revenge-Driven, Sadists, Misogynists"
+	sins = "Compassion, Frailty, Servility"
+	boons = "You are drawn to the flavour of raw flesh, organs, and blood. You may consume without worry."
+	added_traits = list(TRAIT_ORGAN_EATER, TRAIT_BLOODDRINKER)
 	devotion_holder = /datum/devotion/inhumen/graggar
 	confess_lines = list(
-		"CLAW AT THE SOIL! BREAK THE FIRMAMENT!",
-		"RELEASE THE OLD ONES! RETURN THEIR CROWN!",
-		"WHAT ONCE WAS WILL BECOME NOW, AGAIN!",
+		"GRAGGAR IS THE BEAST I WORSHIP!",
+		"GRAGGAR WILL RAVAGE YOU!",
+		"GRAGGAR BRINGS UNHOLY DESTRUCTION!"
 	)
 	storyteller = /datum/storyteller/graggar
 
 /datum/patron/inhumen/matthios
 	name = MATTHIOS
-	display_name = "The Deceiver Gods"
-	domain = "Secret sects hidden within the Divine Courts."
-	desc = "The praise of divines other than those subservient to the Four Elementals is heresy, even if those stragglers seek not to disrupt the balance; the mere worship gives power to Heavenly figures, after all. Which God that is remains up to you."
-	flaws = "Specific to the divine in question."
-	worshippers = "The desperate, the drunk, the disillusioned and the depraved."
-	sins = "Specific to the divine in question."
+	domain = "God of Thievery, Ill-Gotten Gains, and Highwaymen"
+	desc = "Legendary humen bandit whose name was attributed to countless great thefts. It is because of his legacy that nobles clutch their coin purses to their chests in town."
+	flaws = "Pride, Greed, Orneriness"
+	worshippers = "Outlaws, Noble-Haters, Downtrodden Peasantry"
+	sins = "Clumsiness, Stupidity, Humility"
 	boons = "You can see the most expensive item someone is carrying."
 	added_traits = list(TRAIT_MATTHIOS_EYES)
 	devotion_holder = /datum/devotion/inhumen/matthios
 	confess_lines = list(
-		"THE DECEIVERS FLEE! SEE THEIR LIES!",
-		"A PANTHEON EXISTS BEYOND YOUR OWN!",
-		"DIVINES WITHOUT NUMBER ARE BEYOND THE STARS!",
+		"MATTHIOS STEALS FROM THE WORTHLESS!",
+		"MATTHIOS IS JUSTICE FOR THE COMMON MAN!",
+		"MATTHIOS IS MY LORD, I SHALL BE HIS MARTYR!",
 	)
 	storyteller = /datum/storyteller/matthios
 
 /datum/patron/inhumen/baotha
 	name = BAOTHA
-	display_name = "Hertannea"
-	domain = "A corrupted deity, hiding within the shadows from the wrath of the Aspect of Fire; the Faerie Devil, Visires' Loathed, euphoric release of inhibitions."
-	desc = "A once-mortal Drow, Visires' most intimate companion in their youth, Hertannea is a goddess scorned and exiled for her betrayal of the nascent Aspect of Fire at the moment of her ascension. Lurking beneath the twisting spires of Palasi Necra, she represents the lowest of depravity; the proliferation of the most potent narcotic substances, the alteration of the mind, defilement of purity and self, all in the pursuit of the most hedonistic desires. She provides an escape to the downtrodden, ensnaring them in her corrupt and addictive web before they realise they've become trapped. Though not an Archdevil herself, Hertannea was afflicted by the corruption of Hell when she was still mortal, and to this day she still acts upon the will of Hell and its accursed bounty."
-	flaws = "Manipulation, self-Destruction, willingness to sacrifice others."
-	worshippers = "Addicts, hedonists, the downtrodden, the heartbroken and those seeking escape."
-	sins = "Sobriety, self-Sacrifice, faltering willpower."
-	boons = "You will never overdose on drugs. You can recognise other Hertannea worshippers at a glance, as well as servants of other Hell-corrupted deities."
-	added_traits = list(TRAIT_CRACKHEAD, TRAIT_CORRUPTED)
+	domain = "Goddess of Drugs, Self-Preservation, and Remorseless Joy"	//Bright-dyed hair falls within 'remorseless joy.' Joy for one's self at expense of the setting. Same for her music taste.
+	desc = "Ascended, formerly disgraced tiefling queen, notorious for having a mind elsewhere. Drove her kingdom into the ground through her demands and addictions. The first tiefling noble, last tiefling noble, and sole reason there are no more tiefling nobles. As she preaches to her followers, 'Joy at all costs!'"
+	flaws = "Manipulation, Self-Destruction, Willingness to Sacrifice Others"
+	worshippers = "Addicts, Hedonists, Pink-Haired Harlots"
+	sins = "Sobriety, Self-Sacrifice, Faltering Willpower"
+	boons = "You will never overdose on drugs."
+	added_traits = list(TRAIT_CRACKHEAD)
 	devotion_holder = /datum/devotion/inhumen/baotha
 	confess_lines = list(
-		"LIVE, LAUGH, LOVE! IN THE FAERIE DEVIL'S NAME!",
-		"JOY AT ALL COSTS! HERTANNEA'S TEACHINGS REIGN!",
-		"THE WHISPERS BELOW CALM MY MIND!",
+		"LIVE, LAUGH, LOVE! IN BAOTHA'S NAME!",
+		"JOY AT ALL COSTS! BAOTHA'S TEACHINGS REIGN!",
+		"BAOTHA'S WHISPERS CALM MY MIND!",
 	)
 	storyteller = /datum/storyteller/baotha
 
-/// Maniac Patron - Their mind is broken by secrets of One Envy/Archdevil combined. They quite possibly know the reality of what happens outside the planet. They may think this is all a game. They are clearly insane.
+/// Maniac Patron - Their mind is broken by secrets of Zizo/Graggar combined. They quite possibly know the reality of what happens outside the planet. They may think this is all a game. They are clearly insane.
 /datum/patron/inhumen/graggar_zizo
-	name = "The Lost Gods"
-	domain = "Forever lost deities of the old world whose meddling has somehow endured far longer than civilization's memory."
-	desc = "Empowered entities of divinity and unholy nature alike may, with enough effort and systemic erasure, simply cease to exist in the world altogether in the past, present and future- this option represents a disciple of one such unknowable idol. They toil in shadows in opposition to both elementalist and heretic alike, seeking knowledge through the ephemeral Sages to rekindle their lost history. They may be carryovers from cultures sundered in the Big Burn, or perhaps simply enamored by visions of lost grandeur you seek in a constant trance."
-	flaws = "Nothing, Everything, Nothing."
-	worshippers = "Lunatics, the lost and the outsiders."
-	sins = "The New World and its theology as a whole."
-	boons = "Secrets of the past reveal themselves in manic and insane ways."
-	added_traits = list(TRAIT_SCHIZO_FLAW)
+	name = "Graggazo"
+	domain = "Ascended God who slaughtered her kind in ascension, the Dark Sini-Star of Unnatural Beasts, Forbidden Magic, and Unbridled Hatred."
+	desc = "Became the first snow orc upon ascension through his habit of consuming the bodies of those he conquered. His forces continue to ravage the lands in her name. He proves that any with will can achieve divinity... though at a cost. MAKE THIS MAKE SENSE. MY MIND! MY MIND!!"
+	flaws = "Nothing, Everything, Nothing"
+	worshippers = "Broken Minds, Overshared Secrets, Space-Faring Species Like You, Misanthropes"
+	sins = "The Unseen, Secrets, Worthless Pigs"
+	boons = "You are drawn to the flavour of other followers of Zizo, and may see them when you consume without worry."
+	added_traits = list(TRAIT_ORGAN_EATER, TRAIT_BLOODDRINKER, TRAIT_CABAL)
 	confess_lines = list(
 		"WHERE AM I!",
 		"NONE OF THIS IS REAL!",
 		"WHO AM I WORSHIPPING?!"
 	)
-	preference_accessible = FALSE
+
+/datum/patron/inhumen/graggar_zizo/preference_accessible(datum/preferences/prefs)
+	return FALSE
 
 /datum/patron/inhumen/graggar_zizo/can_pray(mob/living/follower)
 	var/datum/antagonist/maniac/dreamer = follower.mind.has_antag_datum(/datum/antagonist/maniac)
@@ -119,6 +116,7 @@
 	// if a non-maniac somehow gets this patron,
 	// something interesting should happen if they try to pray.
 	INVOKE_ASYNC(follower, GLOBAL_PROC_REF(cant_wake_up), follower)  //Something interesting happened.
+	message_admins("[ADMIN_LOOKUPFLW(follower)] has been gibbed due to praying as a non-maniac with their patron set to Graggazo. Whoops..")
 	return FALSE
 
 /datum/patron/inhumen/graggar_zizo/hear_prayer(mob/living/follower, message)

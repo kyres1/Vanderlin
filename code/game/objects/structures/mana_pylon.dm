@@ -7,7 +7,7 @@
 	has_initial_mana_pool = TRUE
 	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
-	light_outer_range = MINIMUM_USEFUL_LIGHT_RANGE
+	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = COLOR_CYAN
 	density = TRUE
 
@@ -29,7 +29,7 @@
 /obj/structure/mana_pylon/Initialize(mapload, ...)
 	. = ..()
 	update_appearance(UPDATE_OVERLAYS)
-	set_light(1.4, 1.4, 0.75, l_color = COLOR_CYAN)
+	set_light(1.4, 0.75, l_color = COLOR_CYAN)
 
 /obj/structure/mana_pylon/Destroy()
 	if(linked_pylon)
@@ -43,7 +43,7 @@
 		MA.color = COLOR_RED
 	. += MA
 
-/obj/structure/mana_pylon/attackby(obj/item/I, mob/living/user, params)
+/obj/structure/mana_pylon/attackby(obj/item/I, mob/living/user, list/modifiers)
 	. = ..()
 	if(!istype(I, /obj/item/gem))
 		return
@@ -136,7 +136,7 @@
 		else
 			mana_pool.transfer_specific_mana(user.mana_pool, transfer_amount, decrement_budget = TRUE)
 
-/obj/structure/mana_pylon/attack_hand_secondary(mob/user, params)
+/obj/structure/mana_pylon/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return

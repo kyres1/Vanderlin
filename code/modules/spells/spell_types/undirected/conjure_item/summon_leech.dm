@@ -1,15 +1,15 @@
 /datum/action/cooldown/spell/undirected/conjure_item/summon_leech
 	name = "Summon Leech"
-	desc = "Summon a leech from Mjallidhorn's domain."
+	desc = "Summon a leech from Abyssor's domain."
 	button_icon_state = "curse2"
 	sound = 'sound/foley/jumpland/waterland.ogg'
 
 	spell_type = SPELL_MIRACLE
 	antimagic_flags = MAGIC_RESISTANCE_HOLY
-	associated_skill = /datum/skill/magic/holy
-	required_items = list(/obj/item/clothing/neck/psycross/silver/abyssor)
+	associated_skill = /datum/attribute/skill/magic/holy
+	required_items = list(/obj/item/clothing/neck/psycross/silver/divine/abyssor)
 
-	invocation = "Mjallidhorn bless me with one of your servants!"
+	invocation = "Abyssor bless me with one of your servants!"
 	invocation_type = INVOCATION_WHISPER
 
 	cooldown_time = 1 MINUTES
@@ -20,11 +20,11 @@
 	item_duration = 0
 
 /datum/action/cooldown/spell/undirected/conjure_item/summon_leech/pestra
-	name = "Summon Leech"
-	desc = "Summon a leech by Erdl's will."
+	name = "Pestra's Leech"
+	desc = "Summon a leech by Pestra's will."
 	button_icon_state = "diagnose"
 
-	required_items = list(/obj/item/clothing/neck/psycross/silver/pestra)
+	required_items = list(/obj/item/clothing/neck/psycross/silver/divine/pestra)
 
-	invocation = "Erdl grant me the creacher to cleanse the blood!"
+	invocation = "Pestra grant me the creacher to cleanse the blood!"
 	invocation_type = INVOCATION_WHISPER

@@ -22,7 +22,7 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	layer = GASFIRE_LAYER
-	light_outer_range =  LIGHT_RANGE_FIRE
+	light_range =  LIGHT_RANGE_FIRE
 	light_color = LIGHT_COLOR_FIRE
 	blend_mode = BLEND_ADD
 
@@ -151,8 +151,8 @@
 		return
 
 	for(var/mob/living/carbon/human/H in view(2, src))
-		if(H.has_flaw(/datum/charflaw/addiction/pyromaniac))
-			H.sate_addiction()
+		if(H.has_quirk(/datum/quirk/vice/pyromaniac))
+			H.sate_addiction(/datum/quirk/vice/pyromaniac)
 
 	perform_exposure()
 	return
@@ -170,11 +170,6 @@
 	if(isliving(AM))
 		var/mob/living/L = AM
 		L.fire_act(1, 20)
-
-/obj/effect/dummy/lighting_obj/moblight/fire
-	name = "fire"
-	light_color = LIGHT_COLOR_FIRE
-	light_outer_range =  LIGHT_RANGE_FIRE
 
 /obj/effect/hotspot/proc/handle_automatic_spread()
 	///maybe add sound probably not
@@ -205,7 +200,7 @@
 			change_firelevel(min(3, firelevel+1))
 
 		if(burn_power)
-			for(var/turf/ranged_floor in range(1, src))
+			for(var/turf/ranged_floor as anything in RANGE_TURFS(1, src))
 				var/falling = FALSE
 				if(isopenspace(ranged_floor))
 					falling = TRUE

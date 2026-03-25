@@ -2,13 +2,13 @@
 
 /turf/open/lava
 	name = "lava"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/natural/liquids.dmi'
 	icon_state = "lava"
 	gender = PLURAL //"That's some lava."
 	baseturfs = /turf/open/lava //lava all the way down
 	slowdown = 2
 
-	light_outer_range =  4
+	light_range =  4
 	light_power = 0.75
 	light_color = LIGHT_COLOR_LAVA
 	bullet_bounce_sound = 'sound/blank.ogg'
@@ -208,7 +208,7 @@
 /turf/open/lava/acid
 	name = "acid"
 	icon_state = "acid"
-	light_outer_range =  4
+	light_range =  4
 	light_power = 1
 	light_color = "#56ff0d"
 	immunity_resistance_flags = ACID_PROOF

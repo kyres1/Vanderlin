@@ -38,16 +38,18 @@
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armorsmithing
 	clothing_flags = CANT_SLEEP_IN
 	smeltresult = null
 	melting_material = /datum/material/iron
 	melt_amount = 50
 
+	material_category = ARMOR_MAT_PLATE
+
 /obj/item/clothing/face/facemask/goldnosechain
 	name = "gold nosechain"
 	icon_state = "nosechain_g"
-	desc = "A fashionable nose chain with two rings. Its design originated from the Savannah Elf tribes."
+	desc = "A fashionable nose chain with two rings."
 	max_integrity = 100
 	blocksound = FALSE
 	armor = FALSE
@@ -57,14 +59,14 @@
 	block2add = FALSE
 	slot_flags = ITEM_SLOT_MASK
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armorsmithing
 	clothing_flags = FALSE
 	sellprice = VALUE_GOLD_ITEM
 
 /obj/item/clothing/face/facemask/silvernosechain
 	name = "silver nosechain"
 	icon_state = "nosechain_s"
-	desc = "A fashionable nose chain with two rings. Its design originated from the Savannah Elf tribes."
+	desc = "A fashionable nose chain with two rings."
 	max_integrity = 100
 	blocksound = FALSE
 	armor = FALSE
@@ -74,7 +76,7 @@
 	block2add = FALSE
 	slot_flags = ITEM_SLOT_MASK
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armorsmithing
 	clothing_flags = FALSE
 	sellprice = VALUE_SILVER_ITEM
 
@@ -95,7 +97,7 @@
 	block2add = FALSE
 	slot_flags = ITEM_SLOT_MASK
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armorsmithing
 	clothing_flags = FALSE
 	sellprice = VALUE_GOLD_ITEM
 
@@ -112,7 +114,7 @@
 	block2add = FALSE
 	slot_flags = ITEM_SLOT_MASK
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armorsmithing
 	clothing_flags = FALSE
 	sellprice = VALUE_SILVER_ITEM
 
@@ -339,10 +341,29 @@
 	smeltresult = /obj/item/ingot/silver
 	melting_material = /datum/material/silver
 	melt_amount = 100
+	var/cross_retracted = 0 // Does the silver mask has it's 3 little spuds retracted or not. Used for toggling.
 
 /obj/item/clothing/face/facemask/silver/Initialize(mapload)
 	. = ..()
 	enchant(/datum/enchantment/silver)
+
+/obj/item/clothing/face/facemask/silver/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!cross_retracted)
+		icon_state = "silvermask_rimless"
+		cross_retracted = 1
+		playsound(user, 'sound/items/indexer_shut.ogg', 65, TRUE)
+	else
+		icon_state = "silvermask"
+		cross_retracted = 0
+		playsound(user, 'sound/items/indexer_open.ogg', 65, TRUE)
+	update_appearance(UPDATE_ICON)
+	if(loc == user && ishuman(user))
+		var/mob/living/carbon/H = user
+		H.update_inv_head()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/face/facemask/shadowfacemask
 	name = "anthraxi war mask"
@@ -421,10 +442,10 @@
 /obj/item/clothing/face/courtphysician
 	name = "court physican's mask"
 	desc = "Similar to a feldsher's mask, this one is made with actual bone! Don't ask whose."
-	icon_state = "courtmask"
-	item_state = "courtmask"
+	icon_state = "docmask"
+	item_state = "docmask"
 	resistance_flags = FLAMMABLE
-	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	body_parts_covered = FACE|EARS|EYES|MOUTH|NECK
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
@@ -452,7 +473,7 @@
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
 	sewrepair = FALSE
-	anvilrepair = /datum/skill/craft/armorsmithing
+	anvilrepair = /datum/attribute/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/copper
 
 //................ Druids Mask ............... //

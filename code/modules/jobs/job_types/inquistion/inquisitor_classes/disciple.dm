@@ -1,3 +1,29 @@
+/datum/attribute_holder/sheet/job/disciple
+	raw_attribute_list = list(
+		STAT_STRENGTH = 2,
+		STAT_ENDURANCE = 2,
+		STAT_CONSTITUTION = 3,
+		STAT_INTELLIGENCE = -2,
+		STAT_SPEED = -1,
+		/datum/attribute/skill/misc/athletics = 30,
+		/datum/attribute/skill/combat/unarmed = 30,
+		/datum/attribute/skill/combat/wrestling = 30,
+		/datum/attribute/skill/misc/climbing = 30,
+		/datum/attribute/skill/misc/swimming = 30,
+		/datum/attribute/skill/misc/medicine = 20,
+		/datum/attribute/skill/misc/reading = 20,
+		/datum/attribute/skill/craft/cooking = 10,
+	)
+
+/datum/attribute_holder/sheet/job/disciple/quarterstaff
+	raw_attribute_list = list(
+		STAT_PERCEPTION = 1,
+		STAT_INTELLIGENCE = 1,
+	)
+	clamped_adjustment = list(
+		/datum/attribute/skill/combat/polearms = list(30, 30)
+	)
+
 /datum/job/advclass/sacrestant/disciple
 	title = "Disciple"
 	tutorial = "Some train their steel, others train their wits. You have honed your body itself into a weapon, anointing it with faithful markings to fortify your soul. You serve and train under the Ordo Benetarus, and one day you will be among Angros’s most dauntless warriors."
@@ -5,23 +31,8 @@
 	allowed_races = RACES_PLAYER_ALL
 	outfit = /datum/outfit/disciple
 	category_tags = list(CTAG_INQUISITION)
-	jobstats = list(
-		STATKEY_STR = 2,
-		STATKEY_END = 2,
-		STATKEY_CON = 3,
-		STATKEY_INT = -2,
-		STATKEY_SPD = -1
-	)
-	skills = list(
-		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/unarmed = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
-	)
+
+	attribute_sheet = /datum/attribute_holder/sheet/job/disciple
 
 	traits = list(
 		TRAIT_INQUISITION,
@@ -29,9 +40,10 @@
 		TRAIT_STEELHEARTED,
 		TRAIT_PSYDONIAN_GRIT,
 		TRAIT_PSYDONITE,
+		TRAIT_FOREIGNER,
 	)
 
-	languages = list(/datum/language/oldpsydonic)
+	languages = list(/datum/language/oldpsydonic, /datum/language/newpsydonic)
 
 /datum/job/advclass/sacrestant/disciple/after_spawn(mob/living/carbon/human/spawned, client/player_client)
 	. = ..()
@@ -56,9 +68,8 @@
 	var/obj/item/clothing/gloves/gloves_to_wear = /obj/item/clothing/gloves/bandages/weighted
 	switch(weapon_choice)
 		if("Discipline - Unarmed")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/unarmed, 5, 5)
-			spawned.clamped_adjust_skillrank(/datum/skill/misc/athletics, 5, 5)
 			gloves_to_wear = /obj/item/clothing/gloves/bandages/pugilist
+			spawned.clamped_adjust_skill_level(/datum/attribute/skill/combat/unarmed, 10, 40)
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 			ADD_TRAIT(spawned, TRAIT_IGNOREDAMAGESLOWDOWN, JOB_TRAIT)
 		if("Katar")
@@ -66,13 +77,11 @@
 		if("Knuckledusters")
 			ADD_TRAIT(spawned, TRAIT_CRITICAL_RESISTANCE, JOB_TRAIT)
 		if("Quarterstaff")
-			spawned.clamped_adjust_skillrank(/datum/skill/combat/polearms, 3, 3)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_PER, 1)
-			spawned.adjust_stat_modifier("job_stats", STATKEY_INT, 1)
+			spawned.attributes?.add_sheet(/datum/attribute_holder/sheet/job/disciple/quarterstaff)
 	spawned.equip_to_slot_or_del(new gloves_to_wear, ITEM_SLOT_GLOVES, TRUE)
 
 /datum/outfit/disciple
-	name = "Disciple"
+	name = "Disciple (Sacrestants)"
 	shoes = /obj/item/clothing/shoes/psydonboots
 	armor = /obj/item/clothing/armor/regenerating/skin/disciple
 	backl = /obj/item/storage/backpack/satchel/otavan
