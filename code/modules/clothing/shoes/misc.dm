@@ -221,6 +221,7 @@
 	item_state = "heels"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_ROYAL_PURPLE
+	misc_flags = CRAFTING_TEST_EXCLUDE
 
 /obj/item/clothing/shoes/high_heels/Initialize()
 	. = ..()
