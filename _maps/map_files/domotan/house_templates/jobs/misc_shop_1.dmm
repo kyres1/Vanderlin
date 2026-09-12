@@ -1,0 +1,509 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"b" = (
+/obj/effect/decal/cobbleedge/alt{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"c" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"d" = (
+/turf/open/openspace,
+/area/template_noop)
+"e" = (
+/obj/effect/decal/cobbleedge/alt{
+	dir = 5
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"f" = (
+/obj/effect/decal/cobbleedge/alt{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"g" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"h" = (
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"i" = (
+/turf/closed/wall/mineral/stonebrick,
+/area/template_noop)
+"j" = (
+/obj/structure/sign/property_sign/claim,
+/turf/closed/wall/mineral/decowood,
+/area/template_noop)
+"k" = (
+/turf/open/floor/twig,
+/area/template_noop)
+"l" = (
+/obj/structure/chair/wood/alt{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"m" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"n" = (
+/obj/effect/decal/carpet/square,
+/obj/structure/well/fountain/sink,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"o" = (
+/obj/machinery/light/fueled/hearth,
+/obj/machinery/light/fueled/oven/east,
+/obj/item/reagent_containers/glass/bucket/pot/stone,
+/turf/open/floor/cobble,
+/area/template_noop)
+"p" = (
+/obj/machinery/light/fueled/torchholder/metal_torch/north,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"q" = (
+/obj/structure/closet/crate/chest/wickertrunk,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"s" = (
+/obj/structure/closet/crate/chest/neu,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"t" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/rooftop,
+/area/template_noop)
+"u" = (
+/obj/item/candle/floorcandle0/lit,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"v" = (
+/obj/machinery/light/fueled/hearth,
+/obj/item/cooking/pan,
+/turf/open/floor/cobble,
+/area/template_noop)
+"w" = (
+/obj/structure/chair/wood/alt,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"x" = (
+/obj/structure/closet/crate/chest,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"y" = (
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"z" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"A" = (
+/obj/structure/fluff/railing/wood{
+	dir = 4
+	},
+/turf/open/floor/rooftop,
+/area/template_noop)
+"B" = (
+/obj/structure/closet/crate/crafted_closet,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"C" = (
+/turf/closed/wall/mineral/wood/window,
+/area/template_noop)
+"E" = (
+/obj/structure/door/red,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"F" = (
+/obj/structure/table/wood/plain,
+/obj/item/reagent_containers/glass/cup/wooden,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"G" = (
+/obj/structure/bed/hay,
+/obj/machinery/light/fueled/wallfire/candle/r,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"H" = (
+/obj/item/bin,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"I" = (
+/turf/closed/wall/mineral/decowood,
+/area/template_noop)
+"J" = (
+/obj/structure/closet/crate/chest/wicker,
+/obj/machinery/light/fueled/torchholder/metal_torch/north,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"K" = (
+/obj/structure/closet/crate/chest,
+/obj/machinery/light/fueled/wallfire/candle/l,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"L" = (
+/obj/structure/closet/crate/chest/wicker,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"M" = (
+/obj/structure/fluff/railing/wood{
+	dir = 8
+	},
+/turf/open/floor/rooftop,
+/area/template_noop)
+"N" = (
+/turf/open/floor/cobble,
+/area/template_noop)
+"O" = (
+/turf/closed/wall/mineral/decostone/moss,
+/area/template_noop)
+"P" = (
+/obj/structure/fluff/railing/wood,
+/turf/open/floor/rooftop,
+/area/template_noop)
+"Q" = (
+/turf/open/glass,
+/area/template_noop)
+"R" = (
+/turf/closed/wall/mineral/decowood/vert,
+/area/template_noop)
+"S" = (
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"T" = (
+/turf/closed/wall/mineral/wood,
+/area/template_noop)
+"U" = (
+/obj/structure/closet/crate/chest,
+/obj/machinery/light/fueled/torchholder/c,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"W" = (
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+"X" = (
+/turf/open/floor/rooftop,
+/area/template_noop)
+"Y" = (
+/obj/structure/fluff/railing/wood{
+	dir = 1
+	},
+/turf/open/floor/twig,
+/area/template_noop)
+"Z" = (
+/obj/structure/ladder,
+/turf/open/floor/ruinedwood,
+/area/template_noop)
+
+(1,1,1) = {"
+R
+T
+R
+C
+T
+T
+"}
+(2,1,1) = {"
+T
+h
+W
+W
+h
+R
+"}
+(3,1,1) = {"
+C
+W
+W
+W
+W
+C
+"}
+(4,1,1) = {"
+T
+y
+W
+W
+p
+T
+"}
+(5,1,1) = {"
+E
+W
+W
+W
+W
+E
+"}
+(6,1,1) = {"
+T
+y
+W
+W
+p
+T
+"}
+(7,1,1) = {"
+C
+a
+c
+W
+W
+C
+"}
+(8,1,1) = {"
+T
+T
+g
+W
+a
+j
+"}
+(9,1,1) = {"
+T
+T
+I
+C
+T
+R
+"}
+
+(1,1,2) = {"
+T
+R
+C
+I
+T
+I
+"}
+(2,1,2) = {"
+T
+k
+W
+W
+L
+T
+"}
+(3,1,2) = {"
+I
+U
+W
+k
+J
+T
+"}
+(4,1,2) = {"
+C
+W
+S
+W
+k
+C
+"}
+(5,1,2) = {"
+I
+W
+k
+W
+s
+I
+"}
+(6,1,2) = {"
+T
+q
+W
+k
+S
+T
+"}
+(7,1,2) = {"
+I
+y
+c
+p
+T
+R
+"}
+(8,1,2) = {"
+C
+g
+d
+Y
+z
+C
+"}
+(9,1,2) = {"
+T
+R
+C
+R
+T
+I
+"}
+
+(1,1,3) = {"
+I
+T
+C
+O
+i
+i
+"}
+(2,1,3) = {"
+I
+B
+e
+v
+o
+i
+"}
+(3,1,3) = {"
+C
+n
+W
+b
+N
+C
+"}
+(4,1,3) = {"
+T
+G
+W
+a
+f
+T
+"}
+(5,1,3) = {"
+I
+T
+C
+T
+E
+R
+"}
+(6,1,3) = {"
+I
+K
+W
+h
+W
+T
+"}
+(7,1,3) = {"
+C
+x
+W
+m
+z
+C
+"}
+(8,1,3) = {"
+T
+Z
+a
+m
+d
+T
+"}
+(9,1,3) = {"
+T
+I
+R
+R
+C
+T
+"}
+
+(1,1,4) = {"
+X
+X
+X
+X
+X
+X
+"}
+(2,1,4) = {"
+X
+Q
+Q
+Q
+Q
+X
+"}
+(3,1,4) = {"
+X
+Q
+Q
+Q
+Q
+X
+"}
+(4,1,4) = {"
+X
+Q
+Q
+Q
+Q
+X
+"}
+(5,1,4) = {"
+X
+A
+A
+A
+A
+X
+"}
+(6,1,4) = {"
+P
+w
+F
+H
+u
+t
+"}
+(7,1,4) = {"
+P
+W
+W
+W
+W
+t
+"}
+(8,1,4) = {"
+P
+Z
+W
+W
+l
+t
+"}
+(9,1,4) = {"
+X
+M
+M
+M
+M
+X
+"}
