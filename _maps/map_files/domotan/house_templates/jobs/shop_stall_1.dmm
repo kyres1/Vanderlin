@@ -4,6 +4,7 @@
 /area/template_noop)
 "b" = (
 /obj/machinery/light/fueled/wallfire/candle,
+/obj/structure/chair/stool,
 /turf/open/floor/ruinedwood/two,
 /area/template_noop)
 "d" = (
@@ -14,6 +15,9 @@
 "e" = (
 /obj/structure/table/wood/crafted,
 /obj/structure/bars/wood,
+/obj/structure/curtain/bounty{
+	icon_state = "bounty-closed"
+	},
 /turf/open/openspace,
 /area/template_noop)
 "f" = (
@@ -22,11 +26,24 @@
 "j" = (
 /turf/open/floor/ruinedwood/chevron,
 /area/template_noop)
+"l" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/ruinedwood/two,
+/area/template_noop)
+"m" = (
+/obj/structure/rack/shelf/biggest,
+/turf/open/floor/ruinedwood/chevron,
+/area/template_noop)
 "n" = (
+/obj/structure/curtain/bounty{
+	icon_state = "bounty-closed"
+	},
 /turf/closed/wall/mineral/wood/window,
 /area/template_noop)
 "r" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
+/obj/effect/decal/cleanable/debris/glass,
+/obj/structure/rack/shelf/biggest,
 /turf/open/floor/ruinedwood/two,
 /area/template_noop)
 "I" = (
@@ -41,11 +58,20 @@
 /area/template_noop)
 "O" = (
 /obj/machinery/light/fueled/wallfire/candle,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/debris/glass,
+/turf/open/floor/ruinedwood/chevron,
+/area/template_noop)
+"S" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack/shelf/biggest,
 /turf/open/floor/ruinedwood/chevron,
 /area/template_noop)
 "T" = (
-/obj/structure/door/red,
-/turf/open/openspace,
+/obj/structure/door/red{
+	name = "Shop Stall I"
+	},
+/turf/open/floor/ruinedwood/two,
 /area/template_noop)
 "U" = (
 /obj/machinery/light/fueled/wallfire/candle/r,
@@ -56,29 +82,39 @@
 /obj/machinery/light/fueled/wallfire/candle,
 /turf/open/floor/ruinedwood/two,
 /area/template_noop)
+"X" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/ruinedwood/chevron,
+/area/template_noop)
+"Y" = (
+/obj/effect/decal/cleanable/debris/glass,
+/turf/open/floor/ruinedwood/chevron,
+/area/template_noop)
 "Z" = (
-/obj/structure/door/red,
-/turf/open/floor/grass/yel,
+/obj/structure/door/red{
+	name = "Shop Stall I"
+	},
+/turf/open/floor/ruinedwood/chevron,
 /area/template_noop)
 
 (1,1,1) = {"
 f
-j
-j
+S
+m
 j
 f
 "}
 (2,1,1) = {"
 f
 O
-j
+X
 j
 n
 "}
 (3,1,1) = {"
 n
 j
-j
+X
 j
 I
 "}
@@ -86,7 +122,7 @@ I
 N
 d
 U
-j
+Y
 f
 "}
 (5,1,1) = {"
@@ -114,8 +150,8 @@ n
 (3,1,2) = {"
 n
 a
-a
-a
+l
+l
 I
 "}
 (4,1,2) = {"
