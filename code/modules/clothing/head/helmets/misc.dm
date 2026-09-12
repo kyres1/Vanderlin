@@ -833,7 +833,7 @@
 /obj/item/clothing/head/helmet/visored/shirleigh
 	name = "first doman helm"
 	desc = "A second skin, woven in hard, tempered blacksteel of a pure make. It's impossibly old. Seared into each and every face is a deep embroidery of floral-embellished calligraphy. The writing is in a thousand languages. This helm's mighty brow commands that even the gods themselves must be your peer."
-	icon_state = "shirleigh_helm"
+	icon_state = "hounskull"
 	icon = 'icons/roguetown/clothing/special/shirleigh.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/shirleigh.dmi'
 	smeltresult = /obj/item/ingot/blacksteel

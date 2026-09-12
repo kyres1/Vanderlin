@@ -138,7 +138,7 @@
 /obj/item/clothing/pants/platelegs/shirleigh
 	name = "first doman platelegs"
 	desc = "A second skin, woven in hard, tempered blacksteel of a pure make. It's impossibly old. Seared into each and every face is a deep embroidery of floral-embellished calligraphy. The writing is in a thousand languages. Gleaming plates ensure unbroken stride through the inferno."
-	icon_state = "shirleigh_legs"
+	icon_state = "plate_legs"
 	icon = 'icons/roguetown/clothing/special/shirleigh.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/shirleigh.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/shirleigh.dmi'

@@ -55,7 +55,7 @@
 /obj/item/clothing/gloves/plate/shirleigh
 	name = "first doman gauntlets"
 	desc = "A second skin, woven in hard, tempered steel of a pure make. It's impossibly old. Seared into each and every face is a deep embroidery of floral-embellished calligraphy. The writing is in a thousand languages. Its enchanted digits are given  plenty freedom to guide a lord's righteous hand."
-	icon_state = "shirleigh_gloves"
+	icon_state = "gauntlets"
 	icon = 'icons/roguetown/clothing/special/shirleigh.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/shirleigh.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/shirleigh.dmi'
