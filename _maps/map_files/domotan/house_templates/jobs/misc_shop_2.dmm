@@ -131,12 +131,13 @@
 /turf/open/floor/ruinedwood/two,
 /area/template_noop)
 "tl" = (
-/obj/structure/sign/property_sign/claim,
+/obj/structure/sign/property_sign/claim/yeoman,
 /turf/closed/wall/mineral/wooddark,
 /area/template_noop)
 "tG" = (
 /obj/structure/door/window,
 /obj/structure/curtain/bounty/dir,
+/obj/effect/mapping_helpers/access/locker,
 /turf/open/floor/ruinedwood/chevron,
 /area/indoors)
 "uF" = (

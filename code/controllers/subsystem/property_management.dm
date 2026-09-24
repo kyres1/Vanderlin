@@ -467,6 +467,52 @@ SUBSYSTEM_DEF(housing)
 
 /obj/structure/sign/property_sign/claim
 	var/claimed = FALSE
+	var/list/valid_jobs = list()
+
+/obj/structure/sign/property_sign/claim/noble
+	valid_jobs = GLOB.noble_positions
+
+/obj/structure/sign/property_sign/claim/lord//For the lord's quarters
+	name = "Regent's Instancer Crystal"
+	valid_jobs = list(/datum/job/lord)
+
+/obj/structure/sign/property_sign/claim/prince//For the heir's quarters
+	name = "Heir's Instancer Crystal"
+	valid_jobs = list(/datum/job/prince)
+
+/obj/structure/sign/property_sign/claim/hand//For the hand's quarters
+	name = "Hand's Instancer Crystal"
+	valid_jobs = list(/datum/job/hand)
+
+/obj/structure/sign/property_sign/claim/royalknight//For captain
+	name = "Captain's Instancer Crystal"
+	valid_jobs = list(/datum/job/captain)
+
+/obj/structure/sign/property_sign/claim/royalknight//For knight quarters
+	name = "Knight's Instancer Crystal"
+	valid_jobs = list(/datum/job/royalknight)
+
+/obj/structure/sign/property_sign/claim/yeoman//For yeoman workplaces
+	name = "Yeoman's Instancer Crystal"
+	valid_jobs = GLOB.serf_positions
+
+/obj/structure/sign/property_sign/claim/town//For the town roles
+	name = "Town Instancer Crystal"
+	valid_jobs = list(
+		GLOB.garrison_positions,
+		GLOB.serf_positions,
+		GLOB.peasant_positions,
+	)
+
+/obj/structure/sign/property_sign/claim/outsider//For outsiders
+	name = "Outsider's Instancer Crystal"
+	valid_jobs = GLOB.allmig_positions
+
+/obj/structure/sign/property_sign/claim/proc/check_job_access(mob/user)
+	for(mob/user/M)
+		if(M.job in valid_jobs)
+			return TRUE
+	return FALSE
 
 /obj/structure/sign/property_sign/claim/attack_hand(mob/user)
 	. = ..()
@@ -491,6 +537,12 @@ SUBSYSTEM_DEF(housing)
 	if(check_other_players(user))
 		to_chat(user, span_warning("Cannot claim while others are present!"))
 		return
+
+	if(check_job_access(user))
+		to_chat(user, span_warning("Your role can't claim this property!"))
+		return
+
+	if()
 
 	// Show slot selection interface
 	show_slot_selection(user)

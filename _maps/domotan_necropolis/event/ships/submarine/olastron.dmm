@@ -1,0 +1,1267 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"am" = (
+/turf/open/floor/metal,
+/area/template_noop)
+"au" = (
+/obj/structure/fluff/walldeco/churchbanner/jealousgod,
+/turf/closed/wall/mineral/wood,
+/area/indoors/town)
+"aO" = (
+/obj/item/candle/scandelabra/lit{
+	pixel_y = 13
+	},
+/obj/structure/table/wood/fancy/black,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"bR" = (
+/obj/structure/bars/pipe{
+	dir = 4
+	},
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 8
+	},
+/obj/structure/fluff/steamvent,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 4
+	},
+/turf/open/floor/metal/alt,
+/area/indoors/town)
+"cq" = (
+/obj/structure/fluff/steamvent,
+/obj/structure/water_vent{
+	dir = 4
+	},
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 4
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"cr" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 8
+	},
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+"cP" = (
+/mob/living/simple_animal/hostile/retaliate/droid_warden/shirleigh,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"cT" = (
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 4
+	},
+/obj/structure/chair/wood/alt/chair_noble,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"dF" = (
+/obj/structure/carpet/purple,
+/obj/structure/fluff/wallclock/l,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"dQ" = (
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 4
+	},
+/obj/structure/fluff/steamvent,
+/turf/open/floor/metal/alt,
+/area/indoors/town)
+"dY" = (
+/obj/structure/carpet/purple,
+/obj/structure/chair/wood/alt/chair_noble/fancyplush,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"eo" = (
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 10
+	},
+/turf/open/floor/herringbone,
+/area/indoors/town)
+"ex" = (
+/obj/structure/chair/wood/alt/chair_noble/purple{
+	dir = 8
+	},
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"eW" = (
+/obj/machinery/light/fueledstreet/midlamp,
+/obj/structure/fluff/walldeco/gear,
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+"fs" = (
+/obj/item/clothing/shoes/high_heels/gold{
+	pixel_x = 10;
+	pixel_y = 7
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"gs" = (
+/turf/open/water/ocean/abyss,
+/area/template_noop)
+"ho" = (
+/obj/structure/water_vent{
+	dir = 8
+	},
+/turf/open/floor/metal,
+/area/template_noop)
+"hB" = (
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 1
+	},
+/obj/structure/chair/wood/alt/chair_noble{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"ih" = (
+/obj/structure/closet/crate/chest/wickertrunk/red,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"jq" = (
+/obj/structure/carpet/purple,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"jP" = (
+/obj/structure/fluff/statue/droid,
+/turf/closed/wall/mineral/wood,
+/area/indoors/town)
+"kW" = (
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 8
+	},
+/obj/structure/bars/pipe{
+	dir = 6
+	},
+/turf/open/floor/herringbone,
+/area/indoors/town)
+"lr" = (
+/obj/structure/fluff/walldeco/wallshield,
+/turf/closed/wall/mineral/pipe,
+/area/indoors/town)
+"lF" = (
+/turf/closed/wall/mineral/wood,
+/area/indoors/town)
+"nJ" = (
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 8
+	},
+/obj/structure/fluff/steamvent,
+/obj/structure/bars/pipe{
+	dir = 4
+	},
+/turf/open/floor/metal/alt,
+/area/indoors/town)
+"nW" = (
+/turf/open/openspace,
+/area/indoors/town)
+"oj" = (
+/obj/structure/stairs,
+/turf/open/floor/metal,
+/area/indoors/town)
+"oP" = (
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"rT" = (
+/obj/structure/fluff/railing/border{
+	dir = 4
+	},
+/turf/open/floor/metal/red,
+/area/indoors/town)
+"sl" = (
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+"sy" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/clothing/neck/psycross/heretical,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/paper/scroll,
+/obj/item/natural/feather,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"sP" = (
+/obj/structure/chair/bench/coucha/redleft,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"sW" = (
+/obj/structure/fluff/steamvent,
+/turf/open/floor/metal,
+/area/template_noop)
+"tl" = (
+/obj/item/candle/scandle/lit{
+	pixel_y = 9
+	},
+/obj/structure/table/wood/fancy/black,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"tu" = (
+/obj/structure/bars/pipe{
+	dir = 4
+	},
+/turf/open/floor/metal,
+/area/indoors/town)
+"vH" = (
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 8
+	},
+/obj/structure/bars/pipe{
+	dir = 4
+	},
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+"wZ" = (
+/obj/structure/fluff/walldeco/painting/crown,
+/turf/closed/wall/mineral/wood,
+/area/indoors/town)
+"xb" = (
+/obj/structure/stairs,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"xL" = (
+/obj/structure/bars/pipe,
+/turf/open/floor/metal,
+/area/indoors/town)
+"xS" = (
+/obj/structure/bars/pipe,
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"yj" = (
+/turf/open/floor/metal/red,
+/area/indoors/town)
+"yG" = (
+/obj/structure/bars/pipe{
+	dir = 6
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"za" = (
+/obj/structure/chair/bench/church/smallbench{
+	dir = 1
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Aw" = (
+/obj/structure/bars/pipe{
+	dir = 6
+	},
+/turf/open/floor/metal,
+/area/indoors/town)
+"AB" = (
+/obj/structure/bars/pipe{
+	dir = 5
+	},
+/turf/open/floor/metal,
+/area/indoors/town)
+"AF" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
+	},
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+"Cb" = (
+/obj/structure/fluff/steamvent,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"Ck" = (
+/obj/structure/bars/pipe{
+	dir = 8
+	},
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 4
+	},
+/obj/structure/fluff/steamvent,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/metal/alt,
+/area/indoors/town)
+"DB" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 4
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"DE" = (
+/obj/structure/chair/stool/bar/fancyplush,
+/obj/structure/fluff/clutter/books,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"DG" = (
+/obj/structure/bars/passage/shutter{
+	redstone_id = "subreactor"
+	},
+/obj/structure/window/solid,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Er" = (
+/obj/structure/carpet/red,
+/obj/structure/table/vtable,
+/obj/item/natural/feather{
+	pixel_y = 6
+	},
+/obj/item/paper/scroll{
+	pixel_y = 6;
+	pixel_x = 14
+	},
+/obj/item/candle/yellow/lit/infinite{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"EI" = (
+/obj/structure/fluff/statue/gargoyle/candles,
+/turf/closed/wall/mineral/wood,
+/area/indoors/town)
+"GF" = (
+/obj/structure/chair/bench/coucha/redright,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Hx" = (
+/obj/structure/window/stained/envy,
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"Ig" = (
+/turf/open/water/ocean,
+/area/template_noop)
+"Iq" = (
+/obj/structure/fluff/walldeco/painting/flower,
+/turf/closed/wall/mineral/pipe,
+/area/indoors/town)
+"Iz" = (
+/obj/structure/chair/wood/alt/chair_noble{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"IC" = (
+/obj/structure/fluff/steamvent,
+/obj/structure/water_vent{
+	dir = 8
+	},
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"IP" = (
+/obj/structure/tentdoor/purpledeco,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"JY" = (
+/obj/structure/fluff/walldeco/church/line{
+	dir = 8
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"KJ" = (
+/turf/template_noop,
+/area/template_noop)
+"KP" = (
+/obj/structure/lever/wall{
+	dir = 8;
+	pixel_x = -2;
+	redstone_id = "subreactor"
+	},
+/obj/structure/table/wood,
+/obj/item/candle/yellow{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/item/broom,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Lh" = (
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Lo" = (
+/obj/structure/table/map{
+	dir = 10
+	},
+/obj/structure/fluff/clutter/shrub/tundra{
+	pixel_y = 15;
+	density = 0
+	},
+/obj/structure/carpet/purple,
+/obj/item/weapon/umbrella/basic{
+	pixel_y = 9;
+	pixel_x = 10
+	},
+/obj/machinery/light/fueledstreet/blue/wall,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"LB" = (
+/obj/structure/bars/pipe,
+/turf/open/floor/herringbone,
+/area/indoors/town)
+"LQ" = (
+/obj/structure/carpet/red,
+/obj/structure/table/vtable/v2,
+/obj/item/candle/yellow{
+	pixel_y = 6
+	},
+/obj/item/candle/yellow{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"LY" = (
+/obj/structure/water_vent{
+	dir = 4
+	},
+/turf/open/floor/metal,
+/area/template_noop)
+"MJ" = (
+/turf/open/floor/metal,
+/area/indoors/town)
+"NE" = (
+/obj/structure/table/wood,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Pq" = (
+/obj/structure/fluff/globe,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Ri" = (
+/obj/structure/crystalreactor,
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+"Ro" = (
+/turf/closed/wall/mineral/pipe,
+/area/indoors/town)
+"Rr" = (
+/obj/structure/fluff/walldeco/painting/moon,
+/turf/closed/wall/mineral/wood,
+/area/indoors/town)
+"Se" = (
+/obj/structure/bookcase/fancy/random/myths,
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Sg" = (
+/obj/structure/fluff/railing/border{
+	dir = 1
+	},
+/turf/open/openspace,
+/area/indoors/town)
+"SH" = (
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 8
+	},
+/turf/open/floor/herringbone,
+/area/indoors/town)
+"SK" = (
+/obj/structure/table/map,
+/obj/structure/rack/shelf/notdense,
+/obj/structure/carpet/purple,
+/obj/structure/fluff/statue/one_envy{
+	pixel_y = 10
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Ua" = (
+/mob/living/simple_animal/hostile/retaliate/droid_warden/shirleigh,
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"Uk" = (
+/obj/effect/decal/carpet/kover_purple{
+	dir = 4
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"UR" = (
+/obj/structure/window/solid,
+/obj/structure/bars/passage/shutter{
+	redstone_id = "subreactor"
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Vr" = (
+/turf/open/lava/flow,
+/area/indoors/town)
+"Wt" = (
+/obj/machinery/light/fueled/wallfire/big_fireplace{
+	pixel_y = 32
+	},
+/obj/item/natural/stone{
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/obj/item/natural/stoneblock{
+	pixel_y = 11
+	},
+/obj/structure/chair/bench/church/smallbench{
+	dir = 4
+	},
+/obj/structure/fluff/walldeco/painting{
+	pixel_y = 32;
+	desc = "A painting of a cloaked feminine figure, the face is obscured beneath a veil of shadows. Their only features are two burning eyes, both of which follow you despite having no visible contraption or illusion at play. This image is not borne of good intent.";
+	pixel_x = -23
+	},
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"Ww" = (
+/turf/open/floor/ruinedwood/two,
+/area/indoors/town)
+"XJ" = (
+/obj/structure/fluff/steamvent,
+/obj/machinery/light/fueledstreet/blue/wall{
+	dir = 4
+	},
+/turf/open/floor/metal/red/alt,
+/area/indoors/town)
+"ZS" = (
+/obj/structure/bars/pipe{
+	dir = 10
+	},
+/obj/structure/fluff/walldeco/bath/wallpipes/outie{
+	dir = 4
+	},
+/turf/open/floor/metal/barograte,
+/area/indoors/town)
+
+(1,1,1) = {"
+gs
+gs
+gs
+Ig
+Ig
+Ig
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ig
+Ig
+Ig
+Ig
+Ig
+"}
+(2,1,1) = {"
+gs
+gs
+Ro
+Ro
+Ro
+Ro
+Ro
+bR
+vH
+nJ
+kW
+lF
+lF
+Ro
+Ro
+Ro
+Ro
+Ig
+Ig
+Ig
+"}
+(3,1,1) = {"
+gs
+Ro
+Ro
+Vr
+Vr
+cq
+Ro
+Ro
+DG
+DG
+DG
+lF
+Wt
+dF
+jq
+Iz
+Iq
+Ro
+Ro
+Ig
+"}
+(4,1,1) = {"
+Ro
+Ro
+XJ
+cr
+JY
+JY
+lr
+jP
+cT
+NE
+hB
+lF
+DE
+za
+Er
+Ww
+Pq
+jP
+Ro
+Ro
+"}
+(5,1,1) = {"
+Ro
+Hx
+oP
+Ri
+oP
+oP
+UR
+KP
+cP
+Uk
+Ww
+IP
+Ww
+Ww
+LQ
+Ww
+Ww
+aO
+Hx
+Ro
+"}
+(6,1,1) = {"
+Ro
+Ro
+MJ
+eW
+MJ
+MJ
+UR
+sP
+Ww
+Ww
+Ww
+IP
+fs
+Ww
+Ww
+Ww
+Ww
+Se
+lF
+lr
+"}
+(7,1,1) = {"
+Ro
+Hx
+oP
+Ri
+oP
+oP
+UR
+GF
+Ww
+Ww
+xb
+lF
+Lo
+jq
+Ww
+Ww
+Ww
+Se
+Hx
+Ro
+"}
+(8,1,1) = {"
+Ro
+Ro
+Cb
+AF
+DB
+DB
+lr
+au
+Lh
+Ww
+xb
+lF
+SK
+dY
+ih
+tl
+ex
+wZ
+Ro
+Ro
+"}
+(9,1,1) = {"
+gs
+Ro
+Ro
+Vr
+Vr
+IC
+Ro
+Ro
+DG
+DG
+DG
+lF
+Rr
+lF
+EI
+sy
+Ro
+Ro
+Ro
+Ig
+"}
+(10,1,1) = {"
+gs
+Ig
+Ro
+Ro
+Ro
+Ro
+Ro
+Ck
+ZS
+dQ
+eo
+LB
+SH
+Ro
+Ro
+Ro
+Ro
+Ig
+Ig
+Ig
+"}
+(11,1,1) = {"
+gs
+gs
+Ig
+Ig
+Ig
+Ig
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ro
+Ig
+Ig
+Ig
+Ig
+Ig
+"}
+
+(1,1,2) = {"
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+KJ
+KJ
+"}
+(2,1,2) = {"
+KJ
+KJ
+am
+am
+am
+sW
+ho
+am
+am
+sW
+ho
+am
+am
+sW
+ho
+am
+am
+KJ
+KJ
+KJ
+"}
+(3,1,2) = {"
+KJ
+am
+am
+Ro
+Hx
+Ro
+Ro
+Ro
+Hx
+Ro
+Ro
+Ro
+Hx
+Ro
+Ro
+Ro
+am
+am
+am
+KJ
+"}
+(4,1,2) = {"
+am
+am
+Ro
+Ro
+MJ
+xL
+xL
+xS
+oP
+AB
+tu
+Aw
+oP
+oP
+MJ
+Ro
+Ro
+am
+am
+am
+"}
+(5,1,2) = {"
+am
+sW
+Hx
+oP
+sl
+Ro
+Ro
+yG
+oP
+sl
+MJ
+sl
+oP
+oP
+sl
+MJ
+MJ
+sW
+am
+am
+"}
+(6,1,2) = {"
+am
+am
+Ro
+Ua
+yj
+yj
+yj
+oP
+oP
+rT
+rT
+rT
+oP
+oP
+yj
+MJ
+MJ
+am
+am
+am
+"}
+(7,1,2) = {"
+am
+sW
+Hx
+oP
+sl
+MJ
+sl
+oP
+oP
+Sg
+nW
+oj
+oP
+oP
+sl
+MJ
+MJ
+sW
+am
+am
+"}
+(8,1,2) = {"
+am
+am
+Ro
+Ro
+MJ
+MJ
+MJ
+oP
+oP
+Sg
+nW
+oj
+oP
+oP
+MJ
+Ro
+Ro
+am
+am
+am
+"}
+(9,1,2) = {"
+KJ
+am
+am
+Ro
+Hx
+Ro
+Ro
+Ro
+Hx
+Ro
+Ro
+Ro
+Hx
+Ro
+Ro
+Ro
+am
+am
+am
+KJ
+"}
+(10,1,2) = {"
+KJ
+KJ
+am
+am
+am
+sW
+LY
+am
+am
+sW
+LY
+am
+am
+sW
+LY
+am
+am
+KJ
+KJ
+KJ
+"}
+(11,1,2) = {"
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+KJ
+KJ
+"}
+
+(1,1,3) = {"
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+"}
+(2,1,3) = {"
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+"}
+(3,1,3) = {"
+KJ
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+KJ
+"}
+(4,1,3) = {"
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+"}
+(5,1,3) = {"
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+"}
+(6,1,3) = {"
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+"}
+(7,1,3) = {"
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+"}
+(8,1,3) = {"
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+"}
+(9,1,3) = {"
+KJ
+KJ
+KJ
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+KJ
+KJ
+KJ
+KJ
+"}
+(10,1,3) = {"
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+"}
+(11,1,3) = {"
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+"}
