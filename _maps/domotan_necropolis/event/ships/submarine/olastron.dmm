@@ -1,18 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "am" = (
 /turf/open/floor/metal,
-/area/template_noop)
+/area/outdoors/town)
 "au" = (
 /obj/structure/fluff/walldeco/churchbanner/jealousgod,
 /turf/closed/wall/mineral/wood,
-/area/indoors/town)
+/area/under/olastron)
+"aL" = (
+/obj/structure/fluff/walldeco/banner,
+/turf/closed/wall/mineral/pipe,
+/area/under/olastron)
 "aO" = (
 /obj/item/candle/scandelabra/lit{
 	pixel_y = 13
 	},
 /obj/structure/table/wood/fancy/black,
+/obj/item/reagent_containers/glass/cup/skull,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "bR" = (
 /obj/structure/bars/pipe{
 	dir = 4
@@ -25,7 +30,7 @@
 	dir = 4
 	},
 /turf/open/floor/metal/alt,
-/area/indoors/town)
+/area/under/olastron)
 "cq" = (
 /obj/structure/fluff/steamvent,
 /obj/structure/water_vent{
@@ -35,24 +40,24 @@
 	dir = 4
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "cr" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 "cP" = (
 /mob/living/simple_animal/hostile/retaliate/droid_warden/shirleigh,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "cT" = (
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 4
 	},
 /obj/structure/chair/wood/alt/chair_noble,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "dF" = (
 /obj/structure/carpet/purple,
 /obj/structure/fluff/wallclock/l,
@@ -60,25 +65,25 @@
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "dQ" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/outie{
 	dir = 4
 	},
 /obj/structure/fluff/steamvent,
 /turf/open/floor/metal/alt,
-/area/indoors/town)
+/area/under/olastron)
 "dY" = (
 /obj/structure/carpet/purple,
 /obj/structure/chair/wood/alt/chair_noble/fancyplush,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "eo" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/outie{
 	dir = 10
 	},
 /turf/open/floor/herringbone,
-/area/indoors/town)
+/area/under/olastron)
 "ex" = (
 /obj/structure/chair/wood/alt/chair_noble/purple{
 	dir = 8
@@ -87,28 +92,32 @@
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "eW" = (
 /obj/machinery/light/fueledstreet/midlamp,
 /obj/structure/fluff/walldeco/gear,
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 "fs" = (
 /obj/item/clothing/shoes/high_heels/gold{
 	pixel_x = 10;
 	pixel_y = 7
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "gs" = (
 /turf/open/water/ocean/abyss,
-/area/template_noop)
+/area/outdoors/town)
+"gK" = (
+/obj/effect/decal/cleanable/dirt/cobweb/cobweb2,
+/turf/open/floor/metal/red/alt,
+/area/under/olastron)
 "ho" = (
 /obj/structure/water_vent{
 	dir = 8
 	},
 /turf/open/floor/metal,
-/area/template_noop)
+/area/outdoors/town)
 "hB" = (
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 1
@@ -117,19 +126,23 @@
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "ih" = (
 /obj/structure/closet/crate/chest/wickertrunk/red,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "jq" = (
 /obj/structure/carpet/purple,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "jP" = (
 /obj/structure/fluff/statue/droid,
 /turf/closed/wall/mineral/wood,
-/area/indoors/town)
+/area/under/olastron)
+"kr" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/metal/red/alt,
+/area/under/olastron)
 "kW" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/outie{
 	dir = 8
@@ -138,14 +151,18 @@
 	dir = 6
 	},
 /turf/open/floor/herringbone,
-/area/indoors/town)
+/area/under/olastron)
+"kX" = (
+/obj/structure/fluff/statue/droid,
+/turf/closed/wall/mineral/pipe,
+/area/under/olastron)
 "lr" = (
 /obj/structure/fluff/walldeco/wallshield,
 /turf/closed/wall/mineral/pipe,
-/area/indoors/town)
+/area/under/olastron)
 "lF" = (
 /turf/closed/wall/mineral/wood,
-/area/indoors/town)
+/area/under/olastron)
 "nJ" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/outie{
 	dir = 8
@@ -155,26 +172,30 @@
 	dir = 4
 	},
 /turf/open/floor/metal/alt,
-/area/indoors/town)
+/area/under/olastron)
 "nW" = (
 /turf/open/openspace,
-/area/indoors/town)
+/area/under/olastron)
 "oj" = (
 /obj/structure/stairs,
 /turf/open/floor/metal,
-/area/indoors/town)
+/area/under/olastron)
+"om" = (
+/obj/structure/table/wood,
+/turf/open/floor/metal,
+/area/under/olastron)
 "oP" = (
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "rT" = (
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
 /turf/open/floor/metal/red,
-/area/indoors/town)
+/area/under/olastron)
 "sl" = (
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 "sy" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/clothing/neck/psycross/heretical,
@@ -186,28 +207,28 @@
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "sP" = (
 /obj/structure/chair/bench/coucha/redleft,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "sW" = (
 /obj/structure/fluff/steamvent,
 /turf/open/floor/metal,
-/area/template_noop)
+/area/outdoors/town)
 "tl" = (
 /obj/item/candle/scandle/lit{
 	pixel_y = 9
 	},
 /obj/structure/table/wood/fancy/black,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "tu" = (
 /obj/structure/bars/pipe{
 	dir = 4
 	},
 /turf/open/floor/metal,
-/area/indoors/town)
+/area/under/olastron)
 "vH" = (
 /obj/structure/fluff/walldeco/bath/wallpipes/outie{
 	dir = 8
@@ -216,63 +237,84 @@
 	dir = 4
 	},
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 "wZ" = (
 /obj/structure/fluff/walldeco/painting/crown,
 /turf/closed/wall/mineral/wood,
-/area/indoors/town)
+/area/under/olastron)
 "xb" = (
 /obj/structure/stairs,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "xL" = (
 /obj/structure/bars/pipe,
 /turf/open/floor/metal,
-/area/indoors/town)
+/area/under/olastron)
 "xS" = (
 /obj/structure/bars/pipe,
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "yj" = (
 /turf/open/floor/metal/red,
-/area/indoors/town)
+/area/under/olastron)
 "yG" = (
 /obj/structure/bars/pipe{
 	dir = 6
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
+"yI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/metal/barograte,
+/area/under/olastron)
 "za" = (
 /obj/structure/chair/bench/church/smallbench{
 	dir = 1
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
+"Aa" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/chair/stool,
+/turf/open/floor/metal,
+/area/under/olastron)
+"Ac" = (
+/obj/structure/lever/wall{
+	dir = 8;
+	pixel_x = -2;
+	redstone_id = "subgate"
+	},
+/turf/open/floor/metal/red/alt,
+/area/under/olastron)
+"Au" = (
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/metal,
+/area/under/olastron)
 "Aw" = (
 /obj/structure/bars/pipe{
 	dir = 6
 	},
 /turf/open/floor/metal,
-/area/indoors/town)
+/area/under/olastron)
 "AB" = (
 /obj/structure/bars/pipe{
 	dir = 5
 	},
 /turf/open/floor/metal,
-/area/indoors/town)
+/area/under/olastron)
 "AF" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
 	},
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 "Cb" = (
 /obj/structure/fluff/steamvent,
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 8
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "Ck" = (
 /obj/structure/bars/pipe{
 	dir = 8
@@ -285,25 +327,41 @@
 	dir = 8
 	},
 /turf/open/floor/metal/alt,
-/area/indoors/town)
+/area/under/olastron)
+"CI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/metal,
+/area/under/olastron)
+"Dr" = (
+/obj/structure/fluff/telescope,
+/turf/open/floor/metal/red/alt,
+/area/under/olastron)
 "DB" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "DE" = (
 /obj/structure/chair/stool/bar/fancyplush,
 /obj/structure/fluff/clutter/books,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "DG" = (
 /obj/structure/bars/passage/shutter{
 	redstone_id = "subreactor"
 	},
 /obj/structure/window/solid,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
+"DW" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/metal/red,
+/area/under/olastron)
+"En" = (
+/mob/living/simple_animal/hostile/retaliate/droid_warden/shirleigh,
+/turf/open/floor/metal/red,
+/area/under/olastron)
 "Er" = (
 /obj/structure/carpet/red,
 /obj/structure/table/vtable,
@@ -319,32 +377,38 @@
 	pixel_x = -8
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "EI" = (
 /obj/structure/fluff/statue/gargoyle/candles,
 /turf/closed/wall/mineral/wood,
-/area/indoors/town)
+/area/under/olastron)
+"EL" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/cobweb,
+/obj/structure/closet/crate/chest/shippingcrate,
+/turf/open/floor/metal/red/alt,
+/area/under/olastron)
 "GF" = (
 /obj/structure/chair/bench/coucha/redright,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Hx" = (
 /obj/structure/window/stained/envy,
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "Ig" = (
 /turf/open/water/ocean,
-/area/template_noop)
+/area/outdoors/town)
 "Iq" = (
 /obj/structure/fluff/walldeco/painting/flower,
 /turf/closed/wall/mineral/pipe,
-/area/indoors/town)
+/area/under/olastron)
 "Iz" = (
 /obj/structure/chair/wood/alt/chair_noble{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "IC" = (
 /obj/structure/fluff/steamvent,
 /obj/structure/water_vent{
@@ -354,20 +418,26 @@
 	dir = 8
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
 "IP" = (
 /obj/structure/tentdoor/purpledeco,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "JY" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 8
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
+"Kp" = (
+/obj/structure/bars/passage/shutter{
+	redstone_id = "subgate"
+	},
+/turf/open/floor/metal,
+/area/under/olastron)
 "KJ" = (
 /turf/template_noop,
-/area/template_noop)
+/area/outdoors/town)
 "KP" = (
 /obj/structure/lever/wall{
 	dir = 8;
@@ -381,13 +451,13 @@
 	},
 /obj/item/broom,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Lh" = (
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 8
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Lo" = (
 /obj/structure/table/map{
 	dir = 10
@@ -399,15 +469,16 @@
 /obj/structure/carpet/purple,
 /obj/item/weapon/umbrella/basic{
 	pixel_y = 9;
-	pixel_x = 10
+	pixel_x = 10;
+	color = "#45228f"
 	},
 /obj/machinery/light/fueledstreet/blue/wall,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "LB" = (
 /obj/structure/bars/pipe,
 /turf/open/floor/herringbone,
-/area/indoors/town)
+/area/under/olastron)
 "LQ" = (
 /obj/structure/carpet/red,
 /obj/structure/table/vtable/v2,
@@ -419,54 +490,70 @@
 	pixel_x = 8
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "LY" = (
 /obj/structure/water_vent{
 	dir = 4
 	},
 /turf/open/floor/metal,
-/area/template_noop)
+/area/outdoors/town)
 "MJ" = (
 /turf/open/floor/metal,
-/area/indoors/town)
+/area/under/olastron)
 "NE" = (
 /obj/structure/table/wood,
+/obj/item/reagent_containers/glass/cup/teacup/fancy,
+/obj/item/reagent_containers/glass/cup/teacup/fancy,
+/obj/item/reagent_containers/glass/carafe/teapot/tea,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
+"NT" = (
+/obj/item/clothing/armor/basiceast{
+	pixel_x = 20
+	},
+/turf/open/floor/ruinedwood/two,
+/area/under/olastron)
 "Pq" = (
 /obj/structure/fluff/globe,
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Ri" = (
 /obj/structure/crystalreactor,
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 "Ro" = (
 /turf/closed/wall/mineral/pipe,
-/area/indoors/town)
+/area/under/olastron)
 "Rr" = (
 /obj/structure/fluff/walldeco/painting/moon,
 /turf/closed/wall/mineral/wood,
-/area/indoors/town)
+/area/under/olastron)
 "Se" = (
 /obj/structure/bookcase/fancy/random/myths,
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Sg" = (
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
 /turf/open/openspace,
-/area/indoors/town)
+/area/under/olastron)
+"SF" = (
+/obj/structure/window/stained/envy,
+/obj/structure/bars/passage/shutter{
+	redstone_id = "subgate"
+	},
+/turf/open/floor/metal/red/alt,
+/area/under/olastron)
 "SH" = (
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 8
 	},
 /turf/open/floor/herringbone,
-/area/indoors/town)
+/area/under/olastron)
 "SK" = (
 /obj/structure/table/map,
 /obj/structure/rack/shelf/notdense,
@@ -475,27 +562,31 @@
 	pixel_y = 10
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Ua" = (
-/mob/living/simple_animal/hostile/retaliate/droid_warden/shirleigh,
-/turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/obj/structure/fluff/hanging_banners,
+/turf/closed/wall/mineral/wood,
+/area/under/olastron)
 "Uk" = (
 /obj/effect/decal/carpet/kover_purple{
 	dir = 4
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "UR" = (
 /obj/structure/window/solid,
 /obj/structure/bars/passage/shutter{
 	redstone_id = "subreactor"
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
+"Vc" = (
+/obj/effect/decal/carpet/kover_purple,
+/turf/open/floor/ruinedwood/two,
+/area/under/olastron)
 "Vr" = (
 /turf/open/lava/flow,
-/area/indoors/town)
+/area/under/olastron)
 "Wt" = (
 /obj/machinery/light/fueled/wallfire/big_fireplace{
 	pixel_y = 32
@@ -516,17 +607,22 @@
 	pixel_x = -23
 	},
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "Ww" = (
 /turf/open/floor/ruinedwood/two,
-/area/indoors/town)
+/area/under/olastron)
 "XJ" = (
 /obj/structure/fluff/steamvent,
 /obj/machinery/light/fueledstreet/blue/wall{
 	dir = 4
 	},
 /turf/open/floor/metal/red/alt,
-/area/indoors/town)
+/area/under/olastron)
+"Yn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack,
+/turf/open/floor/metal,
+/area/under/olastron)
 "ZS" = (
 /obj/structure/bars/pipe{
 	dir = 10
@@ -535,7 +631,7 @@
 	dir = 4
 	},
 /turf/open/floor/metal/barograte,
-/area/indoors/town)
+/area/under/olastron)
 
 (1,1,1) = {"
 gs
@@ -593,7 +689,7 @@ Ro
 DG
 DG
 DG
-lF
+Ua
 Wt
 dF
 jq
@@ -615,7 +711,7 @@ jP
 cT
 NE
 hB
-lF
+Ua
 DE
 za
 Er
@@ -664,8 +760,8 @@ fs
 Ww
 Ww
 Ww
-Ww
-Se
+Vc
+NT
 lF
 lr
 "}
@@ -829,15 +925,15 @@ KJ
 am
 am
 Ro
-Hx
+SF
 Ro
 Ro
 Ro
-Hx
+SF
 Ro
 Ro
 Ro
-Hx
+SF
 Ro
 Ro
 Ro
@@ -851,19 +947,19 @@ am
 am
 Ro
 Ro
-MJ
+Au
 xL
 xL
 xS
-oP
+Dr
 AB
 tu
 Aw
 oP
-oP
+Ac
 MJ
 Ro
-Ro
+kX
 am
 am
 am
@@ -871,21 +967,21 @@ am
 (5,1,2) = {"
 am
 sW
-Hx
-oP
-sl
+SF
+EL
+yI
 Ro
-Ro
+kX
 yG
-oP
+kr
 sl
 MJ
 sl
-oP
-oP
+kr
+kr
 sl
 MJ
-MJ
+Kp
 sW
 am
 am
@@ -894,20 +990,20 @@ am
 am
 am
 Ro
-Ua
-yj
-yj
-yj
 oP
-oP
+En
+yj
+DW
+kr
+kr
 rT
 rT
 rT
-oP
-oP
+kr
+kr
 yj
 MJ
-MJ
+Kp
 am
 am
 am
@@ -915,13 +1011,13 @@ am
 (7,1,2) = {"
 am
 sW
-Hx
+SF
 oP
 sl
-MJ
+CI
 sl
 oP
-oP
+kr
 Sg
 nW
 oj
@@ -929,7 +1025,7 @@ oP
 oP
 sl
 MJ
-MJ
+Kp
 sW
 am
 am
@@ -939,11 +1035,11 @@ am
 am
 Ro
 Ro
-MJ
-MJ
-MJ
-oP
-oP
+om
+Aa
+Yn
+aL
+gK
 Sg
 nW
 oj
@@ -961,15 +1057,15 @@ KJ
 am
 am
 Ro
-Hx
+SF
 Ro
 Ro
 Ro
-Hx
+SF
 Ro
 Ro
 Ro
-Hx
+SF
 Ro
 Ro
 Ro
