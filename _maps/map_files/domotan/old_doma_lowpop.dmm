@@ -116,16 +116,6 @@
 	},
 /turf/open/floor/metal/barograte,
 /area/indoors/town/garrison)
-"acY" = (
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/doma_apartment_two;
-	property_id = "doma_apartment_two";
-	save_id = "doma_apartment_two";
-	template_y = 7;
-	template_x = 5
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/farm)
 "adi" = (
 /obj/structure/fluff/railing/border{
 	dir = 8
@@ -9048,13 +9038,6 @@
 /obj/structure/fluff/railing/tall{
 	dir = 8
 	},
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/doma_apartment_1;
-	property_id = "doma_apartment_1";
-	save_id = "doma_apartment_1";
-	template_y = 7;
-	template_x = 5
-	},
 /turf/open/floor/dirt/road,
 /area/outdoors/farm)
 "fIa" = (
@@ -10453,13 +10436,6 @@
 "gDD" = (
 /obj/structure/fluff/railing/tall{
 	dir = 8
-	},
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/doma_apartment_two;
-	property_id = "doma_apartment_two";
-	save_id = "doma_apartment_two";
-	template_y = 7;
-	template_x = 5
 	},
 /turf/open/floor/dirt/road,
 /area/outdoors/farm)
@@ -12002,10 +11978,8 @@
 /turf/open/floor/carpet/lord/left,
 /area/indoors/town/keep/throne)
 "hzd" = (
-/obj/structure/fluff/walldeco/banner{
-	pixel_y = 24
-	},
-/turf/open/openspace,
+/obj/structure/fluff/walldeco/banner,
+/turf/closed/wall/mineral/stone,
 /area/indoors/shelter/town)
 "hzh" = (
 /obj/machinery/light/fueled/torchholder/l,
@@ -17779,16 +17753,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/ruinedwood/turned/alt,
 /area/outdoors/exposed)
-"lcj" = (
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/doma_apartment_two;
-	property_id = "doma_apartment_two";
-	save_id = "doma_apartment_two";
-	template_y = 7;
-	template_x = 5
-	},
-/turf/open/floor/dirt/road,
-/area/outdoors/town/neighborhood/east)
 "lco" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/church,
@@ -60836,7 +60800,7 @@ vBL
 bZh
 aiU
 wDh
-lcj
+jvl
 jvl
 jvl
 jvl
@@ -61100,7 +61064,7 @@ oms
 sXf
 fap
 uYu
-acY
+fXi
 rNX
 dyN
 iDb
@@ -61232,7 +61196,7 @@ qhv
 sXf
 fXi
 fXi
-acY
+fXi
 dpB
 bSc
 bSc
