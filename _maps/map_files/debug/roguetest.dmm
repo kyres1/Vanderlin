@@ -1464,9 +1464,6 @@
 	dir = 8
 	},
 /area/outdoors/mountains/decap)
-"lb" = (
-/turf/open/floor/naturalstone,
-/area/indoors/town/keep)
 "lk" = (
 /obj/structure/door/window,
 /turf/open/floor/tile/bfloorz,
@@ -1590,16 +1587,6 @@
 	},
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"oc" = (
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/doma_apartment_one;
-	property_id = "doma_apartment_one";
-	save_id = "doma_apartment_one";
-	template_y = 7;
-	template_x = 5
-	},
-/turf/open/floor/naturalstone,
-/area/indoors/town)
 "ot" = (
 /obj/structure/bookcase/random_recipes,
 /turf/open/floor/church/gold,
@@ -1790,16 +1777,6 @@
 /obj/structure/flora/grass/herb/symphitum,
 /turf/open/floor/grass/yel,
 /area/outdoors)
-"so" = (
-/obj/effect/landmark/house_spot{
-	default_template = /datum/map_template/lord_bedroom;
-	property_id = "lord_bedroom";
-	save_id = "lord_bedroom";
-	template_y = 7;
-	template_x = 5
-	},
-/turf/open/floor/naturalstone,
-/area/indoors/town/keep)
 "ss" = (
 /turf/open/openspace,
 /area/outdoors)
@@ -2805,9 +2782,6 @@
 /obj/structure/window/openclose,
 /turf/open/floor/church/gold,
 /area/indoors/town/keep)
-"JF" = (
-/turf/open/floor/naturalstone,
-/area/indoors/town)
 "JK" = (
 /obj/structure/fluff/railing/wood{
 	dir = 4;
@@ -18241,13 +18215,13 @@ zg
 as
 ac
 ac
-JF
-JF
-JF
-JF
-JF
-JF
-oc
+ac
+ac
+ac
+ac
+ac
+ac
+at
 oH
 oH
 Wr
@@ -18498,13 +18472,13 @@ zg
 as
 as
 as
-JF
-JF
-JF
-JF
-JF
-JF
-JF
+as
+as
+as
+as
+as
+as
+at
 oH
 oH
 ki
@@ -18755,13 +18729,13 @@ as
 as
 as
 as
-JF
-JF
-JF
-JF
-JF
-JF
-JF
+as
+as
+as
+as
+as
+as
+at
 oH
 oH
 Tj
@@ -19012,13 +18986,13 @@ ac
 ac
 ac
 ac
-JF
-JF
-JF
-JF
-JF
-JF
-JF
+ac
+ac
+ac
+ac
+as
+as
+at
 Wr
 Wr
 Wr
@@ -19269,13 +19243,13 @@ ac
 ac
 ac
 ac
-JF
-JF
-JF
-JF
-JF
-JF
-JF
+ac
+ac
+ac
+ac
+as
+as
+at
 EW
 pb
 kj
@@ -19787,13 +19761,13 @@ as
 as
 as
 as
-lb
-lb
-lb
-lb
-lb
-lb
-so
+as
+as
+as
+at
+at
+at
+at
 zg
 zg
 zg
@@ -20044,13 +20018,13 @@ zg
 zg
 as
 as
-lb
-lb
-lb
-lb
-lb
-lb
-lb
+as
+as
+as
+as
+as
+as
+zg
 zg
 IF
 PE
@@ -20301,13 +20275,13 @@ Zv
 zg
 zg
 zg
-lb
-lb
-lb
-lb
-lb
-lb
-lb
+as
+as
+as
+as
+as
+zg
+zg
 GB
 GB
 GB
@@ -20558,13 +20532,13 @@ Zv
 Zv
 Zv
 zg
-lb
-lb
-lb
-lb
-lb
-lb
-lb
+zg
+as
+as
+as
+as
+zg
+qw
 GB
 GB
 uy
@@ -20815,13 +20789,13 @@ Zv
 Zv
 Zv
 oZ
-lb
-lb
-lb
-lb
-lb
-lb
-lb
+zg
+zg
+zg
+zg
+zg
+zg
+GB
 GB
 hm
 Zv
