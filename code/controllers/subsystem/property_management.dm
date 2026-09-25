@@ -470,6 +470,10 @@ SUBSYSTEM_DEF(housing)
 	var/list/valid_jobs = list()
 
 /obj/structure/sign/property_sign/claim/noble
+	name = "Noble Instancer Crystal"
+
+/obj/structure/sign/property_sign/claim/noble/Initialize(mapload)
+	. = ..()
 	valid_jobs = GLOB.noble_positions
 
 /obj/structure/sign/property_sign/claim/lord//For the lord's quarters
@@ -494,25 +498,31 @@ SUBSYSTEM_DEF(housing)
 
 /obj/structure/sign/property_sign/claim/yeoman//For yeoman workplaces
 	name = "Yeoman's Instancer Crystal"
-	valid_jobs = GLOB.serf_positions
+
+/obj/structure/sign/property_sign/claim/yeoman/Initialize(mapload)
+	. = ..()
+	valid_jobs += GLOB.serf_positions
 
 /obj/structure/sign/property_sign/claim/town//For the town roles
 	name = "Town Instancer Crystal"
-	valid_jobs = list(
-		GLOB.garrison_positions,
-		GLOB.serf_positions,
-		GLOB.peasant_positions,
-	)
+
+/obj/structure/sign/property_sign/claim/town/Initialize(mapload)
+	. = ..()
+	valid_jobs += GLOB.garrison_positions
+	valid_jobs += GLOB.serf_positions
+	valid_jobs += GLOB.peasant_positions
 
 /obj/structure/sign/property_sign/claim/outsider//For outsiders
 	name = "Outsider's Instancer Crystal"
+
+/obj/structure/sign/property_sign/claim/outsider/Initialize(mapload)
+	. = ..()
 	valid_jobs = GLOB.allmig_positions
 
 /obj/structure/sign/property_sign/claim/proc/check_job_access(mob/user)
-	for(mob/user/M)
-		if(M.job in valid_jobs)
-			return TRUE
-	return FALSE
+	if(user.job in valid_jobs)
+		return FALSE
+	return TRUE
 
 /obj/structure/sign/property_sign/claim/attack_hand(mob/user)
 	. = ..()
@@ -541,8 +551,6 @@ SUBSYSTEM_DEF(housing)
 	if(check_job_access(user))
 		to_chat(user, span_warning("Your role can't claim this property!"))
 		return
-
-	if()
 
 	// Show slot selection interface
 	show_slot_selection(user)
