@@ -323,8 +323,7 @@ GLOBAL_LIST_EMPTY(save_whitelist)
 	obj_blacklist += /obj/effect/landmark/house_spot
 	obj_blacklist += /obj/effect/fog_parter
 	obj_blacklist += /obj/structure/sign/property_sign
-	obj_blacklist += typesof(/obj/item/clothing/armor) //Prevents armor from getting saved to prevent people hoarding steel plate
-	obj_blacklist += typesof(/obj/item/storage/belt/pouch/coins) //spawns with money
+	obj_blacklist += /obj/item/clothing/armor //Prevents armor from getting saved to prevent people hoarding steel plate
 	if(save_flag & SAVE_WHITELIST)
 		obj_blacklist += typesof(/obj/effect/landmark/start)
 
