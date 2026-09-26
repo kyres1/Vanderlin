@@ -474,7 +474,7 @@ SUBSYSTEM_DEF(housing)
 
 /obj/structure/sign/property_sign/claim/noble/Initialize(mapload)
 	. = ..()
-	valid_jobs = GLOB.noble_positions
+	valid_jobs = GLOB.noble_positions_paths
 
 /obj/structure/sign/property_sign/claim/lord//For the lord's quarters
 	name = "Regent's Instancer Crystal"
@@ -482,45 +482,67 @@ SUBSYSTEM_DEF(housing)
 
 /obj/structure/sign/property_sign/claim/prince//For the heir's quarters
 	name = "Heir's Instancer Crystal"
-	valid_jobs = list(/datum/job/prince)
+
+/obj/structure/sign/property_sign/claim/prince/Initialize(mapload)
+	. = ..()
+	valid_jobs += typesof(/datum/job/prince)
+	valid_jobs += typesof(/datum/job/advclass/heir)
 
 /obj/structure/sign/property_sign/claim/hand//For the hand's quarters
 	name = "Hand's Instancer Crystal"
-	valid_jobs = list(/datum/job/hand)
 
-/obj/structure/sign/property_sign/claim/royalknight//For captain
+/obj/structure/sign/property_sign/claim/hand/Initialize(mapload)
+	. = ..()
+	valid_jobs += list(/datum/job/hand)
+	valid_jobs += typesof(/datum/job/advclass/hand)
+
+/obj/structure/sign/property_sign/claim/captain//For captain
 	name = "Captain's Instancer Crystal"
-	valid_jobs = list(/datum/job/captain)
+
+/obj/structure/sign/property_sign/claim/captain/Initialize(mapload)
+	. = ..()
+	valid_jobs += list(/datum/job/captain)
 
 /obj/structure/sign/property_sign/claim/royalknight//For knight quarters
 	name = "Knight's Instancer Crystal"
-	valid_jobs = list(/datum/job/royalknight)
+
+/obj/structure/sign/property_sign/claim/royalknight/Initialize(mapload)
+	. = ..()
+	valid_jobs += list(/datum/job/royalknight)
+	valid_jobs += typesof(/datum/job/advclass/royalknight)
 
 /obj/structure/sign/property_sign/claim/yeoman//For yeoman workplaces
 	name = "Yeoman's Instancer Crystal"
 
 /obj/structure/sign/property_sign/claim/yeoman/Initialize(mapload)
 	. = ..()
-	valid_jobs += GLOB.serf_positions
+	valid_jobs += GLOB.serf_positions_paths
 
 /obj/structure/sign/property_sign/claim/town//For the town roles
 	name = "Town Instancer Crystal"
 
 /obj/structure/sign/property_sign/claim/town/Initialize(mapload)
 	. = ..()
-	valid_jobs += GLOB.garrison_positions
-	valid_jobs += GLOB.serf_positions
-	valid_jobs += GLOB.peasant_positions
+	valid_jobs += typesof(/datum/job/villager)
+	valid_jobs += GLOB.garrison_positions_paths
+	valid_jobs += GLOB.serf_positions_paths
+	valid_jobs += GLOB.peasant_positions_paths
+	valid_jobs += GLOB.church_positions_paths
 
 /obj/structure/sign/property_sign/claim/outsider//For outsiders
 	name = "Outsider's Instancer Crystal"
 
 /obj/structure/sign/property_sign/claim/outsider/Initialize(mapload)
 	. = ..()
-	valid_jobs = GLOB.allmig_positions
+	valid_jobs = GLOB.allmig_positions_paths//Folk hero is intentionally excluded from this but its base class is already in this list. It is unable to actually be used ingame though, as it gets overridden by an advclass, so this is considered functioning as intended.
+	valid_jobs += typesof(/datum/job/advclass/pilgrim)
+	valid_jobs += typesof(/datum/job/advclass/wretch)
+	valid_jobs += typesof(/datum/job/advclass/bandit)
+	valid_jobs += typesof(/datum/job/advclass/adventurer)
+	valid_jobs += typesof(/datum/job/advclass/combat)
 
 /obj/structure/sign/property_sign/claim/proc/check_job_access(mob/user)
-	if(user.job in valid_jobs)
+	if(user.job_type in valid_jobs)
 		return FALSE
 	return TRUE
 
