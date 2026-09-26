@@ -1379,15 +1379,15 @@
 /turf/open/floor/blocks,
 /area/outdoors/town/roofs)
 "aVv" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
 /obj/structure/fluff/railing/border{
 	dir = 10
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
 	},
 /turf/open/openspace,
 /area/outdoors/beach)
@@ -2052,15 +2052,14 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 6;
 	pixel_x = -24;
 	pixel_y = 24
 	},
-/obj/structure/rack,
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
+	},
 /turf/open/openspace,
 /area/outdoors/beach)
 "bof" = (
@@ -2231,16 +2230,6 @@
 /obj/structure/flora/newtree/snow,
 /turf/open/floor/grass/cold,
 /area/outdoors/town/plaza)
-"bvQ" = (
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
-/obj/machinery/light/fueled/lanternpost/fixed,
-/turf/open/openspace,
-/area/outdoors/beach)
 "bvZ" = (
 /obj/structure/window/openclose,
 /turf/open/floor/ruinedwood/two,
@@ -6475,15 +6464,6 @@
 "eih" = (
 /turf/open/floor/woodturned,
 /area/outdoors/town/roofs)
-"eik" = (
-/obj/structure/fluff/railing/border{
-	dir = 4
-	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
-/turf/open/openspace,
-/area/outdoors/beach)
 "eiw" = (
 /obj/structure/flora/grass/water,
 /obj/structure/fluff/railing/tall/retaining/stone{
@@ -7578,18 +7558,14 @@
 /turf/open/floor/cobble,
 /area/indoors/town/merc_guild)
 "eSf" = (
-/obj/effect/decal/cobbleedge{
-	dir = 4;
-	icon_state = "jagged"
-	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 6
 	},
 /obj/structure/fluff/railing/border{
 	dir = 10
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
 	},
 /turf/open/openspace,
 /area/outdoors/beach)
@@ -8318,11 +8294,11 @@
 	pixel_x = 24;
 	pixel_y = -24
 	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 8
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
 	},
 /turf/open/openspace,
 /area/outdoors/beach)
@@ -9243,13 +9219,13 @@
 /obj/structure/fluff/railing/border{
 	dir = 4
 	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 10;
 	pixel_x = 24;
 	pixel_y = 24
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
 	},
 /turf/open/openspace,
 /area/outdoors/beach)
@@ -9918,14 +9894,14 @@
 /turf/open/floor/carpet/royalblack,
 /area/outdoors/town/roofs)
 "gmy" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
 /obj/structure/fluff/railing/border,
 /obj/structure/rack,
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
+	},
 /turf/open/openspace,
 /area/outdoors/beach)
 "gmB" = (
@@ -15514,16 +15490,6 @@
 /obj/structure/ladder,
 /turf/open/floor/ruinedwood/turned/darker,
 /area/indoors/town/waterworks)
-"jzH" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
-/obj/structure/fluff/railing/border{
-	dir = 8
-	},
-/obj/machinery/light/fueled/lanternpost/fixed,
-/turf/open/openspace,
-/area/outdoors/beach)
 "jzP" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/water/ocean,
@@ -19614,15 +19580,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/ruinedwood,
 /area/indoors/town/garrison)
-"mbU" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
-/turf/open/openspace,
-/area/outdoors/beach)
 "mbX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/cobble,
@@ -22278,13 +22235,13 @@
 	dir = 4
 	},
 /obj/structure/fluff/railing/border,
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 9;
 	pixel_x = 24;
 	pixel_y = -24
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
 	},
 /turf/open/openspace,
 /area/outdoors/beach)
@@ -28873,12 +28830,12 @@
 /turf/open/floor/snow,
 /area/outdoors/town/plaza)
 "rFS" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "wooden_floor2"
-	},
 /obj/machinery/light/fueled/lanternpost/fixed,
 /obj/structure/fluff/railing/border{
 	dir = 8
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
 	},
 /turf/open/openspace,
 /area/outdoors/beach)
@@ -33450,19 +33407,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/ruinedwood/turned,
 /area/outdoors/town/roofs)
-"uFf" = (
-/obj/effect/decal/cobbleedge{
-	dir = 4;
-	icon_state = "jagged"
-	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
-/turf/open/openspace,
-/area/outdoors/beach)
 "uFn" = (
 /obj/structure/fluff/walldeco/sparrowflag{
 	pixel_y = 32
@@ -33799,21 +33743,15 @@
 	dir = 4
 	},
 /obj/structure/fluff/railing/border,
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 9;
 	pixel_x = 24;
 	pixel_y = -24
 	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
+/obj/structure/rack,
 /obj/structure/industrial_lift/tram{
 	icon_state = "wooden_floor2"
 	},
-/obj/structure/rack,
 /turf/open/openspace,
 /area/outdoors/beach)
 "uQd" = (
@@ -35968,10 +35906,10 @@
 /obj/structure/fluff/railing/border{
 	dir = 8
 	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/machinery/light/fueled/lanternpost/fixed,
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
+	},
 /turf/open/openspace,
 /area/outdoors/beach)
 "wkl" = (
@@ -36175,15 +36113,15 @@
 /obj/structure/fluff/railing/border{
 	dir = 1
 	},
-/obj/structure/industrial_lift/tram{
-	icon_state = "vertw"
-	},
 /obj/structure/fluff/railing/border{
 	dir = 10;
 	pixel_x = 24;
 	pixel_y = 24
 	},
 /obj/structure/rack,
+/obj/structure/industrial_lift/tram{
+	icon_state = "wooden_floor2"
+	},
 /turf/open/openspace,
 /area/outdoors/beach)
 "wnI" = (
@@ -67024,16 +66962,16 @@ qxY
 boc
 wjs
 uWs
-bvQ
+wjs
 uWs
 cHt
 rFS
-cHt
-uWs
-bvQ
 uWs
 uWs
-jzH
+wjs
+uWs
+uWs
+wjs
 gmy
 qxY
 qxY
@@ -67165,8 +67103,8 @@ pKD
 pKD
 pKD
 tLz
-pKD
-pKD
+tLz
+tLz
 aVv
 qxY
 qxY
@@ -67297,8 +67235,8 @@ pKD
 pKD
 pKD
 tLz
-uFf
-uFf
+tLz
+tLz
 eSf
 fmn
 qxY
@@ -67429,8 +67367,8 @@ pKD
 pKD
 pKD
 tLz
-mbU
-mbU
+tLz
+tLz
 nCx
 qxY
 qxY
@@ -67550,7 +67488,7 @@ qxY
 qxY
 qxY
 wnG
-eik
+cLt
 cLt
 cLt
 wxP
